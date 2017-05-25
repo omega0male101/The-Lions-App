@@ -1,0 +1,30 @@
+{
+  "name": "lionsapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "seeds.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "mocha client/src/models/specs",
+    "webpack": "cd client && webpack -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omega0male101/The-Lions-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omega0male101/The-Lions-App/issues"
+  },
+  "homepage": "https://github.com/omega0male101/The-Lions-App#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "mongodb": "^2.2.27"
+  },
+  "devDependencies": {
+    "body-parser": "^1.17.2",
+    "mocha": "^3.4.2",
+    "webpack": "^2.6.1"
+  }
+}
