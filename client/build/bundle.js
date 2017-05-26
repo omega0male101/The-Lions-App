@@ -270,26 +270,11 @@ var app = function() {
 window.addEventListener('load', app);
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-var Fixture = function(options) {
-  this.date = options.date;
-  this.matchNumber = options.matchNumber;
-  this.kickOffTime = options.kickOffTime;
-  this.homeTeamName = options.homeTeamName;
-  this.awayTeamName = options.awayTeamName;
-  this.stadium = options.stadium;
-  this.result = options.result;
-  }
-
-module.exports = Fixture;
-
-/***/ }),
+/* 3 */,
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Fixture = __webpack_require__ (3);
+var Fixture = __webpack_require__ (6);
 var RequestHelper = __webpack_require__(0)
 
 var Fixtures = function() {
@@ -361,6 +346,22 @@ MapWrapper.prototype = {
 }
 
 module.exports = MapWrapper;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+var Fixture = function(options) {
+  this.date = options.date;
+  this.matchNumber = options.matchNumber;
+  this.kickOffTime = options.kickOffTime;
+  this.homeTeamName = options.homeTeamName;
+  this.awayTeamName = options.awayTeamName;
+  this.stadium = options.stadium;
+  this.result = options.result;
+  }
+
+module.exports = Fixture;
 
 /***/ })
 /******/ ]);
