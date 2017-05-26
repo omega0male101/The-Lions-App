@@ -1,0 +1,23 @@
+/* Fixture Container and contents */
+#fixtures-container {
+  border-style: solid;
+  border-width: 1px;
+  width: 75%;
+}
+
+#fixture-game{
+  margin: 10px;
+}
+
+#home-team{
+  margin: 10px;
+}
+
+#away-team{
+  margin: 10px;
+}
+#VS {
+margin: 10px;
+
+}
+/* End of fixture container and contents */
