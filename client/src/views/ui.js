@@ -29,14 +29,18 @@ UI.prototype = {
   render: function(fixtures){
     var container = document.getElementById("fixtures-container");
     container.innerHTML = "";
-    console.log(fixtures);
     for (var fixture of fixtures) {
       var li = document.createElement('li');
       this.appendText(li, fixture.homeTeamName, 'Home: ');
       this.appendText(li, fixture.awayTeamName, 'Away: ');
+      this.addMapMarker(fixture);
 
       container.appendChild(li);
     }
+  },
+  addMapMarker: function(fixture){
+    console.log(fixture.stadium.latLng)
+    this.mainMap.addMarker(fixture.stadium.latLng);
   }
 }
 

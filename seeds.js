@@ -13,8 +13,8 @@ db.fixtures.insert([
     name: "Toll",
     location: "Whangarei",
     latLng: {
-      lat: "-35.734070",
-      lng: "174.329517"
+      lat: -35.734070,
+      lng: 174.329517
     },
     capacity: "30,000",
     image: "https://resources.stuff.co.nz/content/dam/images/1/6/b/i/e/g/image.related.StuffLandscapeSixteenByNine.620x349.16o9yq.png/1441300120225.jpg"
