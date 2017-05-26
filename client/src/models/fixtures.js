@@ -1,4 +1,4 @@
-var fixtures = require ('./fixture');
+var Fixture = require ('./Fixture');
 var RequestHelper = require('../helpers/request.js')
 
 var Fixtures = function() {
@@ -16,7 +16,7 @@ Fixtures.prototype = {
     var fixtures = results.map(function(resultObject){
       return new Fixture(resultObject);
     })
-    return Fixtures;
+    return fixtures;
   },
   add: function(newFixture, callback){
     var fixtureData = JSON.stringify(newFixture);

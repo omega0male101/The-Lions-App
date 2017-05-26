@@ -10,7 +10,6 @@ var query = new FixtureQuery();
 //fixture index
 fixtureRouter.get('/', function(req, res){
   query.all(function(fixtures){
-    console.log(fixtures)
     res.json(fixtures);
   });
 });

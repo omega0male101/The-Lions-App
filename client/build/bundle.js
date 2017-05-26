@@ -63,23 +63,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var UI = __webpack_require__(2);
-
-var app = function() {
-  new UI();
-}
-
-window.addEventListener('load', app);
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports) {
 
 var RequestHelper = function () {
@@ -115,11 +103,11 @@ RequestHelper.prototype = {
 module.exports = RequestHelper;
 
 /***/ }),
-/* 2 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Fixtures = __webpack_require__(4);
-var RequestHelper = __webpack_require__(1)
+var RequestHelper = __webpack_require__(0)
 var MapWrapper = __webpack_require__(5)
 
 var UI = function(){
@@ -163,27 +151,24 @@ UI.prototype = {
 module.exports = UI;
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports) {
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
 
-var Fixture = function(options) {
-  this.date = options.date;
-  this.matchNumber = options.matchNumber;
-  this.kickOffTime = options.kickOffTime;
-  this.homeTeamName = options.homeTeamName;
-  this.awayTeamName = options.awayTeamName;
-  this.stadium = options.stadium;
-  this.result = options.result;
-  }
+var UI = __webpack_require__(1);
 
-module.exports = Fixture;
+var app = function() {
+  new UI();
+}
+
+window.addEventListener('load', app);
 
 /***/ }),
+/* 3 */,
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fixtures = __webpack_require__ (3);
-var RequestHelper = __webpack_require__(1)
+var Fixture = __webpack_require__ (6);
+var RequestHelper = __webpack_require__(0)
 
 var Fixtures = function() {
   this.requestHelper = new RequestHelper();
@@ -200,7 +185,7 @@ Fixtures.prototype = {
     var fixtures = results.map(function(resultObject){
       return new Fixture(resultObject);
     })
-    return Fixtures;
+    return fixtures;
   },
   add: function(newFixture, callback){
     var fixtureData = JSON.stringify(newFixture);
@@ -253,6 +238,22 @@ MapWrapper.prototype = {
 }
 
 module.exports = MapWrapper;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+var Fixture = function(options) {
+  this.date = options.date;
+  this.matchNumber = options.matchNumber;
+  this.kickOffTime = options.kickOffTime;
+  this.homeTeamName = options.homeTeamName;
+  this.awayTeamName = options.awayTeamName;
+  this.stadium = options.stadium;
+  this.result = options.result;
+  }
+
+module.exports = Fixture;
 
 /***/ })
 /******/ ]);

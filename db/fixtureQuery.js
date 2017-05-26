@@ -1,7 +1,7 @@
 var MongoClient = require("mongodb").MongoClient;
 
 var FixtureQuery = function(){
-  this.url = "mongodb://localhost:27017/lionscb";
+  this.url = "mongodb://localhost:27017/lions";
 }
 
 FixtureQuery.prototype = {
