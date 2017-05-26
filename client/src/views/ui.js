@@ -32,7 +32,7 @@ UI.prototype = {
     var labelIndex = 1;
     for (var fixture of fixtures) {
       this.addMapMarker(fixture, String(labelIndex));
-      this.labelIndex ++;
+      labelIndex ++;
       var div_game = document.createElement('div');
         div_game.setAttribute("id", "fixture-game");
 
