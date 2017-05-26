@@ -9,7 +9,7 @@ var UI = function(){
   }.bind(this));
   var mapDiv = document.getElementById("main-map");
   mapDiv.style.height = "500px";
-  mapDiv.style.width = "500px";
+  mapDiv.style.width = "900px";
   var center = {lat: -42.570323, lng: 172.146130}
   this.mainMap = new MapWrapper(center, 5, mapDiv)
 }
@@ -31,14 +31,29 @@ UI.prototype = {
     container.innerHTML = "";
     var labelIndex = 1;
     for (var fixture of fixtures) {
-      var li = document.createElement('li');
-      this.appendText(li, fixture.homeTeamName, 'Home: ');
-      this.appendText(li, fixture.awayTeamName, 'Away: ');
-      console.log(labelIndex)
       this.addMapMarker(fixture, String(labelIndex));
       this.labelIndex ++;
+      var div_game = document.createElement('div');
+        div_game.setAttribute("id", "fixture-game");
 
-      container.appendChild(li);
+      var spanHomeTeam = document.createElement('span');
+        spanHomeTeam.setAttribute("id", "home-team");
+      var spanVS = document.createElement('span');
+        spanVS.setAttribute("id", "VS");
+      var spanAwayTeam = document.createElement('span');
+        spanAwayTeam.setAttribute("id", "away-team");
+
+        // this.appendText(spanHomeTeam, fixture.homeTeamName, 'test');
+        // this.appendText(spanVS, ' VS ');
+        // this.appendText(spanAwayTeam, fixture.awayTeamName, '');
+
+        spanHomeTeam.textContent = fixture.homeTeamName;
+        spanVS.textContent = " VS ";
+        spanAwayTeam.textContent = fixture.awayTeamName;
+
+      container.appendChild(spanHomeTeam);
+      container.appendChild(spanVS);
+      container.appendChild(spanAwayTeam);
     }
   },
   addMapMarker: function(fixture, labelIndex){
