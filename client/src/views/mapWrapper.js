@@ -9,10 +9,11 @@ var MapWrapper = function(coords, zoom, container){
 }
 
 MapWrapper.prototype = {
-  addMarker: function(coords){
+  addMarker: function(coords, index){
     var marker = new google.maps.Marker({
       position: coords,
-      map: this.googleMap
+      map: this.googleMap,
+      label: index
     });
     this.markers.push(marker);
   }
