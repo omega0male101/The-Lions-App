@@ -29,18 +29,20 @@ UI.prototype = {
   render: function(fixtures){
     var container = document.getElementById("fixtures-container");
     container.innerHTML = "";
+    var labelIndex = 1;
     for (var fixture of fixtures) {
       var li = document.createElement('li');
       this.appendText(li, fixture.homeTeamName, 'Home: ');
       this.appendText(li, fixture.awayTeamName, 'Away: ');
-      this.addMapMarker(fixture);
+      console.log(labelIndex)
+      this.addMapMarker(fixture, String(labelIndex));
+      this.labelIndex ++;
 
       container.appendChild(li);
     }
   },
-  addMapMarker: function(fixture){
-    console.log(fixture.stadium.latLng)
-    this.mainMap.addMarker(fixture.stadium.latLng);
+  addMapMarker: function(fixture, labelIndex){
+    this.mainMap.addMarker(fixture.stadium.latLng, labelIndex);
   }
 }
 
