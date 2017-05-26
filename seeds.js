@@ -23,5 +23,27 @@ db.fixtures.insert([
     homeTeamPoints: null,
     awayTeamPoints: null
   }
-}]
+},
+{
+  date: 2017-06-07,
+  matchNumber: 2,
+  kickOffTime: "8:35",
+  homeTeamName: "Blues", 
+  awayTeamName: "Lions",
+  stadium: {
+    name: "Eden Park",
+    location: "Auckland",
+    latLng: {
+      lat: -36.875220,
+      lng: 174.744477
+    },
+    capacity: "50,000",
+    image: "http://i.cricketcb.com/i/stats/f/720x415/venue/images/41.jpg"
+  },
+  result: {
+    homeTeamPoints: null,
+    awayTeamPoints: null
+  }
+}
+]
 )
