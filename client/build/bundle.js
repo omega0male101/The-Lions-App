@@ -213,7 +213,22 @@ UI.prototype = {
 
         // Horizontal Line
       var line = document.createElement('hr');
-        div_seperator.appendChild(line)
+        div_seperator.appendChild(line);
+
+        //Expandble List
+      var label = document.createElement('label');
+        label.setAttribute("class", "collapse");
+        label.innerText = "expand.."
+        label.htmlFor = "_1";
+
+      var input = document.createElement('input');
+        input.setAttribute("id", "_1");
+        input.type = "checkbox";
+        
+
+        // <label class="collapse" for="_1">Collapse 1</label>
+
+        
     // Append all elements to body of the list item
       div_game.appendChild(spanHomeTeam);
       div_game.appendChild(spanVS);
@@ -239,6 +254,9 @@ UI.prototype = {
       div_info.appendChild(div_buttons);
 
       div_element.appendChild(div_game);
+      div_element.appendChild(label);
+      div_element.appendChild(input);
+      
       div_element.appendChild(div_info);
 
       container.appendChild(div_element)
