@@ -15,7 +15,7 @@
 
 #fixtures-element:hover {
   background-color: skyblue;
-  /*display: none;*/
+  /*display: block;*/
 }
 
 #fixture-game{
@@ -29,8 +29,7 @@
 
   #away-team{
     margin: 10px;
-    display: inline-block;
-    
+    display: inline-block; 
   }
 
   #VS {
@@ -38,29 +37,64 @@
   display: inline-block;
   width: auto;
   font-size: 28px;
+
   }
 
 #info-div{
-  background-color: grey;
+  /*background-color: grey;*/
   margin: 4px;
+  font-family: 'Raleway', sans-serif;
+  font-size:20px;
+                                         /*   display: none;*/
 }
   #seperator-div{
-    background-color: black;
+    /*background-color: black;*/
     height: 20px;
+    padding-top: 2px;
     margin: 4px;
   }
 
   #stadium-div{
-    background-color: green;
+    /*background-color: green;*/
+    width: 32%;
+    display: inline-block;
+    vertical-align: top;
   }
-  #details-div{
+    #stadium-pic{
+      width: 100%;
+      border-style: solid;
+      border-width: 1px;
+      margin: 1px;
+    }
 
+  #details-div{
+    /*background-color: red;*/
+    /*width: 33%;*/
+    display: inline-block;
+    margin:2px;
+    padding-left:9px;
+    vertical-align: top;
   }
 
   #weather-div{
-    background-color: blue;
+    /*background-color: blue;*/
+    display: inline-block;
+    margin: 5px;
+    float: right;
+    vertical-align: top;
+    text-align: right;
+    width: auto;
+    font-size:16px;
   }
+    #weather-text-top{
+      padding: 2px;
+      display: block;
+    }
+    /*#weather-text-bottom{
+      padding: 0px;
+    }*/
+
   #buttons-div{
-    background-color: yellow;
+    /*background-color: yellow;*/
   }
 /* End of fixture container and contents */
