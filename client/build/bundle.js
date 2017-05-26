@@ -116,7 +116,7 @@ var UI = function(){
     this.render(results);
   }.bind(this));
   var mapDiv = document.getElementById("main-map");
-  mapDiv.style.height = "10px";
+  mapDiv.style.height = "500px";
   mapDiv.style.width = "900px";
   var center = {lat: -42.570323, lng: 172.146130}
   this.mainMap = new MapWrapper(center, 5, mapDiv)
@@ -138,13 +138,14 @@ UI.prototype = {
   render: function(fixtures){
     var container = document.getElementById("fixtures-container");
     container.innerHTML = "";
-    var labelIndex = 1;
-    for (var fixture of fixtures) {
+    // var labelIndex = 1;
+    // for (var fixture of fixtures) {
+      fixtures.forEach(function (fixture, index) {
       url = "http://api.openweathermap.org/data/2.5/weather?lat=" + fixture.stadium.latLng.lat + "&lon=" + fixture.stadium.latLng.lng + "&appid=d1da5efdf6bd32c103ff303597e79de2";
-      this.requestHelper.makeRequest(url, this.populateWeather )
+      
 
-      this.addMapMarker(fixture, String(labelIndex));
-      labelIndex ++;
+      this.addMapMarker(fixture, String(index + 1));
+      
 
       // Declaring elements
       var div_game = document.createElement('div');
@@ -186,20 +187,21 @@ UI.prototype = {
         stadiumPic.style.width = "200px";
 
         // Weather (not implemented yet..)
+  
       var weather = document.createElement('span');
-        weather.setAttribute("id", "weather-div");
+        weather.setAttribute("id", "weather-text" + index);
 
         // Details (Date, Arena, Timezone)
-      // var spanHomeTeam = document.createElement('span');
-      //   spanHomeTeam.setAttribute("id", "home-team");
-      // var spanVS = document.createElement('span');
-      //   spanVS.setAttribute("id", "VS");
-      // var spanAwayTeam = document.createElement('span');
-      //   spanAwayTeam.setAttribute("id", "away-team");
+      var spanDate = document.createElement('span');
+        spanDate.setAttribute("id", "date");
+      var spanArena = document.createElement('span');
+        spanArena.setAttribute("id", "arena");
+      var spanTime = document.createElement('span');
+        spanTime.setAttribute("id", "time");
 
-      //   spanHomeTeam.textContent = fixture.homeTeamName;
-      //   spanVS.textContent = " VS ";
-      //   spanAwayTeam.textContent = fixture.awayTeamName;
+        spanDate.textContent = fixture.date;
+        spanArena.textContent = fixture.stadium.name;
+        spanTime.textContent = fixture.kickOffTime;
 
 
 
@@ -208,6 +210,12 @@ UI.prototype = {
       div_game.appendChild(spanHomeTeam);
       div_game.appendChild(spanVS);
       div_game.appendChild(spanAwayTeam);
+
+      div_weather.appendChild(weather);
+
+      div_details.appendChild(spanDate);
+      div_details.appendChild(spanArena);
+      div_details.appendChild(spanTime);
 
       
       div_info.appendChild(div_seperator);
@@ -220,11 +228,16 @@ UI.prototype = {
       div_element.appendChild(div_info);
 
       container.appendChild(div_element)
-    }
+      this.requestHelper.makeRequest(url, function ( location ) {
+        console.log(location, weather)
+        this.populateWeather(location, weather)
+      }.bind(this) )
+    }.bind(this))
   },
-  populateWeather: function(location){
-    console.log(location)
-    var ul = document.getElementById('weatherAPI');
+
+  populateWeather: function(location, weatherSpan){
+    // var span = document.getElementById('weather-text' + labelIndex);
+    console.log(weatherSpan)
     var li = document.createElement('li')
     li.innerText = "Weather type: " + location.weather[0].main
 
@@ -232,8 +245,8 @@ UI.prototype = {
     var tempCelsius = Math.round((location.main.temp - 273.15))
     li2.innerText = "Temperature (celsius): " + tempCelsius
 
-    ul.appendChild(li)
-    ul.appendChild(li2)
+    weatherSpan.appendChild(li)
+    weatherSpan.appendChild(li2)
   },
 
   addMapMarker: function(fixture, labelIndex){
