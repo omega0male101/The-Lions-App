@@ -1,7 +1,6 @@
 var Fixtures = require("../models/fixtures");
 var RequestHelper = require('../helpers/request.js')
 var MapWrapper = require('./mapWrapper.js')
-var Weather = require('./weather.js')
 
 var UI = function(){
   var fixtures = new Fixtures();

@@ -109,7 +109,6 @@ module.exports = RequestHelper;
 var Fixtures = __webpack_require__(4);
 var RequestHelper = __webpack_require__(0)
 var MapWrapper = __webpack_require__(5)
-var Weather = __webpack_require__(6)
 
 var UI = function(){
   var fixtures = new Fixtures();
@@ -295,12 +294,6 @@ MapWrapper.prototype = {
 }
 
 module.exports = MapWrapper;
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/user/Desktop/cx3-11/homeworks/project3/The-Lions-App/client/src/views/weather.js'");
 
 /***/ })
 /******/ ]);
