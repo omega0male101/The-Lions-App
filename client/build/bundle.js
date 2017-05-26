@@ -109,6 +109,7 @@ module.exports = RequestHelper;
 var Fixtures = __webpack_require__(4);
 var RequestHelper = __webpack_require__(0)
 var MapWrapper = __webpack_require__(5)
+var Weather = __webpack_require__(6)
 
 var UI = function(){
   var fixtures = new Fixtures();
@@ -163,11 +164,26 @@ var app = function() {
 window.addEventListener('load', app);
 
 /***/ }),
-/* 3 */,
+/* 3 */
+/***/ (function(module, exports) {
+
+var Fixture = function(options) {
+  this.date = options.date;
+  this.matchNumber = options.matchNumber;
+  this.kickOffTime = options.kickOffTime;
+  this.homeTeamName = options.homeTeamName;
+  this.awayTeamName = options.awayTeamName;
+  this.stadium = options.stadium;
+  this.result = options.result;
+  }
+
+module.exports = Fixture;
+
+/***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Fixture = __webpack_require__ (6);
+var Fixture = __webpack_require__ (3);
 var RequestHelper = __webpack_require__(0)
 
 var Fixtures = function() {
@@ -243,17 +259,47 @@ module.exports = MapWrapper;
 /* 6 */
 /***/ (function(module, exports) {
 
-var Fixture = function(options) {
-  this.date = options.date;
-  this.matchNumber = options.matchNumber;
-  this.kickOffTime = options.kickOffTime;
-  this.homeTeamName = options.homeTeamName;
-  this.awayTeamName = options.awayTeamName;
-  this.stadium = options.stadium;
-  this.result = options.result;
-  }
+var weather = function() {
 
-module.exports = Fixture;
+  var url = "http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=d1da5efdf6bd32c103ff303597e79de2"
+
+  var url2 = "http://api.openweathermap.org/data/2.5/weather?lat=-35.734070&lon=174.329517&appid=d1da5efdf6bd32c103ff303597e79de2"
+
+  var url3 = urlConstructor(-35.734070, 174.329517);
+
+  makeRequest(url3, requestComplete)
+
+}
+
+
+var urlConstructor = function(lat, lng){
+  url = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lng + "&appid=d1da5efdf6bd32c103ff303597e79de2";
+  return url;
+}
+
+var requestComplete = function(){
+  if(this.status !== 200) return;
+
+  var jsonString = this.responseText;
+  var location = JSON.parse(jsonString);
+  populateWeather(location);
+}
+
+var makeRequest = function(url, callback){
+  var request = new XMLHttpRequest()
+  request.open("GET", url);
+  request.addEventListener("load", callback);
+  request.send();
+}
+
+var populateWeather = function(location){
+  var ul = document.getElementById('weatherAPI');
+  var li = document.createElement('li')
+  li.innerText = "Weather type: " + location.weather[0].main
+  ul.appendChild(li)
+}
+
+window.addEventListener('load', weather);
 
 /***/ })
 /******/ ]);
