@@ -110,15 +110,13 @@ UI.prototype = {
         //Expandble List
       var label = document.createElement('label');
         label.setAttribute("class", "collapse");
-        label.innerText = "expand.."
+        label.innerText = "click for more details.."
         label.htmlFor = "_1";
 
       var input = document.createElement('input');
         input.setAttribute("id", "_1");
         input.type = "checkbox";
-        
-
-        // <label class="collapse" for="_1">Collapse 1</label>
+      
 
         
     // Append all elements to body of the list item
