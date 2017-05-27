@@ -1,12 +1,12 @@
 /*DROP LIST DOWN*/
-.collapse{
+/*.collapse{
   cursor: pointer;
   display: block;
   transition-timing-function: ease-in;
   text-align: center;
 }
 .collapse + input{
-  display: none; /* hide the checkboxes */
+  display: none;  hide the checkboxes 
 }
 .collapse + input + #info-div{
   display:none;
@@ -14,7 +14,7 @@
 .collapse + input:checked + #info-div{
   display:block;
   transition-timing-function: ease-in;
-}
+}*/
 /*end of dropdown..*/
 
 body {

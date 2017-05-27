@@ -108,14 +108,14 @@ UI.prototype = {
         div_seperator.appendChild(line);
 
         //Expandble List
-      var label = document.createElement('label');
-        label.setAttribute("class", "collapse");
-        label.innerText = "click for more details.."
-        label.htmlFor = "_1";
+      // var label = document.createElement('label');
+      //   label.setAttribute("class", "collapse");
+      //   label.innerText = "click for more details.."
+      //   label.htmlFor = "_1";
 
-      var input = document.createElement('input');
-        input.setAttribute("id", "_1");
-        input.type = "checkbox";
+      // var input = document.createElement('input');
+      //   input.setAttribute("id", "_1");
+      //   input.type = "checkbox";
       
 
         
@@ -144,8 +144,8 @@ UI.prototype = {
       div_info.appendChild(div_buttons);
 
       div_element.appendChild(div_game);
-      div_element.appendChild(label);
-      div_element.appendChild(input);
+      // div_element.appendChild(label);
+      // div_element.appendChild(input);
       
       div_element.appendChild(div_info);
 
