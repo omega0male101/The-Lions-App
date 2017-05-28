@@ -180,38 +180,65 @@ UI.prototype = {
 
         // Stadium Picture (does not work)
       var stadiumPic = document.createElement('img');
-        stadiumPic.setAttribute("id", "stadium-div");
+        stadiumPic.setAttribute("id", "stadium-pic");
 
         stadiumPic.src = fixture.stadium.image;
-        stadiumPic.style.height = "100px";
-        stadiumPic.style.width = "200px";
+        // stadiumPic.style.height = 100px;
+        // stadiumPic.style.width = 200px;
 
-        // Weather (not implemented yet..)
-  
+        // Weather 
       var weather = document.createElement('span');
         weather.setAttribute("id", "weather-text" + index);
 
         // Details (Date, Arena, Timezone)
-      var spanDate = document.createElement('span');
+      var spanDate = document.createElement('p');
         spanDate.setAttribute("id", "date");
-      var spanArena = document.createElement('span');
+      var spanArena = document.createElement('p');
         spanArena.setAttribute("id", "arena");
-      var spanTime = document.createElement('span');
+      var spanTime = document.createElement('p');
         spanTime.setAttribute("id", "time");
 
-        spanDate.textContent = fixture.date;
-        spanArena.textContent = fixture.stadium.name;
-        spanTime.textContent = fixture.kickOffTime;
+        spanDate.textContent = "Date: " + fixture.date;
+        spanArena.textContent = "At " + fixture.stadium.name + ", in " + fixture.stadium.location;
+        spanTime.textContent = "Kick off: " + fixture.kickOffTime;
 
+        // Buttons
+      var buttonTeam = document.createElement('button');
+        buttonTeam.setAttribute("id", "team-button");
+          buttonTeam.text = "team-button";
+      var buttonTicket = document.createElement('button');
+        buttonTicket.setAttribute("id", "ticket-button");
+      var buttonFav = document.createElement('button');
+        buttonFav.setAttribute("id", "favourite-button");
 
+        // Horizontal Line
+      var line = document.createElement('hr');
+        div_seperator.appendChild(line);
 
+        //Expandble List
+      // var label = document.createElement('label');
+      //   label.setAttribute("class", "collapse");
+      //   label.innerText = "click for more details.."
+      //   label.htmlFor = "_1";
 
+      // var input = document.createElement('input');
+      //   input.setAttribute("id", "_1");
+      //   input.type = "checkbox";
+      
+
+        
     // Append all elements to body of the list item
       div_game.appendChild(spanHomeTeam);
       div_game.appendChild(spanVS);
       div_game.appendChild(spanAwayTeam);
 
+      div_stadium.appendChild(stadiumPic)
+
       div_weather.appendChild(weather);
+
+      div_buttons.appendChild(buttonTeam);
+      div_buttons.appendChild(buttonTicket);
+      div_buttons.appendChild(buttonFav);
 
       div_details.appendChild(spanDate);
       div_details.appendChild(spanArena);
@@ -225,6 +252,9 @@ UI.prototype = {
       div_info.appendChild(div_buttons);
 
       div_element.appendChild(div_game);
+      // div_element.appendChild(label);
+      // div_element.appendChild(input);
+      
       div_element.appendChild(div_info);
 
       container.appendChild(div_element)
@@ -238,15 +268,19 @@ UI.prototype = {
   populateWeather: function(location, weatherSpan){
     // var span = document.getElementById('weather-text' + labelIndex);
     console.log(weatherSpan)
-    var li = document.createElement('li')
-    li.innerText = "Weather type: " + location.weather[0].main
+    var p = document.createElement('span')
+    p.innerText = "Weather type: " + location.weather[0].main;
+    p.setAttribute("id", "weather-text-top");
 
-    var li2 = document.createElement('li')
+
+    var p2 = document.createElement('span')
     var tempCelsius = Math.round((location.main.temp - 273.15))
-    li2.innerText = "Temperature (celsius): " + tempCelsius
+    p2.innerText = "Temperature (celsius): " + tempCelsius
+    p2.setAttribute("id", "weather-text-bottom");
 
-    weatherSpan.appendChild(li)
-    weatherSpan.appendChild(li2)
+
+    weatherSpan.appendChild(p)
+    weatherSpan.appendChild(p2)
   },
 
   addMapMarker: function(fixture, labelIndex){
@@ -270,11 +304,26 @@ var app = function() {
 window.addEventListener('load', app);
 
 /***/ }),
-/* 3 */,
+/* 3 */
+/***/ (function(module, exports) {
+
+var Fixture = function(options) {
+  this.date = options.date;
+  this.matchNumber = options.matchNumber;
+  this.kickOffTime = options.kickOffTime;
+  this.homeTeamName = options.homeTeamName;
+  this.awayTeamName = options.awayTeamName;
+  this.stadium = options.stadium;
+  this.result = options.result;
+  }
+
+module.exports = Fixture;
+
+/***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Fixture = __webpack_require__ (6);
+var Fixture = __webpack_require__ (3);
 var RequestHelper = __webpack_require__(0)
 
 var Fixtures = function() {
@@ -311,7 +360,170 @@ var MapWrapper = function(coords, zoom, container){
 
   this.googleMap = new google.maps.Map(container, {
     zoom: zoom, 
-    center: coords
+    center: coords,
+    styles:
+    // adding styles..
+    [
+      {
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#f5f5f5"
+          }
+        ]
+      },
+      {
+        "elementType": "labels.icon",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#616161"
+          }
+        ]
+      },
+      {
+        "elementType": "labels.text.stroke",
+        "stylers": [
+          {
+            "color": "#f5f5f5"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative.land_parcel",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#bdbdbd"
+          }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#eeeeee"
+          }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#757575"
+          }
+        ]
+      },
+      {
+        "featureType": "poi.park",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#e5e5e5"
+          }
+        ]
+      },
+      {
+        "featureType": "poi.park",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#9e9e9e"
+          }
+        ]
+      },
+      {
+        "featureType": "road",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#ffffff"
+          }
+        ]
+      },
+      {
+        "featureType": "road.arterial",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#757575"
+          }
+        ]
+      },
+      {
+        "featureType": "road.highway",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#dadada"
+          }
+        ]
+      },
+      {
+        "featureType": "road.highway",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#616161"
+          }
+        ]
+      },
+      {
+        "featureType": "road.local",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#9e9e9e"
+          }
+        ]
+      },
+      {
+        "featureType": "transit.line",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#e5e5e5"
+          }
+        ]
+      },
+      {
+        "featureType": "transit.station",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#eeeeee"
+          }
+        ]
+      },
+      {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#c9c9c9"
+          }
+        ]
+      },
+      {
+        "featureType": "water",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#9e9e9e"
+          }
+        ]
+      }
+    ]
+    // end of style..
   });
   this.markers = [];
 }
@@ -346,22 +558,6 @@ MapWrapper.prototype = {
 }
 
 module.exports = MapWrapper;
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-var Fixture = function(options) {
-  this.date = options.date;
-  this.matchNumber = options.matchNumber;
-  this.kickOffTime = options.kickOffTime;
-  this.homeTeamName = options.homeTeamName;
-  this.awayTeamName = options.awayTeamName;
-  this.stadium = options.stadium;
-  this.result = options.result;
-  }
-
-module.exports = Fixture;
 
 /***/ })
 /******/ ]);
