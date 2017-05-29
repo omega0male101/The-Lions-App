@@ -268,7 +268,7 @@ db.teams.insert([
         image: "https://d2cx26qpfwuhvu.cloudfront.net/lions/wp-content/uploads/2017/04/24144134/DanCole.jpg"
       },
       {
-        name: "Elliot Cole",
+        name: "Elliot Daly",
         dob: 1992-10-08,
         height: "1.82M / 6'0'",
         weight: 97,

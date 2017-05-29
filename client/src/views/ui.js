@@ -196,11 +196,63 @@ UI.prototype = {
     console.log(team)
     var teamDiv = document.getElementById("teamDiv");
     var teamHeading = document.createElement("h1");
+    teamHeading.setAttribute("id", "teamHeading")
     var teamHistory = document.createElement("p");
+    teamHistory.setAttribute("id", "teamHistory")
+    var playersDiv = document.createElement("div");
+    playersDiv.setAttribute("id", "playersDiv")
+    var squadHeading = document.createElement("h3");
+    squadHeading.innerText = "Squad"
     teamHistory.innerText = team.history;
     teamHeading.innerText = team.name;
+    playersDiv.appendChild(squadHeading);
     teamDiv.appendChild(teamHeading);
     teamDiv.appendChild(teamHistory);
+    teamDiv.appendChild(playersDiv);
+
+
+    team.players.forEach(function(player, index){
+      var playerDiv = document.createElement("div");
+      playerDiv.setAttribute("class", "playerDiv");
+      playerDiv.setAttribute("id", "playerDiv" + index);
+      var playerName = document.createElement("p");
+      playerName.setAttribute("class", "playerName");
+      playerName.setAttribute("id", "playerName" + index);
+      var playerPosition = document.createElement("p");
+      playerPosition.setAttribute("class", "playerPosition");
+      playerPosition.setAttribute("id", "playerPosition" + index);
+      var playerDOB = document.createElement("p");
+      playerDOB.setAttribute("class", "playerDOB");
+      playerDOB.setAttribute("id", "playerDOB" + index);
+      var playerCaps = document.createElement("p");
+      playerCaps.setAttribute("class", "playerCaps");
+      playerCaps.setAttribute("id", "playerCaps" + index);
+      var playerImageContainer = document.createElement("div");
+      playerImageContainer.setAttribute("class", "playerImageContainer");
+      playerImageContainer.setAttribute("id", "playerImageContainer" + index);
+      var playerImage = document.createElement("img");
+      playerImage.setAttribute("class", "playerImage");
+      playerImage.setAttribute("id", "playerImage" + index);
+      playerName.innerText = player.name;
+      playerPosition.innerText = player.position;
+      playerDOB.innerText = player.dob;
+      playerDOB.style.display = 'none'
+      playerCaps.innerText = player.caps;
+      playerCaps.style.display = 'none'
+      playerImage.setAttribute("src" , player.image);
+      playerImage.style.display = 'none'
+      playerDiv.appendChild(playerName);
+      playerDiv.appendChild(playerPosition);
+      playerDiv.appendChild(playerDOB);
+      playerDiv.appendChild(playerCaps);
+      playerImageContainer.appendChild(playerImage);
+      playerDiv.appendChild(playerImageContainer);
+      playersDiv.appendChild(playerDiv);
+
+      playerDiv.addEventListener("click", function(event){
+        console.log(event.srcElement);
+      })
+    })
   },
 
   populateWeather: function(location, weatherSpan){
