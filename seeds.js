@@ -215,3 +215,20 @@ db.fixtures.insert([
 },
 ]
 )
+
+db.teams.insert([
+  {
+    name: "British and Irish Lions",
+    shortName: "Lions",
+    players: [
+      {
+        name: "Stuart Hogg",
+        age: "24",
+        nationality: "Scottish",
+        position: "Full Back",
+        caps: 53,
+        image: "Image from Lions website"
+      }
+    ]
+  }
+  ])
