@@ -1,25 +1,25 @@
 var MongoClient = require("mongodb").MongoClient;
 
-var FixtureQuery = function(){
+var TeamQuery = function(){
   this.url = "mongodb://localhost:27017/lions";
 }
 
-FixtureQuery.prototype = {
+TeamQuery.prototype = {
   all: function(onQueryFinished){
     MongoClient.connect(this.url, function(err, db){
       if(db){
-        var collection = db.collection('fixtures');
+        var collection = db.collection('teams');
         collection.find().toArray(function(err,docs){
           onQueryFinished(docs);
         });
       }
     });
   },
-  add: function(fixtureToAdd, onQueryFinished){
+  add: function(teamToAdd, onQueryFinished){
     MongoClient.connect(this.url, function(err, db){
       if(db){
-        var collection = db.collection("fixtures");
-        collection.insert(fixtureToAdd);
+        var collection = db.collection("teams");
+        collection.insert(teamToAdd);
         collection.find().toArray(function(err,docs){
           onQueryFinished(docs);
         })
@@ -28,4 +28,4 @@ FixtureQuery.prototype = {
   }
 }
 
-module.exports = FixtureQuery;
+module.exports = TeamQuery;
