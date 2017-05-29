@@ -167,6 +167,8 @@ UI.prototype = {
 
 
         // Home & Away Teams
+      var teamWrapper = document.createElement('div');
+        teamWrapper.setAttribute("id", "team-wrapper");
       var spanHomeTeam = document.createElement('span');
         spanHomeTeam.setAttribute("id", "home-team");
       var spanVS = document.createElement('span');
@@ -232,6 +234,8 @@ UI.prototype = {
       div_game.appendChild(spanVS);
       div_game.appendChild(spanAwayTeam);
 
+      teamWrapper.appendChild(div_game);
+
       div_stadium.appendChild(stadiumPic)
 
       div_weather.appendChild(weather);
@@ -251,7 +255,7 @@ UI.prototype = {
       div_info.appendChild(div_weather);
       div_info.appendChild(div_buttons);
 
-      div_element.appendChild(div_game);
+      div_element.appendChild(teamWrapper);
       // div_element.appendChild(label);
       // div_element.appendChild(input);
       

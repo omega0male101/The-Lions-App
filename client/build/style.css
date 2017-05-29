@@ -43,44 +43,65 @@ body {
   /*display: block;*/
 }
 
-#fixture-game{
-  margin: 10px;
+#team-wrapper{
   display: flex;
-  flex-direction: row;
-  flex-flow: row wrap;
-  
-  overflow: hidden;
-  /*background-color: pink;*/
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
-  #home-team{
-    padding-top: 0.2em;
-    margin: 10px;
-    width: 44%;
+
+  #fixture-game{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    background-color: red; 
+
+
+    /*margin: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-flow: row wrap;
+    
+    overflow: hidden;*/
+    /*background-color: pink;*/
+  }
+    #home-team{
+      width: 40%;
+      text-align: right;
+
+     /* padding-top: 0.2em;
+      margin: 10px;
+      /*width: 44%;*/
+     /* display: inline-block;
+      flex-grow: 2;
+      text-align: right;*/
+      /*background-color: green;*/
+    }
+
+    #away-team{
+      width: 40%;
+      
+    /*  padding-top: 0.2em;
+      margin: 10px;
+      width: 45%;
+      text-align: left;
+      display: inline-block; 
+      flex-grow: 2;*/
+      /*background-color: red;*/
+    }
+
+    #VS {
+      width: 10%;
+      text-align: center;
+   /* margin: 10px;
     display: inline-block;
-    flex-grow: 2;
-    text-align: right;
-    /*background-color: green;*/
-  }
-
-  #away-team{
-    padding-top: 0.2em;
-    margin: 10px;
-    width: 45%;
-    text-align: left;
-    display: inline-block; 
-    flex-grow: 2;
-    /*background-color: red;*/
-  }
-
-  #VS {
-  margin: 10px;
-  display: inline-block;
-  max-width: 10%;
-  font-size: 28px;
-  flex-grow: 1;
-  text-align: center;
-  /*background-color: blue;*/
-  }
+    max-width: 10%;
+    font-size: 28px;
+    flex-grow: 1;
+    text-align: center;*/
+    /*background-color: blue;*/
+    }
 
 #info-div{
   /*background-color: grey;*/
