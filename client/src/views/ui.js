@@ -1,6 +1,7 @@
 var Fixtures = require("../models/fixtures");
-var RequestHelper = require('../helpers/request.js')
-var MapWrapper = require('./mapWrapper.js')
+var Teams = require("../models/teams");
+var RequestHelper = require('../helpers/request.js');
+var MapWrapper = require('./mapWrapper.js');
 
 var UI = function(){
   var fixtures = new Fixtures();
@@ -97,9 +98,15 @@ UI.prototype = {
         spanTime.textContent = "Kick off: " + fixture.kickOffTime;
 
         // Buttons
+      var buttonHomeTeam = document.createElement('button');
+        buttonHomeTeam.setAttribute("id", fixture.homeTeamName +" team-button");
+          buttonHomeTeam.innerText = "Home Team Details";
       var buttonTeam = document.createElement('button');
-        buttonTeam.setAttribute("id", "team-button");
-          buttonTeam.text = "team-button";
+        buttonTeam.setAttribute("id", "lions-button");
+          buttonTeam.innerText = "Lions Details";
+          buttonTeam.addEventListener("click", function(){
+            this.renderTeam(0);
+          }.bind(this))
       var buttonTicket = document.createElement('button');
         buttonTicket.setAttribute("id", "ticket-button");
       var buttonFav = document.createElement('button');
@@ -132,6 +139,7 @@ UI.prototype = {
 
       div_weather.appendChild(weather);
 
+      div_buttons.appendChild(buttonHomeTeam);
       div_buttons.appendChild(buttonTeam);
       div_buttons.appendChild(buttonTicket);
       div_buttons.appendChild(buttonFav);
@@ -153,17 +161,50 @@ UI.prototype = {
       
       div_element.appendChild(div_info);
 
-      container.appendChild(div_element)
+      container.appendChild(div_element);
+
       this.requestHelper.makeRequest(url, function ( location ) {
-        console.log(location, weather)
         this.populateWeather(location, weather)
       }.bind(this) )
+
     }.bind(this))
+  },
+
+  renderTeam: function(index){
+    var body = document.getElementsByTagName("BODY")[0];
+    body.innerHTML = "";
+    var teamDiv = document.createElement("div");
+    teamDiv.setAttribute("id", "teamDiv")
+    var backButton = document.createElement("button");
+    backButton.setAttribute("id", "back-button");
+    backButton.innerText = "Back to Homepage"
+    backButton.addEventListener("click", function(){
+      window.location.href = "http://localhost:3000/";
+    });
+
+    var teams = new Teams();
+    teams.all(function(results){
+      this.populateTeam((results[index]))
+    }.bind(this))
+
+    body.appendChild(teamDiv);
+    teamDiv.appendChild(backButton);
+
+  },
+
+  populateTeam: function(team){
+    console.log(team)
+    var teamDiv = document.getElementById("teamDiv");
+    var teamHeading = document.createElement("h1");
+    var teamHistory = document.createElement("p");
+    teamHistory.innerText = team.history;
+    teamHeading.innerText = team.name;
+    teamDiv.appendChild(teamHeading);
+    teamDiv.appendChild(teamHistory);
   },
 
   populateWeather: function(location, weatherSpan){
     // var span = document.getElementById('weather-text' + labelIndex);
-    console.log(weatherSpan)
     var p = document.createElement('span')
     p.innerText = "Weather type: " + location.weather[0].main;
     p.setAttribute("id", "weather-text-top");

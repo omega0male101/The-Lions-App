@@ -107,8 +107,9 @@ module.exports = RequestHelper;
 /***/ (function(module, exports, __webpack_require__) {
 
 var Fixtures = __webpack_require__(4);
-var RequestHelper = __webpack_require__(0)
-var MapWrapper = __webpack_require__(5)
+var Teams = __webpack_require__(7);
+var RequestHelper = __webpack_require__(0);
+var MapWrapper = __webpack_require__(5);
 
 var UI = function(){
   var fixtures = new Fixtures();
@@ -205,9 +206,15 @@ UI.prototype = {
         spanTime.textContent = "Kick off: " + fixture.kickOffTime;
 
         // Buttons
+      var buttonHomeTeam = document.createElement('button');
+        buttonHomeTeam.setAttribute("id", fixture.homeTeamName +" team-button");
+          buttonHomeTeam.innerText = "Home Team Details";
       var buttonTeam = document.createElement('button');
-        buttonTeam.setAttribute("id", "team-button");
-          buttonTeam.text = "team-button";
+        buttonTeam.setAttribute("id", "lions-button");
+          buttonTeam.innerText = "Lions Details";
+          buttonTeam.addEventListener("click", function(){
+            this.renderTeam(0);
+          }.bind(this))
       var buttonTicket = document.createElement('button');
         buttonTicket.setAttribute("id", "ticket-button");
       var buttonFav = document.createElement('button');
@@ -240,6 +247,7 @@ UI.prototype = {
 
       div_weather.appendChild(weather);
 
+      div_buttons.appendChild(buttonHomeTeam);
       div_buttons.appendChild(buttonTeam);
       div_buttons.appendChild(buttonTicket);
       div_buttons.appendChild(buttonFav);
@@ -261,17 +269,50 @@ UI.prototype = {
       
       div_element.appendChild(div_info);
 
-      container.appendChild(div_element)
+      container.appendChild(div_element);
+
       this.requestHelper.makeRequest(url, function ( location ) {
-        console.log(location, weather)
         this.populateWeather(location, weather)
       }.bind(this) )
+
     }.bind(this))
+  },
+
+  renderTeam: function(index){
+    var body = document.getElementsByTagName("BODY")[0];
+    body.innerHTML = "";
+    var teamDiv = document.createElement("div");
+    teamDiv.setAttribute("id", "teamDiv")
+    var backButton = document.createElement("button");
+    backButton.setAttribute("id", "back-button");
+    backButton.innerText = "Back to Homepage"
+    backButton.addEventListener("click", function(){
+      window.location.href = "http://localhost:3000/";
+    });
+
+    var teams = new Teams();
+    teams.all(function(results){
+      this.populateTeam((results[index]))
+    }.bind(this))
+
+    body.appendChild(teamDiv);
+    teamDiv.appendChild(backButton);
+
+  },
+
+  populateTeam: function(team){
+    console.log(team)
+    var teamDiv = document.getElementById("teamDiv");
+    var teamHeading = document.createElement("h1");
+    var teamHistory = document.createElement("p");
+    teamHistory.innerText = team.history;
+    teamHeading.innerText = team.name;
+    teamDiv.appendChild(teamHeading);
+    teamDiv.appendChild(teamHistory);
   },
 
   populateWeather: function(location, weatherSpan){
     // var span = document.getElementById('weather-text' + labelIndex);
-    console.log(weatherSpan)
     var p = document.createElement('span')
     p.innerText = "Weather type: " + location.weather[0].main;
     p.setAttribute("id", "weather-text-top");
@@ -562,6 +603,51 @@ MapWrapper.prototype = {
 }
 
 module.exports = MapWrapper;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+var Team = function(options) {
+  this.name = options.name;
+  this.shortName = options.shortName;
+  this.history = options.history;
+  this.players = options.players;
+  }
+
+module.exports = Team;
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Team = __webpack_require__ (6);
+var RequestHelper = __webpack_require__(0)
+
+var Teams = function() {
+  this.requestHelper = new RequestHelper();
+}
+
+Teams.prototype = {
+  all: function(callback){
+    this.requestHelper.makeRequest("http://localhost:3000/api/teams", function(results){
+      var teams = this.populateTeams(results);
+      callback(teams);
+    }.bind(this));
+  },
+  populateTeams: function(results){
+    var teams = results.map(function(resultObject){
+      return new Team(resultObject);
+    })
+    return teams;
+  },
+  add: function(newTeam, callback){
+    var teamData = JSON.stringify(newTeam);
+    this.requestHelper.makePostRequest("http://localhost:3000/api/teams", callback, teamData);
+  }
+};
+
+module.exports = Teams;
 
 /***/ })
 /******/ ]);

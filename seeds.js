@@ -220,6 +220,7 @@ db.teams.insert([
   {
     name: "British and Irish Lions",
     shortName: "Lions",
+    history: "The British and Irish Lions is a rugby union team selected from players eligible for any of the Home Nations – the national sides of England, Ireland, Scotland and Wales. The side tours every four years, with these rotating among Australia, New Zealand, and South Africa. From 1888 onwards combined rugby sides from the United Kingdom of Great Britain and Ireland toured the Southern Hemisphere.",
     players: 
     [
       {
@@ -678,6 +679,7 @@ db.teams.insert([
   {
     name: "New Zealand Provincial Barbarians",
     shortName: "NZ Barbarians",
+    history: "The New Zealand Barbarians, nicknamed the Baa-Baas, are an invitational rugby union team which has been a major part of New Zealand rugby since the team was founded in 1937 by two ex-All Blacks, Ronald Bush, and Hubert McLean who captained their first game (against Auckland) in 1938.",
     players: [
       {
         name: "Sam Anderson-Heather",
