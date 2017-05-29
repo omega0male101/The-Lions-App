@@ -57,7 +57,14 @@ UI.prototype = {
       var div_buttons = document.createElement('div');
         div_buttons.setAttribute("id", "buttons-div");
 
-
+      var div_countdown = document.createElement('div');
+        div_countdown.setAttribute("id", "countdown-div");
+      var div_container_main_details = document.createElement('div');
+        div_container_main_details.setAttribute("id", "container-info");
+      var div_container_top_two = document.createElement('div');
+        div_container_top_two.setAttribute("id", "container-of2-info");
+      var div_full_wrap = document.createElement('div');
+        div_full_wrap.setAttribute("id", "div-full-wrap");
 
         // Home & Away Teams
       var teamWrapper = document.createElement('div');
@@ -78,12 +85,7 @@ UI.prototype = {
       var spanAwayTeam = document.createElement('img');
           spanAwayTeam.setAttribute("id", "away-team");
           spanAwayTeam.src = "/logos/" + fixture.awayTeamName + ".svg";
-        // spanAwayTeam.setAttribute("id", "away-team");
-
-        // spanHomeTeam.textContent = fixture.homeTeamName;
-        // spanVS.textContent = " VS ";
-        // spanAwayTeam.textContent = fixture.awayTeamName;
-
+       
       // Points Bar (Scores)
       var scoreWrapper = document.createElement('div');
         scoreWrapper.setAttribute("id", "score-wrapper");
@@ -101,7 +103,6 @@ UI.prototype = {
         dash.textContent = " - ";
 
         //Team A / B display
-
     var spanHomeTeamName = document.createElement('span');
       spanHomeTeamName.setAttribute("id", "home-team-name");
     
@@ -110,9 +111,6 @@ UI.prototype = {
 
       spanHomeTeamName.textContent = fixture.homeTeamName;
       spanAwayTeamName.textContent = fixture.awayTeamName;
-
-
-
 
         // Stadium Picture (does not work)
       var stadiumPic = document.createElement('img');
@@ -127,19 +125,32 @@ UI.prototype = {
         weather.setAttribute("id", "weather-text" + index);
 
         // Details (Date, Arena, Timezone)
-      var spanDate = document.createElement('p');
-        spanDate.setAttribute("id", "date");
+      var monthDate = document.createElement('p');
+        monthDate.setAttribute("id", "date");
       var spanArena = document.createElement('p');
         spanArena.setAttribute("id", "arena");
-      var spanTime = document.createElement('p');
-        spanTime.setAttribute("id", "time");
 
+        var newDate = new Date(fixture.date)
+        var monthNames = ["January", "February", "March", "April", "May", "June",
+          "July", "August", "September", "October", "November", "December"
+        ];
 
-        spanDate.textContent = "Date: " + fixture.date.slice(0,10);
-        spanArena.textContent = "At " + fixture.stadium.name + ", in " + fixture.stadium.location;
-        spanTime.textContent = "Kick off: " + fixture.date.slice(11,16) + " (BST)";
+        function nth(date) {
+          if(date>3 && date<21) return 'th';
+          switch (date % 10) {
+                case 1:  return "st";
+                case 2:  return "nd";
+                case 3:  return "rd";
+                default: return "th";
+            }
+        } 
 
-        
+        monthDate.textContent = "Game commences on the " + newDate.getDate() + nth(newDate.getDate()) + " of " + monthNames[newDate.getMonth()] + " at " + fixture.date.slice(11,16) + " (BST)";
+
+        spanArena.textContent = "Playing at " + fixture.stadium.name + ", in " + fixture.stadium.location + ".";
+        // spanTime.textContent = "Kick off: " + fixture.date.slice(11,16) + " (BST)";
+
+      
         
         var _second = 1000;
         var _minute = _second * 60;
@@ -147,7 +158,7 @@ UI.prototype = {
         var _day = _hour * 24;
         var timer;
 
-        function showRemaining() {
+        function getTimeToKickOff() {
           var kickOffMs = Date.parse(fixture.date)
           var distance = (kickOffMs - Date.now())
 
@@ -160,14 +171,37 @@ UI.prototype = {
           var hours = Math.floor((distance % _day) / _hour);
           var minutes = Math.floor((distance % _hour) / _minute);
           var seconds = Math.floor((distance % _minute) / _second);
-          console.log(days + 'days ' + hours + 'hrs ' + minutes + 'mins ' + seconds + 'secs');
-          timeToKickOff = days + 'days ' + hours + 'hrs ' + minutes + 'mins ' + seconds + 'secs'
+          // console.log(days + 'days ' + hours + 'hrs ' + minutes + 'mins ' + seconds + 'secs');
+          
+          var timeToKickOff = {}
+          timeToKickOff.days = days
+          timeToKickOff.hours = hours
+          timeToKickOff.minutes = minutes
+          timeToKickOff.seconds = seconds
 
-
+          return timeToKickOff
         }
 
-        timer = setInterval(showRemaining, 1000);
+        timer = setInterval(getTimeToKickOff, 1000);
+        
+        // Countdown to game..
+      // var countdown = document.createElement('span')
+      //   countdown.setAttribute("id", "countdown-timer")
+      //   countdown.textContent = "Days: " + getTimeToKickOff().days
 
+          //Counter Boxes
+        var divDay = document.createElement('div');
+            divDay.setAttribute("class", "counter")
+            divDay.textContent = getTimeToKickOff().days + " DAYS"
+        var divHour = document.createElement('div');
+            divHour.setAttribute("class", "counter")
+            divHour.textContent = getTimeToKickOff().hours + " HOURS"
+        var divMinute = document.createElement('div');
+            divMinute.setAttribute("class", "counter")
+            divMinute.textContent = getTimeToKickOff().minutes + " MINUTES"
+        var divSecond = document.createElement('div');
+            divSecond.setAttribute("class", "counter")
+            divSecond.textContent = getTimeToKickOff().seconds + " s"
 
 
         // Buttons
@@ -193,7 +227,6 @@ UI.prototype = {
       //   input.setAttribute("id", "_1");
       //   input.type = "checkbox";
       
-
         
     // Append all elements to body of the list item
       div_game.appendChild(spanHomeTeam);
@@ -210,28 +243,36 @@ UI.prototype = {
       teamWrapper.appendChild(scoreWrapper);
 
       div_stadium.appendChild(stadiumPic)
-
       div_weather.appendChild(weather);
 
+      // div_countdown.appendChild(countdown);
+      div_countdown.appendChild(divDay);
+      div_countdown.appendChild(divHour);
+      div_countdown.appendChild(divMinute);
+      div_countdown.appendChild(divSecond);
+      div_details.appendChild(monthDate);
+      div_details.appendChild(spanArena);
+
+      div_container_top_two.appendChild(div_details);
+      div_container_top_two.appendChild(div_countdown);
+
+      div_container_main_details.appendChild(div_container_top_two);
+      div_container_main_details.appendChild(div_weather);
+
+      div_full_wrap.appendChild(div_stadium);
+      div_full_wrap.appendChild(div_container_main_details);
+  
       div_buttons.appendChild(buttonTeam);
       div_buttons.appendChild(buttonTicket);
       div_buttons.appendChild(buttonFav);
 
-      div_details.appendChild(spanDate);
-      div_details.appendChild(spanArena);
-      div_details.appendChild(spanTime);
-
       div_info.appendChild(div_seperator);
-      div_info.appendChild(div_stadium);
-      div_info.appendChild(div_details);
-      div_info.appendChild(div_weather);
+      div_info.appendChild(div_full_wrap);
       div_info.appendChild(div_buttons);
 
       div_element.appendChild(teamWrapper);
-
       // div_element.appendChild(label);
       // div_element.appendChild(input);
-      
       div_element.appendChild(div_info);
 
       container.appendChild(div_element)
@@ -245,15 +286,15 @@ UI.prototype = {
   populateWeather: function(location, weatherSpan){
     // var span = document.getElementById('weather-text' + labelIndex);
     console.log(weatherSpan)
-    var p = document.createElement('span')
-    p.innerText = "Weather type: " + location.weather[0].main;
-    p.setAttribute("id", "weather-text-top");
-
-
     var p2 = document.createElement('span')
+    p2.innerText = " with a chance of " + location.weather[0].main;
+    p2.setAttribute("id", "weather-text-top");
+
+
+    var p = document.createElement('span')
     var tempCelsius = Math.round((location.main.temp - 273.15))
-    p2.innerText = "Temperature (celsius): " + tempCelsius
-    p2.setAttribute("id", "weather-text-bottom");
+    p.innerText = tempCelsius + "° "
+    p.setAttribute("id", "weather-text-bottom");
 
 
     weatherSpan.appendChild(p)

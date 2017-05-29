@@ -129,51 +129,94 @@ body {
   font-family: 'Raleway', sans-serif;
   font-size:20px;
   background-color: #898a8c;
+  display: flex;
 }
   #seperator-div{
-
     height: 20px;
     margin: 4px;
   }
 
+  #div-full-wrap{
+    /*background-color: pink;*/
+    display: flex;
+    width: 100%;
+  }
+
+  #container-info{  
+    /*background-color: skyblue;*/
+    width:68%;
+
+  }
+
+    #container-of2-info{
+      /*background-color: brown;*/
+      display: flex;
+      width: 100%;
+    }
+
   #stadium-div{
     /*background-color: green;*/
+    /*display: flex;*/
     width: 32%;
-    display: inline-block;
-    vertical-align: top;
+    /*display: inline-block;
+    vertical-align: top;*/
     /*float: left;*/
   }
     #stadium-pic{
       width: 100%;
       border-style: solid;
       border-width: 1px;
-      margin: 1px;
-      /*background-color: blue;*/
+      margin-right: 0.3em;
     }
 
   #details-div{
     /*background-color: red;*/
-    /*width: 33%;*/
-    display: inline-block;
+    width: 48%;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: white;
+    font-size: 0.6em;
+    padding-left: 0.3em;
+   /* display: inline-block;
     margin:2px;
     padding-left:9px;
-    vertical-align: top;
+    vertical-align: top;*/
    /* text-align: left;*/
+  }
+    #date{
+      font-size: 1.3em;
+      padding-left:0.2em;
+    }
+
+    #arena{
+      margin-bottom: 4em;
+      padding-left:0.2em;
+    }
+
+  #countdown-div{
+    /*background-color: darkgreen;*/
+    width: 50%;
+    font-family: 'Roboto Condensed', sans-serif;
+    display: flex;
+    font-size: 0.6em;
+    justify-content: center;
   }
 
   #weather-div{
     /*background-color: blue;*/
-    display: inline-block;
+    color: white;
+    margin-left:1.5em;
+    height: 3.4em;
+    /*display: inline-block;
     margin: 5px;
     float: right;
     vertical-align: top;
     text-align: right;
     width: auto;
-    font-size:16px;
+    font-size:16px;*/
   }
     #weather-text-top{
-      padding: 2px;
-      display: block;
+      /*padding: 2px;
+      display: block;*/
     }
     /*#weather-text-bottom{
       padding: 0px;
@@ -181,6 +224,22 @@ body {
 
   #buttons-div{
     /*background-color: yellow;*/
+    /*text-align: center;*/
+  }
+
+  /*Counter Boxes*/
+
+  .counter{
+    background-color: red;
+    color: white;
+    width: auto;
+    padding-top: 0.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    height: 1.6em;
+    margin: 0.3em;
+    margin-top: 2em;
     text-align: center;
   }
+  /*End of counter boxes*/
 /* End of fixture container and contents 
