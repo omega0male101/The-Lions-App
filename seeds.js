@@ -224,7 +224,7 @@ db.teams.insert([
     [
       {
         name: "Sam Warburton",
-        dob: 1988-10-05,
+        dob: new Date("1988-10-05"),
         height: "1.90M / 6'3''",
         weight: 103,
         nationality: "Welsh",
@@ -235,7 +235,7 @@ db.teams.insert([
       },
       {
         name: "Rory Best",
-        dob: 1982-08-15,
+        dob: new Date("1982-08-15"),
         height: "1.80M / 5'11'",
         weight: 106,
         nationality: "Irish",
@@ -246,7 +246,7 @@ db.teams.insert([
       },
       {
         name: "Dan Biggar",
-        dob: 1989-10-16,
+        dob: new Date("1989-10-16"),
         height: "1.85M / 6'1'",
         weight: 93,
         nationality: "Welsh",
@@ -257,7 +257,7 @@ db.teams.insert([
       },
       {
         name: "Dan Cole",
-        dob: 1987-05-09,
+        dob: new Date("1987-05-09"),
         height: "1.89M / 6'2'",
         weight: 120,
         nationality: "England",
@@ -268,7 +268,7 @@ db.teams.insert([
       },
       {
         name: "Elliot Cole",
-        dob: 1992-10-08,
+        dob: new Date("1992-10-08"),
         height: "1.82M / 6'0'",
         weight: 97,
         nationality: "England",
@@ -279,7 +279,7 @@ db.teams.insert([
       },
       {
         name: "Jonathan Davies",
-        dob: 1988-04-05,
+        dob: new Date("1988-04-05"),
         height: "1.86M / 6'1'",
         weight: 103,
         nationality: "Welsh",
@@ -290,7 +290,7 @@ db.teams.insert([
       },
       {
         name: "Taulupe Faletau",
-        dob: 1990-11-12,
+        dob: new Date("1990-11-12"),
         height: "1.92M / 6'4'",
         weight: 109,
         nationality: "Welsh",
@@ -301,7 +301,7 @@ db.teams.insert([
       },
       {
         name: "Owen Farrell",
-        dob: 1991-09-24,
+        dob: new Date("1991-09-24"),
         height: "1.86M / 6'1'",
         weight: 93,
         nationality: "England",
@@ -312,7 +312,7 @@ db.teams.insert([
       },
       {
         name: "Tadhg Furlong",
-        dob: 1992-11-14,
+        dob: new Date("1992-11-14"),
         height: "1.85M / 6'1'",
         weight: 123,
         nationality: "Irish",
@@ -323,7 +323,7 @@ db.teams.insert([
       },
       {
         name: "Jamie George",
-        dob: 1990-10-22,
+        dob: new Date("1990-10-22"),
         height: "1.83M / 6'0'",
         weight: 110,
         nationality: "England",
@@ -334,7 +334,7 @@ db.teams.insert([
       },
       {
         name: "Leigh Halfpenny",
-        dob: 1988-12-22,
+        dob: new Date("1988-12-22"),
         height: "1.78M / 5'10'",
         weight: 87,
         nationality: "Welsh",
@@ -345,7 +345,7 @@ db.teams.insert([
       },
       {
         name: "James Haskell",
-        dob: 1985-04-02,
+        dob: new Date("1985-04-02"),
         height: "1.93M / 6'4'",
         weight: 120,
         nationality: "England",
@@ -356,7 +356,7 @@ db.teams.insert([
       },
       {
         name: "Iain Henderson",
-        dob: 1992-02-21,
+        dob: new Date("1992-02-21"),
         height: "2.00M / 6'7'",
         weight: 118,
         nationality: "Irish",
@@ -367,7 +367,7 @@ db.teams.insert([
       },
       {
         name: "Robbie Henshaw",
-        dob: 1993-06-12,
+        dob: new Date("1993-06-12"),
         height: "1.90M / 6'3'",
         weight: 102,
         nationality: "Irish",
@@ -378,7 +378,7 @@ db.teams.insert([
       },
       {
         name: "Stuart Hogg",
-        dob: 1992-06-24,
+        dob: new Date("1992-06-24"),
         height: "1.80M / 5'11'",
         weight: 100,
         nationality: "Scottish",
@@ -389,7 +389,7 @@ db.teams.insert([
       },
       {
         name: "Maro Itoje",
-        dob: 1994-10-28,
+        dob: new Date("1994-10-28"),
         height: "1.95M / 6'5'",
         weight: 117,
         nationality: "England",
@@ -400,7 +400,7 @@ db.teams.insert([
       },
       {
         name: "Jonthan Joseph",
-        dob: 1991-05-21,
+        dob: new Date("1991-05-21"),
         height: "1.83M / 6'0'",
         weight: 95,
         nationality: "England",
@@ -411,7 +411,7 @@ db.teams.insert([
       },
       {
         name: "Alun Wyn Jones",
-        dob: 1985-09-19,
+        dob: new Date("1985-09-19"),
         height: "1.98M / 6'6'",
         weight: 118,
         nationality: "Welsh",
@@ -422,7 +422,7 @@ db.teams.insert([
       },
       {
         name: "George Kruis",
-        dob: 1990-02-22,
+        dob: new Date("1990-02-22"),
         height: "1.98M / 6'6'",
         weight: 117,
         nationality: "England",
@@ -433,7 +433,7 @@ db.teams.insert([
       },
       {
         name: "Greg Laidlaw",
-        dob: 1985-10-12,
+        dob: new Date("1985-10-12"),
         height: "1.75M / 5'9'",
         weight: 80,
         nationality: "Scottish",
@@ -444,7 +444,7 @@ db.teams.insert([
       },
       {
         name: "Courtney Lawes",
-        dob: 1989-02-23,
+        dob: new Date("1989-02-23"),
         height: "2.01M / 6'7'",
         weight: 115,
         nationality: "England",
@@ -455,7 +455,7 @@ db.teams.insert([
       },
       {
         name: "Joe Marler",
-        dob: 1990-07-07,
+        dob: new Date("1990-07-07"),
         height: "1.83M / 6'0'",
         weight: 114,
         nationality: "England",
@@ -466,7 +466,7 @@ db.teams.insert([
       },
       {
         name: "Jack McGrath",
-        dob: 1989-10-11,
+        dob: new Date("1989-10-11"),
         height: "1.82M / 6'0'",
         weight: 120,
         nationality: "Irish",
@@ -477,7 +477,7 @@ db.teams.insert([
       },
       {
         name: "Ross Moriarty",
-        dob: 1994-04-18,
+        dob: new Date("1994-04-18"),
         height: "1.90M / 6'3'",
         weight: 106,
         nationality: "Welsh",
@@ -488,7 +488,7 @@ db.teams.insert([
       },
       {
         name: "Conor Murray",
-        dob: 1989-04-20,
+        dob: new Date("1989-04-20"),
         height: "1.88M / 6'2'",
         weight: 94,
         nationality: "Irish",
@@ -499,7 +499,7 @@ db.teams.insert([
       },
       {
         name: "George North",
-        dob: 1992-04-13,
+        dob: new Date("1992-04-13"),
         height: "1.93M / 6'4'",
         weight: 108,
         nationality: "Welsh",
@@ -510,7 +510,7 @@ db.teams.insert([
       },
       {
         name: "Jack Nowell",
-        dob: 1993-04-11,
+        dob: new Date("1993-04-11"),
         height: "1.80M / 5'11'",
         weight: 98,
         nationality: "England",
@@ -521,7 +521,7 @@ db.teams.insert([
       },
       {
         name: "Sean O'Brien",
-        dob: 1987-02-14,
+        dob: new Date("1987-02-14"),
         height: "1.87M / 6'2'",
         weight: 108,
         nationality: "Irish",
@@ -532,7 +532,7 @@ db.teams.insert([
       },
       {
         name: "Peter O'Mahony",
-        dob: 1989-09-17,
+        dob: new Date("1989-09-17"),
         height: "1.91M / 6'3'",
         weight: 108,
         nationality: "Irish",
@@ -543,7 +543,7 @@ db.teams.insert([
       },
       {
         name: "Ken Owens",
-        dob: 1987-01-03,
+        dob: new Date("1987-01-03"),
         height: "1.84M / 6'0'",
         weight: 108,
         nationality: "Welsh",
@@ -554,7 +554,7 @@ db.teams.insert([
       },
       {
         name: "Jared Payne",
-        dob: 1985-10-13,
+        dob: new Date("1985-10-13"),
         height: "1.83M / 6'0'",
         weight: 98,
         nationality: "Irish",
@@ -565,7 +565,7 @@ db.teams.insert([
       },
       {
         name: "Jonathan Sexton",
-        dob: 1985-07-11,
+        dob: new Date("1985-07-11"),
         height: "1.88M / 6'2'",
         weight: 93,
         nationality: "Irish",
@@ -576,7 +576,7 @@ db.teams.insert([
       },
       {
         name: "Tommy Seymour",
-        dob: 1988-07-01,
+        dob: new Date("1988-07-01"),
         height: "1.83M / 6'0'",
         weight: 94,
         nationality: "Scottish",
@@ -587,7 +587,7 @@ db.teams.insert([
       },
       {
         name: "Kyle Sinckler",
-        dob: 1993-03-30,
+        dob: new Date("1993-03-30"),
         height: "1.80M / 5'11'",
         weight: 122,
         nationality: "England",
@@ -598,7 +598,7 @@ db.teams.insert([
       },
       {
         name: "CJ Stander",
-        dob: 1990-04-05,
+        dob: new Date("1990-04-05"),
         height: "1.89M / 6'2'",
         weight: 115,
         nationality: "Irish",
@@ -609,7 +609,7 @@ db.teams.insert([
       },
       {
         name: "Ben Te'o",
-        dob: 1987-01-27,
+        dob: new Date("1987-01-27"),
         height: "1.88M / 6'2'",
         weight: 106,
         nationality: "England",
@@ -620,7 +620,7 @@ db.teams.insert([
       },
       {
         name: "Justin Tipuric",
-        dob: 1989-04-06,
+        dob: new Date("1989-04-06"),
         height: "1.88M / 6'2'",
         weight: 101,
         nationality: "Welsh",
@@ -631,7 +631,7 @@ db.teams.insert([
       },
       {
         name: "Mako Vunipola",
-        dob: 1991-01-13,
+        dob: new Date("1991-01-13"),
         height: "1.83M / 6'0'",
         weight: 121,
         nationality: "England",
@@ -642,7 +642,7 @@ db.teams.insert([
       },
       {
         name: "Anthony Watson",
-        dob: 1994-02-26,
+        dob: new Date("1994-02-26"),
         height: "1.84M / 6'0'",
         weight: 94,
         nationality: "England",
@@ -653,7 +653,7 @@ db.teams.insert([
       },
       {
         name: "Rhys Webb",
-        dob: 1988-12-09,
+        dob: new Date("1988-12-09"),
         height: "1.83M / 6'0'",
         weight: 92,
         nationality: "Welsh",
@@ -664,7 +664,7 @@ db.teams.insert([
       },
       {
         name: "Liam Williams",
-        dob: 1991-04-09,
+        dob: new Date("1991-04-09"),
         height: "1.88M / 6'1'",
         weight: 86,
         nationality: "Welsh",
@@ -681,7 +681,7 @@ db.teams.insert([
     players: [
       {
         name: "Sam Anderson-Heather",
-        dob: 1988-02-15,
+        dob: new Date("1988-02-15"),
         height: "1.81M / 5'11'",
         weight: 104,
         nationality: "New Zealand",
@@ -692,7 +692,7 @@ db.teams.insert([
       },
       {
         name: "Llachlan Boshier",
-        dob: 1994-11-16,
+        dob: new Date("1994-11-16"),
         height: "1.94M / 6'4'",
         weight: 102,
         nationality: "New Zealand",
@@ -703,7 +703,7 @@ db.teams.insert([
       },
       {
         name: "Mitchell Dunshea",
-        dob: 1995-11-18,
+        dob: new Date("1995-11-18"),
         height: "1.96M / 6'5'",
         weight: 114,
         nationality: "New Zealand",
@@ -715,7 +715,7 @@ db.teams.insert([
       // NO LONGER IN SQUAD
       // {
       //   name: "Heiden Bedwell-Curtis",
-      //   dob: 1991-06-25,
+      //   dob: new Date("1991-06-25"),
       //   height: "1.94M / 6'4'",
       //   weight: 103,
       //   nationality: "New Zealand",
@@ -726,7 +726,7 @@ db.teams.insert([
       // },
       // {
       //   name: "Mitchell Brown",
-      //   dob: 1993-08-15,
+      //   dob: new Date("1993-08-15"),
       //   height: "1.94M / 6'4'",
       //   weight: 110,
       //   nationality: "New Zealand",
@@ -737,7 +737,7 @@ db.teams.insert([
       // },
       // {
       //   name: "Johnny Fa'auli",
-      //   dob: 1995-09-13,
+      //   dob: new Date("1995-09-13"),
       //   height: "1.80M / 5'11'",
       //   weight: 103,
       //   nationality: "New Zealand",
@@ -748,7 +748,7 @@ db.teams.insert([
       // },
       {
         name: "Tolu Fahamokioa",
-        dob: 1991-05-05,
+        dob: new Date("1991-05-05"),
         height: "1.90M / 6'03'",
         weight: 105,
         nationality: "Tonga",
@@ -759,7 +759,7 @@ db.teams.insert([
       },
       {
         name: "Kaveinga Finau",
-        dob: 1994-08-21,
+        dob: new Date("1994-08-21"),
         height: "1.80M / 5'9'",
         weight: 95,
         nationality: "New Zealand",
@@ -770,7 +770,7 @@ db.teams.insert([
       },
       // {
       //   name: "Epalahame Faiva",
-      //   dob: 1994-05-09,
+      //   dob: new Date("1994-05-09"),
       //   height: "1.81M / 5'11'",
       //   weight: 108,
       //   nationality: "New Zealand",
@@ -781,7 +781,7 @@ db.teams.insert([
       // },
       {
         name: "Bryn Gatland",
-        dob: 1995-05-10,
+        dob: new Date("1995-05-10"),
         height: "1.78M / 5'10'",
         weight: 88,
         nationality: "New Zealand",
@@ -792,7 +792,7 @@ db.teams.insert([
       },
       {
         name: "Josh Goodhue",
-        dob: 1995-06-13,
+        dob: new Date("1995-06-13"),
         height: "1.99M / 6'6'",
         weight: 115,
         nationality: "New Zealand",
@@ -803,7 +803,7 @@ db.teams.insert([
       },
       {
         name: "Oliver Jager",
-        dob: 1995-07-05,
+        dob: new Date("1995-07-05"),
         height: "1.92M / 6'4'",
         weight: 120,
         nationality: "England",
@@ -814,7 +814,7 @@ db.teams.insert([
       },
       {
         name: "Richard Judd",
-        dob: 1992-05-18,
+        dob: new Date("1992-05-18"),
         height: "1.78M / 5'8'",
         weight: 90,
         nationality: "New Zealand",
@@ -825,7 +825,7 @@ db.teams.insert([
       },
       {
         name: "Luteru Laulala",
-        dob: 1995-05-30,
+        dob: new Date("1995-05-30"),
         height: "1.83M / 6'0'",
         weight: 95,
         nationality: "New Zealand",
@@ -836,7 +836,7 @@ db.teams.insert([
       },
       {
         name: "Jonah Lowe",
-        dob: 1996-05-09,
+        dob: new Date("1996-05-09"),
         height: "1.84M / 6'0'",
         weight: 92,
         nationality: "New Zealand",
@@ -847,7 +847,7 @@ db.teams.insert([
       },
       {
         name: "Andrew Makalio",
-        dob: 1992-01-22,
+        dob: new Date("1992-01-22"),
         height: "1.82M / 6'0'",
         weight: 111,
         nationality: "New Zealand",
@@ -858,7 +858,7 @@ db.teams.insert([
       },
       {
         name: "Matt Matich",
-        dob: 1991-07-10,
+        dob: new Date("1991-07-10"),
         height: "1.86M / 6'1'",
         weight: 106,
         nationality: "New Zealand",
@@ -869,7 +869,7 @@ db.teams.insert([
       },
       {
         name: "Keepa Mewett",
-        dob: 1987-05-10,
+        dob: new Date("1987-05-10"),
         height: "1.98M / 6'4'",
         weight: 111,
         nationality: "New Zealand",
@@ -891,7 +891,7 @@ db.teams.insert([
       },
       {
         name: "Sevu Reece",
-        dob: 1997-02-13,
+        dob: new Date("1997-02-13"),
         height: "1.79M / 5'10'",
         weight: 87,
         nationality: "Figi",
@@ -902,7 +902,7 @@ db.teams.insert([
       },
       {
         name: "Marcel Renata",
-        dob: 1994-01-24,
+        dob: new Date("1994-01-24"),
         height: "1.89M / 6'2'",
         weight: 116,
         nationality: "New Zealand",
@@ -913,7 +913,7 @@ db.teams.insert([
       },
       {
         name: "Aidan Ross",
-        dob: 1995-10-25,
+        dob: new Date("1995-10-25"),
         height: "1.89M / 6'2'",
         weight: 112,
         nationality: "New Zealand",
@@ -924,7 +924,7 @@ db.teams.insert([
       },
       {
         name: "Peter Rowe",
-        dob: 1981-12-07,
+        dob: new Date("1981-12-07"),
         height: "1.83M / 6'0'",
         weight: 103,
         nationality: "New Zealand",
@@ -935,7 +935,7 @@ db.teams.insert([
       },
       {
         name: "Jack Stratton",
-        dob: 1994-08-21,
+        dob: new Date("1994-08-21"),
         height: "1.85M / 6'0'",
         weight: 92,
         nationality: "New Zealand",
@@ -946,7 +946,7 @@ db.teams.insert([
       },
       {
         name: "Dwayne Sweeney",
-        dob: 1984-08-08,
+        dob: new Date("1984-08-08"),
         height: "1.80M / 5'11'",
         weight: 95,
         nationality: "New Zealand",
@@ -957,7 +957,7 @@ db.teams.insert([
       },
       {
         name: "James Tucker",
-        dob: 1994-08-05,
+        dob: new Date("1994-08-05"),
         height: "1.97M / 6'6'",
         weight: 115,
         nationality: "New Zealand",
@@ -968,7 +968,7 @@ db.teams.insert([
       },
       {
         name: "Sam Vaka",
-        dob: 1992-10-26,
+        dob: new Date("1992-10-26"),
         height: "1.86M / 6'1'",
         weight: 95,
         nationality: "New Zealand",
