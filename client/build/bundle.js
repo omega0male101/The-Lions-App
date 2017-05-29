@@ -332,6 +332,15 @@ UI.prototype = {
       var playerDOB = document.createElement("p");
       playerDOB.setAttribute("class", "playerDOB");
       playerDOB.setAttribute("id", "playerDOB" + index);
+      var playerHeight = document.createElement("p");
+      playerHeight.setAttribute("class", "playerHeight");
+      playerHeight.setAttribute("id", "playerHeight" + index);
+      var playerWeight = document.createElement("p");
+      playerWeight.setAttribute("class", "playerWeight");
+      playerWeight.setAttribute("id", "playerWeight" + index);
+      var playerClub = document.createElement("p");
+      playerClub.setAttribute("class", "playerClub");
+      playerClub.setAttribute("id", "playerClub" + index);
       var playerCaps = document.createElement("p");
       playerCaps.setAttribute("class", "playerCaps");
       playerCaps.setAttribute("id", "playerCaps" + index);
@@ -341,24 +350,44 @@ UI.prototype = {
       var playerImage = document.createElement("img");
       playerImage.setAttribute("class", "playerImage");
       playerImage.setAttribute("id", "playerImage" + index);
-      playerName.innerText = player.name;
-      playerPosition.innerText = player.position;
-      playerDOB.innerText = player.dob;
+      var expander = document.createElement("img");
+      expander.setAttribute("class", "expander");
+      expander.setAttribute("id", "expander" + index);
+      playerName.innerText = "Name: " + player.name;
+      playerPosition.innerText = "Position: " + player.position;
+      playerDOB.innerText = "Date of Birth " + player.dob;
       playerDOB.style.display = 'none'
-      playerCaps.innerText = player.caps;
+      playerHeight.innerText = "Height: " + player.height;
+      playerHeight.style.display = 'none'
+      playerWeight.innerText = "Weight: " + player.weight;
+      playerWeight.style.display = 'none'
+      playerClub.innerText = "Club: " + player.club;
+      playerClub.style.display = 'none'
+      playerCaps.innerText = "Caps: " + player.caps;
       playerCaps.style.display = 'none'
       playerImage.setAttribute("src" , player.image);
       playerImage.style.display = 'none'
+      expander.setAttribute("height", "10px")
+      expander.setAttribute("width", "10px")
+      expander.setAttribute("src", "https://image.flaticon.com/icons/png/512/60/60781.png")
       playerDiv.appendChild(playerName);
       playerDiv.appendChild(playerPosition);
       playerDiv.appendChild(playerDOB);
+      playerDiv.appendChild(playerHeight);
+      playerDiv.appendChild(playerWeight);
       playerDiv.appendChild(playerCaps);
+      playerDiv.appendChild(playerClub);
       playerImageContainer.appendChild(playerImage);
       playerDiv.appendChild(playerImageContainer);
+      playerDiv.appendChild(expander);
       playersDiv.appendChild(playerDiv);
 
-      playerDiv.addEventListener("click", function(event){
-        console.log(event.srcElement);
+      expander.addEventListener("click", function(event){
+        parent = event.srcElement.parentElement;
+        parent.childNodes.forEach(function(child){
+          child.style.display = "";
+        })
+        parent.childNodes[7].childNodes[0].style.display = "";
       })
     })
   },
