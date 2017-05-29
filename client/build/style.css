@@ -1,5 +1,5 @@
-/*DROP LIST DOWN*/
-/*.collapse{
+/*/*DROP LIST DOWN*/
+.collapse{
   cursor: pointer;
   display: block;
   transition-timing-function: ease-in;
@@ -16,6 +16,8 @@
   transition-timing-function: ease-in;
 }*/
 /*end of dropdown..*/
+
+
 
 body {
   /*background-color: red;*/
@@ -36,10 +38,11 @@ body {
   border-style: solid;
   border-width: 1px;
   margin: 3px;
+  background-color: #5d6066;
 }
 
 #fixtures-element:hover {
-  background-color: skyblue;
+/*  background-color: skyblue;*/
   /*display: block;*/
 }
 
@@ -48,6 +51,7 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
+  flex-direction: column;
 }
 
   #fixture-game{
@@ -55,65 +59,80 @@ body {
     align-items: center;
     justify-content: center;
     width: 80%;
-    background-color: red; 
 
-
-    /*margin: 10px;
-    display: flex;
-    flex-direction: row;
-    flex-flow: row wrap;
-    
-    overflow: hidden;*/
-    /*background-color: pink;*/
   }
+
+  #score-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 73%;
+    color: white;
+
+  }
+
     #home-team{
       width: 40%;
-      text-align: right;
+      align-content: right;
+      height: 6em;
+      padding-top: 1em;
 
-     /* padding-top: 0.2em;
-      margin: 10px;
-      /*width: 44%;*/
-     /* display: inline-block;
-      flex-grow: 2;
-      text-align: right;*/
-      /*background-color: green;*/
     }
+    #home-team-name{
+     width: 45%;
+     text-align: center;
+     /*margin-right: 3em;*/
+     font-size: 0.7em;
+     padding-top: 0.2em;
+     font-family: 'Cantarell', sans-serif;
 
+    }
     #away-team{
       width: 40%;
-      
-    /*  padding-top: 0.2em;
-      margin: 10px;
-      width: 45%;
-      text-align: left;
-      display: inline-block; 
-      flex-grow: 2;*/
-      /*background-color: red;*/
-    }
+      height: 6em;
+      padding-top: 1em;
 
+
+    }
+    #away-team-name{
+     width: 45%;
+     /*margin-left: 3em;*/
+     font-size: 0.7em;
+     padding-top: 0.2em;
+     font-family: 'Cantarell', sans-serif;
+     text-align: center;
+
+    }
+  
     #VS {
       width: 10%;
       text-align: center;
-   /* margin: 10px;
-    display: inline-block;
-    max-width: 10%;
-    font-size: 28px;
-    flex-grow: 1;
-    text-align: center;*/
-    /*background-color: blue;*/
+      font-size: 3em;
+      color: red;
+      padding-top: 0.4em;
+    }
+
+    #home-points{
+      width: 3%;
+      text-align: right;
+    }
+    #away-points{
+      width: 3%;
+    }
+    #dash-points{
+      width: 4%;
+      text-align: center;
     }
 
 #info-div{
-  /*background-color: grey;*/
-  margin: 4px;
+  margin-top: 0.6em;
   font-family: 'Raleway', sans-serif;
   font-size:20px;
-                                         /*   display: none;*/
+  background-color: #898a8c;
 }
   #seperator-div{
-    /*background-color: black;*/
+
     height: 20px;
-    padding-top: 2px;
     margin: 4px;
   }
 
@@ -129,6 +148,7 @@ body {
       border-style: solid;
       border-width: 1px;
       margin: 1px;
+      /*background-color: blue;*/
     }
 
   #details-div{

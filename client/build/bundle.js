@@ -167,19 +167,61 @@ UI.prototype = {
         div_buttons.setAttribute("id", "buttons-div");
 
 
+
         // Home & Away Teams
       var teamWrapper = document.createElement('div');
         teamWrapper.setAttribute("id", "team-wrapper");
-      var spanHomeTeam = document.createElement('span');
-        spanHomeTeam.setAttribute("id", "home-team");
-      var spanVS = document.createElement('span');
-        spanVS.setAttribute("id", "VS");
-      var spanAwayTeam = document.createElement('span');
-        spanAwayTeam.setAttribute("id", "away-team");
+      // var spanHomeTeam = document.createElement('span');
+      var spanHomeTeam = document.createElement('img');
+          spanHomeTeam.setAttribute("id", "home-team");
+          spanHomeTeam.src = "/logos/" + fixture.homeTeamName + ".svg";
+        // spanHomeTeam.setAttribute("id", "home-team");
 
-        spanHomeTeam.textContent = fixture.homeTeamName;
-        spanVS.textContent = " VS ";
-        spanAwayTeam.textContent = fixture.awayTeamName;
+      // var spanVS = document.createElement('span');
+      var spanVS = document.createElement('span');
+          spanVS.setAttribute("id", "VS");
+          spanVS.textContent = " V ";
+        // spanVS.setAttribute("id", "VS");
+
+      // var spanAwayTeam = document.createElement('span');
+      var spanAwayTeam = document.createElement('img');
+          spanAwayTeam.setAttribute("id", "away-team");
+          spanAwayTeam.src = "/logos/" + fixture.awayTeamName + ".svg";
+        // spanAwayTeam.setAttribute("id", "away-team");
+
+        // spanHomeTeam.textContent = fixture.homeTeamName;
+        // spanVS.textContent = " VS ";
+        // spanAwayTeam.textContent = fixture.awayTeamName;
+
+      // Points Bar (Scores)
+      var scoreWrapper = document.createElement('div');
+        scoreWrapper.setAttribute("id", "score-wrapper");
+
+      var awayPoints = document.createElement('span')
+      var homePoints = document.createElement('span')
+      var dash = document.createElement('span')
+
+        awayPoints.setAttribute("id", "away-points");
+        homePoints.setAttribute("id", "home-points");
+        dash.setAttribute("id", "dash-points");
+
+        awayPoints.textContent = fixture.result.awayTeamPoints;
+        homePoints.textContent = fixture.result.homeTeamPoints;
+        dash.textContent = " - ";
+
+        //Team A / B display
+
+    var spanHomeTeamName = document.createElement('span');
+      spanHomeTeamName.setAttribute("id", "home-team-name");
+    
+    var spanAwayTeamName = document.createElement('span');
+      spanAwayTeamName.setAttribute("id", "away-team-name");
+
+      spanHomeTeamName.textContent = fixture.homeTeamName;
+      spanAwayTeamName.textContent = fixture.awayTeamName;
+
+
+
 
         // Stadium Picture (does not work)
       var stadiumPic = document.createElement('img');
@@ -201,9 +243,41 @@ UI.prototype = {
       var spanTime = document.createElement('p');
         spanTime.setAttribute("id", "time");
 
-        spanDate.textContent = "Date: " + fixture.date;
+
+        spanDate.textContent = "Date: " + fixture.date.slice(0,10);
         spanArena.textContent = "At " + fixture.stadium.name + ", in " + fixture.stadium.location;
-        spanTime.textContent = "Kick off: " + fixture.kickOffTime;
+        spanTime.textContent = "Kick off: " + fixture.date.slice(11,16) + " (BST)";
+
+        
+        
+        var _second = 1000;
+        var _minute = _second * 60;
+        var _hour = _minute * 60;
+        var _day = _hour * 24;
+        var timer;
+
+        function showRemaining() {
+          var kickOffMs = Date.parse(fixture.date)
+          var distance = (kickOffMs - Date.now())
+
+          if (distance < 0) {
+            clearInterval(timer);
+            console.log("EXPIRED!");
+            return;
+          }
+          var days = Math.floor(distance / _day);
+          var hours = Math.floor((distance % _day) / _hour);
+          var minutes = Math.floor((distance % _hour) / _minute);
+          var seconds = Math.floor((distance % _minute) / _second);
+          console.log(days + 'days ' + hours + 'hrs ' + minutes + 'mins ' + seconds + 'secs');
+          timeToKickOff = days + 'days ' + hours + 'hrs ' + minutes + 'mins ' + seconds + 'secs'
+
+
+        }
+
+        timer = setInterval(showRemaining, 10000);
+
+
 
         // Buttons
       var buttonHomeTeam = document.createElement('button');
@@ -241,7 +315,14 @@ UI.prototype = {
       div_game.appendChild(spanVS);
       div_game.appendChild(spanAwayTeam);
 
+      scoreWrapper.appendChild(spanHomeTeamName);
+      scoreWrapper.appendChild(awayPoints);
+      scoreWrapper.appendChild(dash);
+      scoreWrapper.appendChild(homePoints);
+      scoreWrapper.appendChild(spanAwayTeamName);
+
       teamWrapper.appendChild(div_game);
+      teamWrapper.appendChild(scoreWrapper);
 
       div_stadium.appendChild(stadiumPic)
 
@@ -256,7 +337,6 @@ UI.prototype = {
       div_details.appendChild(spanArena);
       div_details.appendChild(spanTime);
 
-      
       div_info.appendChild(div_seperator);
       div_info.appendChild(div_stadium);
       div_info.appendChild(div_details);
@@ -264,6 +344,7 @@ UI.prototype = {
       div_info.appendChild(div_buttons);
 
       div_element.appendChild(teamWrapper);
+
       // div_element.appendChild(label);
       // div_element.appendChild(input);
       
