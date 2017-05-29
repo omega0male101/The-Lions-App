@@ -353,6 +353,9 @@ UI.prototype = {
       var expander = document.createElement("img");
       expander.setAttribute("class", "expander");
       expander.setAttribute("id", "expander" + index);
+      var contractor = document.createElement("img");
+      contractor.setAttribute("class", "contractor");
+      contractor.setAttribute("id", "contractor" + index);
       playerName.innerText = "Name: " + player.name;
       playerPosition.innerText = "Position: " + player.position;
       playerDOB.innerText = "Date of Birth " + player.dob;
@@ -370,6 +373,10 @@ UI.prototype = {
       expander.setAttribute("height", "10px")
       expander.setAttribute("width", "10px")
       expander.setAttribute("src", "https://image.flaticon.com/icons/png/512/60/60781.png")
+      contractor.setAttribute("height", "10px")
+      contractor.setAttribute("width", "10px")
+      contractor.setAttribute("src", "https://image.flaticon.com/icons/svg/60/60799.svg")
+      contractor.style.display = 'none';
       playerDiv.appendChild(playerName);
       playerDiv.appendChild(playerPosition);
       playerDiv.appendChild(playerDOB);
@@ -380,6 +387,7 @@ UI.prototype = {
       playerImageContainer.appendChild(playerImage);
       playerDiv.appendChild(playerImageContainer);
       playerDiv.appendChild(expander);
+      playerDiv.appendChild(contractor);
       playersDiv.appendChild(playerDiv);
 
       expander.addEventListener("click", function(event){
@@ -388,7 +396,20 @@ UI.prototype = {
           child.style.display = "";
         })
         parent.childNodes[7].childNodes[0].style.display = "";
+        parent.childNodes[8].style.display = 'none';
       })
+
+      contractor.addEventListener("click", function(event){
+        parent = event.srcElement.parentElement;
+        parent.childNodes.forEach(function(child){
+          child.style.display = 'none';
+        })
+        parent.childNodes[0].style.display = "block"
+        parent.childNodes[1].style.display = "block"
+        parent.childNodes[7].childNodes[0].style.display = 'none';
+        parent.childNodes[8].style.display = "";
+      })
+
     })
   },
 
