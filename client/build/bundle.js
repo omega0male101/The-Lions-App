@@ -269,7 +269,6 @@ UI.prototype = {
           var hours = Math.floor((distance % _day) / _hour);
           var minutes = Math.floor((distance % _hour) / _minute);
           var seconds = Math.floor((distance % _minute) / _second);
-          console.log(days + 'days ' + hours + 'hrs ' + minutes + 'mins ' + seconds + 'secs');
           timeToKickOff = days + 'days ' + hours + 'hrs ' + minutes + 'mins ' + seconds + 'secs'
 
 
@@ -281,8 +280,17 @@ UI.prototype = {
 
         // Buttons
       var buttonHomeTeam = document.createElement('button');
-        buttonHomeTeam.setAttribute("id", fixture.homeTeamName +" team-button");
+        buttonHomeTeam.setAttribute("id", fixture.homeTeamName);
+        buttonHomeTeam.setAttribute("class", "home-team-button");
           buttonHomeTeam.innerText = "Home Team Details";
+          buttonHomeTeam.addEventListener("click", function(){
+            if(event.srcElement.id === "New Zealand Provincial Barbarians"){
+              this.renderTeam(1);
+            };
+            if(event.srcElement.id === "New Zealand"){
+              this.renderTeam(2);
+            }
+          }.bind(this))
       var buttonTeam = document.createElement('button');
         buttonTeam.setAttribute("id", "lions-button");
           buttonTeam.innerText = "Lions Details";
