@@ -58,19 +58,50 @@ UI.prototype = {
         div_buttons.setAttribute("id", "buttons-div");
 
 
+
         // Home & Away Teams
       var teamWrapper = document.createElement('div');
         teamWrapper.setAttribute("id", "team-wrapper");
-      var spanHomeTeam = document.createElement('span');
-        spanHomeTeam.setAttribute("id", "home-team");
-      var spanVS = document.createElement('span');
-        spanVS.setAttribute("id", "VS");
-      var spanAwayTeam = document.createElement('span');
-        spanAwayTeam.setAttribute("id", "away-team");
+      // var spanHomeTeam = document.createElement('span');
+      var spanHomeTeam = document.createElement('img');
+          spanHomeTeam.setAttribute("id", "home-team");
+          spanHomeTeam.src = "/logos/" + fixture.homeTeamName + ".svg";
+        // spanHomeTeam.setAttribute("id", "home-team");
 
-        spanHomeTeam.textContent = fixture.homeTeamName;
-        spanVS.textContent = " VS ";
-        spanAwayTeam.textContent = fixture.awayTeamName;
+      // var spanVS = document.createElement('span');
+      var spanVS = document.createElement('span');
+          spanVS.setAttribute("id", "VS");
+          spanVS.textContent = " V ";
+        // spanVS.setAttribute("id", "VS");
+
+      // var spanAwayTeam = document.createElement('span');
+      var spanAwayTeam = document.createElement('img');
+          spanAwayTeam.setAttribute("id", "away-team");
+          spanAwayTeam.src = "/logos/" + fixture.awayTeamName + ".svg";
+        // spanAwayTeam.setAttribute("id", "away-team");
+
+        // spanHomeTeam.textContent = fixture.homeTeamName;
+        // spanVS.textContent = " VS ";
+        // spanAwayTeam.textContent = fixture.awayTeamName;
+
+      // Points Bar (Scores)
+      var scoreWrapper = document.createElement('div');
+        scoreWrapper.setAttribute("id", "score-wrapper");
+
+      var awayPoints = document.createElement('span')
+      var homePoints = document.createElement('span')
+      var dash = document.createElement('span')
+      // var newLine = document.createElement('br')
+
+        awayPoints.setAttribute("id", "away-points");
+        homePoints.setAttribute("id", "home-points");
+        dash.setAttribute("id", "dash-points");
+
+        awayPoints.textContent = fixture.result.awayTeamPoints;
+        homePoints.textContent = fixture.result.homeTeamPoints;
+        dash.textContent = " - ";
+
+
 
         // Stadium Picture (does not work)
       var stadiumPic = document.createElement('img');
@@ -126,7 +157,14 @@ UI.prototype = {
       div_game.appendChild(spanVS);
       div_game.appendChild(spanAwayTeam);
 
+      
+      scoreWrapper.appendChild(awayPoints);
+      scoreWrapper.appendChild(dash);
+      scoreWrapper.appendChild(homePoints);
+      
+
       teamWrapper.appendChild(div_game);
+      teamWrapper.appendChild(scoreWrapper);
 
       div_stadium.appendChild(stadiumPic)
 
@@ -148,6 +186,7 @@ UI.prototype = {
       div_info.appendChild(div_buttons);
 
       div_element.appendChild(teamWrapper);
+
       // div_element.appendChild(label);
       // div_element.appendChild(input);
       

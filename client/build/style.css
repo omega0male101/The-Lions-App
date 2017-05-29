@@ -1,5 +1,5 @@
-/*DROP LIST DOWN*/
-/*.collapse{
+/*/*DROP LIST DOWN*/
+.collapse{
   cursor: pointer;
   display: block;
   transition-timing-function: ease-in;
@@ -16,6 +16,8 @@
   transition-timing-function: ease-in;
 }*/
 /*end of dropdown..*/
+
+
 
 body {
   /*background-color: red;*/
@@ -36,6 +38,7 @@ body {
   border-style: solid;
   border-width: 1px;
   margin: 3px;
+  background-color: #5d6066;
 }
 
 #fixtures-element:hover {
@@ -48,6 +51,7 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
+  flex-direction: column;
 }
 
   #fixture-game{
@@ -55,52 +59,49 @@ body {
     align-items: center;
     justify-content: center;
     width: 80%;
-    background-color: red; 
-
-
-    /*margin: 10px;
-    display: flex;
-    flex-direction: row;
-    flex-flow: row wrap;
-    
-    overflow: hidden;*/
-    /*background-color: pink;*/
+    /*background-color: green;*/
   }
+
+  #score-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 8%;
+    color: white;
+    /*padding-bottom: 20px;*/
+    /*background-color: red*/
+  }
+
     #home-team{
       width: 40%;
+      align-content: right;
+      height: 6em;
+      padding-top: 1em;
+    }
+    #home-points{
+      width: 40%;
       text-align: right;
-
-     /* padding-top: 0.2em;
-      margin: 10px;
-      /*width: 44%;*/
-     /* display: inline-block;
-      flex-grow: 2;
-      text-align: right;*/
-      /*background-color: green;*/
     }
 
     #away-team{
       width: 40%;
-      
-    /*  padding-top: 0.2em;
-      margin: 10px;
-      width: 45%;
-      text-align: left;
-      display: inline-block; 
-      flex-grow: 2;*/
-      /*background-color: red;*/
+      height: 6em;
+      padding-top: 1em;
+    }
+    #away-points{
+      width: 40%;
     }
 
     #VS {
       width: 10%;
       text-align: center;
-   /* margin: 10px;
-    display: inline-block;
-    max-width: 10%;
-    font-size: 28px;
-    flex-grow: 1;
-    text-align: center;*/
-    /*background-color: blue;*/
+      font-size: 3em;
+      color: red;
+      padding-top: 0.4em;
+    }
+    #dash-points{
+      width: 10%;
+      text-align: center;
     }
 
 #info-div{

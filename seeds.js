@@ -20,8 +20,8 @@ db.fixtures.insert([
     image: "https://resources.stuff.co.nz/content/dam/images/1/6/b/i/e/g/image.related.StuffLandscapeSixteenByNine.620x349.16o9yq.png/1441300120225.jpg"
   },
   result: {
-    homeTeamPoints: null,
-    awayTeamPoints: null
+    homeTeamPoints: 0,
+    awayTeamPoints: 0
   }
 },
 {
@@ -41,8 +41,8 @@ db.fixtures.insert([
     image: "http://i.cricketcb.com/i/stats/f/720x415/venue/images/41.jpg"
   },
   result: {
-    homeTeamPoints: null,
-    awayTeamPoints: null
+    homeTeamPoints: 0,
+    awayTeamPoints: 0
   }
 },
 {
@@ -62,8 +62,8 @@ db.fixtures.insert([
     image: "https://i.ytimg.com/vi/DYYGN_CfkcA/maxresdefault.jpg"
   },
   result: {
-    homeTeamPoints: null,
-    awayTeamPoints: null
+    homeTeamPoints: 0,
+    awayTeamPoints: 0
   }
 },
 {
@@ -83,8 +83,8 @@ db.fixtures.insert([
     image: "https://www.forsythbarr.co.nz/yk-files/c0f492c6c877fa1ea53dd6343c72f8b4/ireland_v_italy_0037.jpg"
   },
   result: {
-    homeTeamPoints: null,
-    awayTeamPoints: null
+    homeTeamPoints: 0,
+    awayTeamPoints: 0
   }
 },
 {
@@ -104,8 +104,8 @@ db.fixtures.insert([
     image: "https://cdn.eventfinda.co.nz/uploads/locations/transformed/118822-902-34.jpg"
   },
   result: {
-    homeTeamPoints: null,
-    awayTeamPoints: null
+    homeTeamPoints: 0,
+    awayTeamPoints: 0
   }
 },
 {
@@ -125,8 +125,8 @@ db.fixtures.insert([
     image: "http://www.hamiltonwaikato.com/media/1954/waikato-stadium-birds-eye-view-hamilton-nz.jpg?anchor=center&mode=crop&width=900&height=506&rnd=130806778060000000"
   },
   result: {
-    homeTeamPoints: null,
-    awayTeamPoints: null
+    homeTeamPoints: 0,
+    awayTeamPoints: 0
   }
 },
 {
@@ -146,8 +146,8 @@ db.fixtures.insert([
     image: "http://i.cricketcb.com/i/stats/f/720x415/venue/images/41.jpg"
     },
   result: {
-    homeTeamPoints: null,
-    awayTeamPoints: null
+    homeTeamPoints: 0,
+    awayTeamPoints: 0
   }
 },
 {
@@ -167,8 +167,8 @@ db.fixtures.insert([
     image: "http://www.retaildimension.co.nz/ic/3984479418/Westpac%20Stadium%20Case%20Study.jpg"
     },
   result: {
-    homeTeamPoints: null,
-    awayTeamPoints: null
+    homeTeamPoints: 0,
+    awayTeamPoints: 0
   }
 },
 {
@@ -188,8 +188,8 @@ db.fixtures.insert([
     image: "http://www.retaildimension.co.nz/ic/3984479418/Westpac%20Stadium%20Case%20Study.jpg"
     },
   result: {
-    homeTeamPoints: null,
-    awayTeamPoints: null
+    homeTeamPoints: 0,
+    awayTeamPoints: 0
   }
 },
 {
@@ -209,8 +209,8 @@ db.fixtures.insert([
     image: "http://i.cricketcb.com/i/stats/f/720x415/venue/images/41.jpg"
     },
   result: {
-    homeTeamPoints: null,
-    awayTeamPoints: null
+    homeTeamPoints: 0,
+    awayTeamPoints: 0
   }
 },
 ]
