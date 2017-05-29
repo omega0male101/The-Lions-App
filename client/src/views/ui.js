@@ -151,7 +151,7 @@ UI.prototype = {
           console.log(days + 'days ' + hours + 'hrs ' + minutes + 'mins ' + seconds + 'secs');
         }
 
-        timer = setInterval(showRemaining, 1000);
+        timer = setInterval(showRemaining, 10000);
 
 
 
