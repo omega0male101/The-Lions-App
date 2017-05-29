@@ -4,7 +4,7 @@ db.dropDatabase();
 
 db.fixtures.insert([ 
 {
-  date: 2017-06-03,
+  date: new Date("2017-06-03T08:35:00-00:00"),
   matchNumber: 1,
   kickOffTime: "8:35",
   homeTeamName: "New Zealand Provincial Barbarians", 
@@ -25,7 +25,7 @@ db.fixtures.insert([
   }
 },
 {
-  date: 2017-06-07,
+  date: new Date("2017-06-07T08:35:00-00:00"),
   matchNumber: 2,
   kickOffTime: "8:35",
   homeTeamName: "Blues", 
@@ -46,7 +46,7 @@ db.fixtures.insert([
   }
 },
 {
-  date: 2017-06-10,
+  date: new Date("2017-06-10T08:35:00-00:00"),
   matchNumber: 3,
   kickOffTime: "8:35",
   homeTeamName: "Crusaders", 
@@ -67,7 +67,7 @@ db.fixtures.insert([
   }
 },
 {
-  date: 2017-06-13,
+  date: new Date("2017-06-13T08:35:00-00:00"),
   matchNumber: 4,
   kickOffTime: "8:35",
   homeTeamName: "Highlanders", 
@@ -88,7 +88,7 @@ db.fixtures.insert([
   }
 },
 {
-  date: 2017-06-17,
+  date: new Date("2017-06-17T08:35:00-00:00"),
   matchNumber: 5,
   kickOffTime: "8:35",
   homeTeamName: "Maori All Blacks", 
@@ -109,7 +109,7 @@ db.fixtures.insert([
   }
 },
 {
-  date: 2017-06-20,
+  date: new Date("2017-06-20T08:35:00-00:00"),
   matchNumber: 6,
   kickOffTime: "8:35",
   homeTeamName: "Chiefs", 
@@ -130,7 +130,7 @@ db.fixtures.insert([
   }
 },
 {
-  date: 2017-06-24,
+  date: new Date("2017-06-24T08:35:00-00:00"),
   matchNumber: 7,
   kickOffTime: "8:35",
   homeTeamName: "New Zealand", 
@@ -151,7 +151,7 @@ db.fixtures.insert([
   }
 },
 {
-  date: 2017-06-27,
+  date: new Date("2017-06-27T08:35:00-00:00"),
   matchNumber: 8,
   kickOffTime: "8:35",
   homeTeamName: "Hurricanes", 
@@ -172,7 +172,7 @@ db.fixtures.insert([
   }
 },
 {
-  date: 2017-07-01,
+  date: new Date("2017-07-01T08:35:00-00:00"),
   matchNumber: 9,
   kickOffTime: "8:35",
   homeTeamName: "New Zealand", 
@@ -193,7 +193,7 @@ db.fixtures.insert([
   }
 },
 {
-  date: 2017-07-08,
+  date: new Date("2017-07-08T08:35:00-00:00"),
   matchNumber: 10,
   kickOffTime: "8:35",
   homeTeamName: "New Zealand", 

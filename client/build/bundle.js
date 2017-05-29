@@ -198,9 +198,9 @@ UI.prototype = {
       var spanTime = document.createElement('p');
         spanTime.setAttribute("id", "time");
 
-        spanDate.textContent = "Date: " + fixture.date;
+        spanDate.textContent = "Date: " + fixture.date.slice(0,10);
         spanArena.textContent = "At " + fixture.stadium.name + ", in " + fixture.stadium.location;
-        spanTime.textContent = "Kick off: " + fixture.kickOffTime;
+        spanTime.textContent = "Kick off: " + fixture.date.slice(11,16) + " (BST)";
 
         // Buttons
       var buttonTeam = document.createElement('button');
