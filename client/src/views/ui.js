@@ -91,7 +91,6 @@ UI.prototype = {
       var awayPoints = document.createElement('span')
       var homePoints = document.createElement('span')
       var dash = document.createElement('span')
-      // var newLine = document.createElement('br')
 
         awayPoints.setAttribute("id", "away-points");
         homePoints.setAttribute("id", "home-points");
@@ -100,6 +99,18 @@ UI.prototype = {
         awayPoints.textContent = fixture.result.awayTeamPoints;
         homePoints.textContent = fixture.result.homeTeamPoints;
         dash.textContent = " - ";
+
+        //Team A / B display
+
+    var spanHomeTeamName = document.createElement('span');
+      spanHomeTeamName.setAttribute("id", "home-team-name");
+    
+    var spanAwayTeamName = document.createElement('span');
+      spanAwayTeamName.setAttribute("id", "away-team-name");
+
+      spanHomeTeamName.textContent = fixture.homeTeamName;
+      spanAwayTeamName.textContent = fixture.awayTeamName;
+
 
 
 
@@ -123,11 +134,12 @@ UI.prototype = {
       var spanTime = document.createElement('p');
         spanTime.setAttribute("id", "time");
 
+
         spanDate.textContent = "Date: " + fixture.date.slice(0,10);
         spanArena.textContent = "At " + fixture.stadium.name + ", in " + fixture.stadium.location;
         spanTime.textContent = "Kick off: " + fixture.date.slice(11,16) + " (BST)";
 
-    
+        
         
         var _second = 1000;
         var _minute = _second * 60;
@@ -149,6 +161,9 @@ UI.prototype = {
           var minutes = Math.floor((distance % _hour) / _minute);
           var seconds = Math.floor((distance % _minute) / _second);
           console.log(days + 'days ' + hours + 'hrs ' + minutes + 'mins ' + seconds + 'secs');
+          timeToKickOff = days + 'days ' + hours + 'hrs ' + minutes + 'mins ' + seconds + 'secs'
+
+
         }
 
         timer = setInterval(showRemaining, 1000);
@@ -185,11 +200,11 @@ UI.prototype = {
       div_game.appendChild(spanVS);
       div_game.appendChild(spanAwayTeam);
 
-      
+      scoreWrapper.appendChild(spanHomeTeamName);
       scoreWrapper.appendChild(awayPoints);
       scoreWrapper.appendChild(dash);
       scoreWrapper.appendChild(homePoints);
-      
+      scoreWrapper.appendChild(spanAwayTeamName);
 
       teamWrapper.appendChild(div_game);
       teamWrapper.appendChild(scoreWrapper);
@@ -206,7 +221,6 @@ UI.prototype = {
       div_details.appendChild(spanArena);
       div_details.appendChild(spanTime);
 
-      
       div_info.appendChild(div_seperator);
       div_info.appendChild(div_stadium);
       div_info.appendChild(div_details);
