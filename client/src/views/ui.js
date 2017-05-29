@@ -94,6 +94,34 @@ UI.prototype = {
         spanArena.textContent = "At " + fixture.stadium.name + ", in " + fixture.stadium.location;
         spanTime.textContent = "Kick off: " + fixture.date.slice(11,16) + " (BST)";
 
+    
+        
+        var _second = 1000;
+        var _minute = _second * 60;
+        var _hour = _minute * 60;
+        var _day = _hour * 24;
+        var timer;
+
+        function showRemaining() {
+          var kickOffMs = Date.parse(fixture.date)
+          var distance = (kickOffMs - Date.now())
+
+          if (distance < 0) {
+            clearInterval(timer);
+            console.log("EXPIRED!");
+            return;
+          }
+          var days = Math.floor(distance / _day);
+          var hours = Math.floor((distance % _day) / _hour);
+          var minutes = Math.floor((distance % _hour) / _minute);
+          var seconds = Math.floor((distance % _minute) / _second);
+          console.log(days + 'days ' + hours + 'hrs ' + minutes + 'mins ' + seconds + 'secs');
+        }
+
+        timer = setInterval(showRemaining, 1000);
+
+
+
         // Buttons
       var buttonTeam = document.createElement('button');
         buttonTeam.setAttribute("id", "team-button");
