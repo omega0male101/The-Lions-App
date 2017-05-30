@@ -39,7 +39,7 @@ UI.prototype = {
 
       this.addMapMarker(fixture, String(index + 1));
 
-      this.addMapInfoWindow(index, "bla bla bla");
+      this.addMapInfoWindow(index, fixture);
 
       // Declaring elements
       var div_info = document.createElement('div');
@@ -517,8 +517,8 @@ UI.prototype = {
     this.mainMap.addMarker(fixture.stadium.latLng, labelIndex);
   },
 
-  addMapInfoWindow: function(index, textToAdd){
-    this.mainMap.addInfoWindow(index, "bla bla bla")
+  addMapInfoWindow: function(index, fixture){
+    this.mainMap.addInfoWindow(index, fixture.stadium.location + "<br >" + fixture.homeTeamName + " vs. " + fixture.awayTeamName + "<br >" + fixture.date.slice(0,10))
   }
 }
 
