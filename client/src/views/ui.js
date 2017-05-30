@@ -175,7 +175,7 @@ UI.prototype = {
          divDay.innerText = days + " DAYS"
          divHour.innerText = hours + " HOURS"
          divMinute.innerText = minutes + " MINUTES"
-         divSecond.innerText = seconds + " s";
+         divSecond.innerText = seconds + " SECS";
 
         if (distance2 < 0) {
             clearInterval(newCountDownTimer);
