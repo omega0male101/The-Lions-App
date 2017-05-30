@@ -43,6 +43,7 @@ h1 {
   justify-content: center;
   width: 100%;
   flex-direction: column;
+  font-family: 'Lato', sans-serif;
 }
 
   #fixture-game{
@@ -213,32 +214,33 @@ h1 {
     font-size:16px;*/
   }
   .weather-image{
-    align-content: right;
-    flex-direction: column;
+    padding-left:30em;
   }
 
     #weather-text0, #weather-text1, #weather-text2, #weather-text3, #weather-text4, #weather-text5, #weather-text6, #weather-text7, #weather-text8, #weather-text9{
-
+      padding-left:3.3em;
+      position: relative;
+      top: -25px;
     }
 
     #weather-text-top{
     position:  relative;
-    top: -40px;
+    top: -31px;
   }
   #weather-text-bottom{
 
     position: relative;
     font-size: 1.7em;
-    top: -35px;
-    padding-left:5px;
+    top: -27px;
+    padding-left:11px;
   }
 
   #buttons-div0, #buttons-div1, #buttons-div2, #buttons-div3, #buttons-div4, #buttons-div5, #buttons-div6, #buttons-div7, #buttons-div8, #buttons-div9{
     background-color: #96968E;
-
     display: none;
-    /*background-color: yellow;*/
-    /*text-align: center;*/
+    align-items: center;
+    justify-content: center;
+    width: 100%;
   }
 
   /*Counter Boxes*/

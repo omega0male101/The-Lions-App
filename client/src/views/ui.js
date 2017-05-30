@@ -294,6 +294,7 @@ UI.prototype = {
       div_countdown.appendChild(divHour);
       div_countdown.appendChild(divMinute);
       div_countdown.appendChild(divSecond);
+      
 
       div_details.appendChild(monthDate);
       div_details.appendChild(spanArena);
@@ -309,10 +310,9 @@ UI.prototype = {
       div_full_wrap.appendChild(div_stadium);
       div_full_wrap.appendChild(div_container_main_details);
 
-      div_buttons.appendChild(buttonHomeTeam);
-      div_buttons.appendChild(buttonTeam);
-      div_buttons.appendChild(buttonTicket);
-
+        div_buttons.appendChild(buttonHomeTeam);
+        div_buttons.appendChild(buttonTeam);
+        div_buttons.appendChild(buttonTicket);
       div_info.appendChild(div_full_wrap);
       
 
