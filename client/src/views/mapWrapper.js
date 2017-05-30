@@ -183,16 +183,16 @@ MapWrapper.prototype = {
       label: index
     });
     this.markers.push(marker);
+  },
+  addInfoWindow: function(index, info){
+    var marker = this.markers[index]
+    var infowindow = new google.maps.InfoWindow({
+        content: info
+      });
+    marker.addListener("click", function(){
+      infowindow.open(this.googleMap, marker)
+    }.bind(this))
   }
-  // addInfoToWindow: function(index, info){
-  //   var marker = this.markers[index]
-  //   var infowindow = new google.maps.InfoWindow({
-  //       content: info
-  //     });
-  //   marker.addListener("click", function(){
-  //     infowindow.open(this.googleMap, marker)
-  //   }.bind(this))
-  // },
   // addClickEvent: function(){
   //   google.maps.event.addListener(this.googleMap, "click", function(event){
   //     var position = {

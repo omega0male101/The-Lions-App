@@ -38,7 +38,8 @@ UI.prototype = {
       
 
       this.addMapMarker(fixture, String(index + 1));
-      
+
+      this.addMapInfoWindow(index, "bla bla bla");
 
       // Declaring elements
       var div_info = document.createElement('div');
@@ -514,6 +515,10 @@ UI.prototype = {
 
   addMapMarker: function(fixture, labelIndex){
     this.mainMap.addMarker(fixture.stadium.latLng, labelIndex);
+  },
+
+  addMapInfoWindow: function(index, textToAdd){
+    this.mainMap.addInfoWindow(index, "bla bla bla")
   }
 }
 
