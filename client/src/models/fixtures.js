@@ -27,6 +27,9 @@ Fixtures.prototype = {
   addMatches: function(newFixture, callback){
     var fixtureData = JSON.stringify(newFixture);
     this.requestHelper.makePostRequest("http://localhost:3000/api/myMatches", callback, fixtureData);
+  },
+  deleteMatch: function(toDelete, callback){
+    this.requestHelper.makeDeleteRequest("http://localhost:3000/api/myMatches", callback);
   }
 };
 

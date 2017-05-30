@@ -25,7 +25,18 @@ MyMatchesQuery.prototype = {
         })
       }
     })
-  }
+  },
+  delete: function(fixtureToDelete, onQueryFinished){
+    MongoClient.connect(this.url, function(err, db){
+      if(db){
+        var collection = db.collection("favourites");
+        collection.remove({matchNumber: fixtureToDelete});
+        collection.find().toArray(function(err,docs){
+          onQueryFinished(docs);
+        })
+      }
+  })
+}
 }
 
 module.exports = MyMatchesQuery;

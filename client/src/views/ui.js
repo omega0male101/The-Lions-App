@@ -43,7 +43,6 @@ UI.prototype = {
     // var labelIndex = 1;
     // for (var fixture of fixtures) {
       fixtures.forEach(function (fixture, index) {
-        console.log(fixture)
       url = "http://api.openweathermap.org/data/2.5/weather?lat=" + fixture.stadium.latLng.lat + "&lon=" + fixture.stadium.latLng.lng + "&appid=d1da5efdf6bd32c103ff303597e79de2";
       
 
@@ -175,7 +174,6 @@ UI.prototype = {
 
           if (distance < 0) {
             clearInterval(timer);
-            console.log("EXPIRED!");
             return;
           }
           var days = Math.floor(distance / _day);
@@ -243,13 +241,11 @@ UI.prototype = {
         buttonFav.setAttribute("class", "favourite-button");
         buttonFav.setAttribute("id", index);
         buttonFav.innerText = "Add to My Matches"
-        buttonFav.addEventListener("click", function(){
+        buttonFav.onclick = function(){
           this.requestHelper.makeRequest("http://localhost:3000/api/fixtures/" + event.srcElement.id, function(result){
             this.fixtures.addMatches(result, this.renderFavourites.bind(this))
           }.bind(this));
-          
-          // this.renderFavourites(event.srcElement.id);
-        }.bind(this))
+        }.bind(this)
 
         // Horizontal Line
       var line = document.createElement('hr');
@@ -351,7 +347,10 @@ UI.prototype = {
       this.render(results);
       favouriteButtons = document.getElementsByClassName("favourite-button");
       Array.prototype.forEach.call(favouriteButtons, function(button){
-        button.innerText = "Delete from my Matches"
+        button.innerText = "Delete from Favourites"
+        button.onclick = function(){
+          console.log("hello")
+        }
       });
 
 

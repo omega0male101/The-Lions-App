@@ -14,9 +14,13 @@ myMatchesRouter.get('/', function(req, res){
   });
 });
 
+//delete fixture
+myMatchesRouter.delete('/:id', function(req, res){
+  query.delete(matchNumber);
+})
+
 //add new fixture
 myMatchesRouter.post('/', function(req, res){
-  console.log(req.body)
   var fixture = {
     date: req.body.date,
     matchNumber: req.body.matchNumber,
@@ -38,7 +42,6 @@ myMatchesRouter.post('/', function(req, res){
       awayTeamPoints: req.body.result.awayTeamPoints
     }
   }
-  console.log(fixture)
   query.add(fixture, function(fixtures){
     res.json(fixtures)
   })
