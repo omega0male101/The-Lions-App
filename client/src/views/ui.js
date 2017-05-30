@@ -150,72 +150,18 @@ UI.prototype = {
 
         spanArena.textContent = "Playing at " + fixture.stadium.name + ", in " + fixture.stadium.location + ".";
         // spanTime.textContent = "Kick off: " + fixture.date.slice(11,16) + " (BST)";
-
-      
         
-        var _second = 1000;
-        var _minute = _second * 60;
-        var _hour = _minute * 60;
-        var _day = _hour * 24;
-        var timer;
-
-        function getTimeToKickOff() {
-          var kickOffMs = Date.parse(fixture.date)
-          var distance = (kickOffMs - Date.now())
-
-          if (distance < 0) {
-            clearInterval(timer);
-            console.log("Game over man, GAME OVER!");
-            return;
-          }
-          var days = Math.floor(distance / _day);
-          var hours = Math.floor((distance % _day) / _hour);
-          var minutes = Math.floor((distance % _hour) / _minute);
-          var seconds = Math.floor((distance % _minute) / _second);
-
-          // console.log(days + 'days ' + hours + 'hrs ' + minutes + 'mins ' + seconds + 'secs');
-          
-          var timeToKickOff = {}
-          timeToKickOff.days = days
-          timeToKickOff.hours = hours
-          timeToKickOff.minutes = minutes
-          timeToKickOff.seconds = seconds
-
-          // console.log(seconds)
-
-          return timeToKickOff
-
-
-        }
-
-        timer = setInterval(getTimeToKickOff, 1000);
-
-        // Countdown to game..
-      // var countdown = document.createElement('span')
-      //   countdown.setAttribute("id", "countdown-timer")
-      //   countdown.textContent = "Days: " + getTimeToKickOff().days
-
-          //Counter Boxes
-        var divDay = document.createElement('div');
-            divDay.setAttribute("class", "counter")
-            divDay.textContent = getTimeToKickOff().days + " DAYS"
-        var divHour = document.createElement('div');
-            divHour.setAttribute("class", "counter")
-            divHour.textContent = getTimeToKickOff().hours + " HOURS"
-        var divMinute = document.createElement('div');
-            divMinute.setAttribute("class", "counter")
-            divMinute.textContent = getTimeToKickOff().minutes + " MINUTES"
-        var divSecond = document.createElement('div');
-            divSecond.setAttribute("class", "counter")
-            divSecond.textContent = getTimeToKickOff().seconds + " s";
-        
-
 
 // NEW COUNTDOWN TIMER
 
-var divNewCountdown = document.createElement('div');
-divNewCountdown.setAttribute("class", "newCounter")
-divNewCountdown.innerText = "bla bla bla"
+var divDay = document.createElement('div');
+    divDay.setAttribute("class", "counter")
+var divHour = document.createElement('div');
+    divHour.setAttribute("class", "counter")
+var divMinute = document.createElement('div');
+    divMinute.setAttribute("class", "counter")
+var divSecond = document.createElement('div');
+    divSecond.setAttribute("class", "counter")
 
 
 var newCountDownTimer = setInterval(function(){
@@ -230,12 +176,12 @@ var newCountDownTimer = setInterval(function(){
   var seconds = Math.floor((distance2 % (1000 * 60)) / 1000);
 
 
-   document.getElementById("demo").innerHTML = days + "d "
-   document.getElementById("demo2").innerHTML = hours + "h "
-   document.getElementById("demo3").innerHTML = minutes + "m "
-   document.getElementById("demo4").innerHTML = seconds + "s ";
+   divDay.innerText = days + " DAYS"
+   divHour.innerText = hours + " HOURS"
+   divMinute.innerText = minutes + " MINUTES"
+   divSecond.innerText = seconds + " s";
 
-   divNewCountdown.innerText = seconds + "s ";
+
 
 
   if (distance2 < 0) {
@@ -321,7 +267,6 @@ var newCountDownTimer = setInterval(function(){
       div_container_main_details.appendChild(div_container_top_two);
       div_container_main_details.appendChild(div_weather);
 
-      div_container_main_details.appendChild(divNewCountdown);
 
 
       div_full_wrap.appendChild(div_stadium);
