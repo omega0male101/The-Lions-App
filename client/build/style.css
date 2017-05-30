@@ -1,20 +1,5 @@
 /*/*DROP LIST DOWN*/
-.collapse{
-  cursor: pointer;
-  display: block;
-  transition-timing-function: ease-in;
-  text-align: center;
-}
-.collapse + input{
-  display: none;  hide the checkboxes 
-}
-.collapse + input + #info-div{
-  display:none;
-}
-.collapse + input:checked + #info-div{
-  display:block;
-  transition-timing-function: ease-in;
-}*/
+
 /*end of dropdown..*/
 
 
@@ -37,7 +22,7 @@ body {
 #fixtures-element {
   border-style: solid;
   border-width: 1px;
-  margin: 3px;
+  margin: 6px;
   background-color: #5d6066;
 }
 
@@ -101,7 +86,7 @@ body {
      padding-top: 0.2em;
      font-family: 'Cantarell', sans-serif;
      text-align: center;
-
+     /*background-color: green;*/
     }
   
     #VS {
@@ -124,12 +109,15 @@ body {
       text-align: center;
     }
 
-#info-div{
+#info-div0, #info-div1, #info-div2, #info-div3, #info-div4, #info-div5, #info-div6, #info-div7, #info-div8, #info-div9{
   margin-top: 0.6em;
   font-family: 'Raleway', sans-serif;
   font-size:20px;
   background-color: #898a8c;
-  display: flex;
+
+
+  /*display: flex;*/
+  display: none;
 }
   #seperator-div{
     height: 20px;
@@ -222,7 +210,10 @@ body {
       padding: 0px;
     }*/
 
-  #buttons-div{
+  #buttons-div0, #buttons-div1, #buttons-div2, #buttons-div3, #buttons-div4, #buttons-div5, #buttons-div6, #buttons-div7, #buttons-div8, #buttons-div9{
+    background-color: #898a8c;
+
+    display: none;
     /*background-color: yellow;*/
     /*text-align: center;*/
   }

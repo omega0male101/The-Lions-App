@@ -41,21 +41,30 @@ UI.prototype = {
       
 
       // Declaring elements
+      var div_info = document.createElement('div');
+        div_info.setAttribute("id", "info-div" + index);
+
+      var div_buttons = document.createElement('div');
+        div_buttons.setAttribute("id", "buttons-div" + index);
+
+      
+
+
+
+
       var div_game = document.createElement('div');
         div_game.setAttribute("id", "fixture-game");
       var div_element = document.createElement('div');
         div_element.setAttribute("id", "fixtures-element");
-      var div_info = document.createElement('div');
-        div_info.setAttribute("id", "info-div");
+    
       
       var div_stadium = document.createElement('div');
         div_stadium.setAttribute("id", "stadium-div");
+
       var div_details = document.createElement('div');
         div_details.setAttribute("id", "details-div");
       var div_weather = document.createElement('div');
         div_weather.setAttribute("id", "weather-div");
-      var div_buttons = document.createElement('div');
-        div_buttons.setAttribute("id", "buttons-div");
 
       var div_countdown = document.createElement('div');
         div_countdown.setAttribute("id", "countdown-div");
@@ -193,16 +202,20 @@ UI.prototype = {
           //Counter Boxes
         var divDay = document.createElement('div');
             divDay.setAttribute("class", "counter")
+
             divDay.textContent = getTimeToKickOff().days + " DAYS"
         var divHour = document.createElement('div');
             divHour.setAttribute("class", "counter")
+
             divHour.textContent = getTimeToKickOff().hours + " HOURS"
         var divMinute = document.createElement('div');
             divMinute.setAttribute("class", "counter")
             divMinute.textContent = getTimeToKickOff().minutes + " MINUTES"
+         
         var divSecond = document.createElement('div');
             divSecond.setAttribute("class", "counter")
             divSecond.textContent = getTimeToKickOff().seconds + " s";
+
         
 
 
@@ -231,19 +244,73 @@ UI.prototype = {
       var buttonFav = document.createElement('button');
         buttonFav.setAttribute("id", "favourite-button");
 
-     
 
-        //Expandble List
-      // var label = document.createElement('label');
-      //   label.setAttribute("class", "collapse");
-      //   label.innerText = "click for more details.."
-      //   label.htmlFor = "_1";
+      //Create Button to expand and contract
 
-      // var input = document.createElement('input');
-      //   input.setAttribute("id", "_1");
-      //   input.type = "checkbox";
-      
-        
+      var expanderMain = document.createElement("img");
+        expanderMain.setAttribute("class", "expander-main"+ index);
+        expanderMain.setAttribute("id", "expander-main"+ index);
+      var contractorMain = document.createElement("img");
+        contractorMain.setAttribute("class", "contractor-main"+ index);
+        contractorMain.setAttribute("id", "contractor-main"+ index);
+
+        expanderMain.setAttribute("height", "10px")
+        expanderMain.setAttribute("width", "10px")
+        expanderMain.setAttribute("align-content", "right")
+        expanderMain.setAttribute("src", "https://image.flaticon.com/icons/png/512/60/60781.png")
+        contractorMain.setAttribute("height", "10px")
+        contractorMain.setAttribute("width", "10px")
+        contractorMain.setAttribute("src", "https://image.flaticon.com/icons/svg/60/60799.svg")
+        contractorMain.style.display = 'none';
+
+
+      expanderMain.addEventListener("click", function(event){
+        parent = event.srcElement.parentElement;
+        parent.childNodes.forEach(function(child){
+          infoDiv = document.getElementById("info-div" + index);
+            expanderOpen = document.getElementById("expander-main" + index);
+            expanderOpen.style.display = "none";
+          infoDiv.style.display = "flex";
+          buttonsDiv = document.getElementById("buttons-div" + index);
+            contractorClose = document.getElementById("contractor-main" + index);
+            contractorClose.style.display = "block";
+          buttonsDiv.style.display = "flex";
+          
+        })
+       
+      })
+
+      contractorMain.addEventListener("click", function(event){
+
+        parent = event.srcElement.parentElement;
+        parent.childNodes.forEach(function(child){
+
+          expanderOpen = document.getElementById("expander-main"+ index);
+          expanderOpen.style.display = "block";
+          contractorClose = document.getElementById("contractor-main"+ index);
+          contractorClose.style.display = "none";
+
+          infoDiv = document.getElementById("info-div"+ index);
+          infoDiv.style.display = "none";
+          buttonsDiv = document.getElementById("buttons-div"+ index);
+          buttonsDiv.style.display = "none";
+
+
+            })
+           
+          })
+
+
+      //   parent = event.srcElement.parentElement;
+      //   parent.childNodes.forEach(function(child){
+      //     child.style.display = 'none';
+      //   })
+      //   parent.childNodes[0].style.display = "block"
+      //   parent.childNodes[1].style.display = "block"
+      //   parent.childNodes[7].childNodes[0].style.display = 'none';
+      //   parent.childNodes[8].style.display = "";
+      // })
+          
     // Append all elements to body of the list item
       div_game.appendChild(spanHomeTeam);
       div_game.appendChild(spanVS);
@@ -257,12 +324,12 @@ UI.prototype = {
 
       teamWrapper.appendChild(div_game);
       teamWrapper.appendChild(scoreWrapper);
+      teamWrapper.appendChild(expanderMain);
+      teamWrapper.appendChild(contractorMain);
 
       div_stadium.appendChild(stadiumPic)
       div_weather.appendChild(weather);
 
-
-      // div_countdown.appendChild(countdown);
       div_countdown.appendChild(divDay);
       div_countdown.appendChild(divHour);
       div_countdown.appendChild(divMinute);
