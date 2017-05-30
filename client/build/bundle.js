@@ -273,7 +273,7 @@ UI.prototype = {
 
           if (distance < 0) {
             clearInterval(timer);
-            console.log("EXPIRED!");
+            console.log("Game over man, GAME OVER!");
             return;
           }
           var days = Math.floor(distance / _day);
@@ -289,11 +289,15 @@ UI.prototype = {
           timeToKickOff.minutes = minutes
           timeToKickOff.seconds = seconds
 
+          // console.log(seconds)
+
           return timeToKickOff
+
+
         }
 
         timer = setInterval(getTimeToKickOff, 1000);
-        
+
         // Countdown to game..
       // var countdown = document.createElement('span')
       //   countdown.setAttribute("id", "countdown-timer")
@@ -313,6 +317,43 @@ UI.prototype = {
             divSecond.setAttribute("class", "counter")
             divSecond.textContent = getTimeToKickOff().seconds + " s";
         
+
+
+// NEW COUNTDOWN TIMER
+
+var divNewCountdown = document.createElement('div');
+divNewCountdown.setAttribute("class", "newCounter")
+divNewCountdown.innerText = "bla bla bla"
+
+
+var newCountDownTimer = setInterval(function(){
+
+  var kickOffMs2 = Date.parse(fixture.date)
+
+  var distance2 = (kickOffMs2 - Date.now())
+
+  var days = Math.floor(distance2 / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance2 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance2 % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance2 % (1000 * 60)) / 1000);
+
+
+   document.getElementById("demo").innerHTML = days + "d "
+   document.getElementById("demo2").innerHTML = hours + "h "
+   document.getElementById("demo3").innerHTML = minutes + "m "
+   document.getElementById("demo4").innerHTML = seconds + "s ";
+
+   divNewCountdown.innerText = seconds + "s ";
+
+
+  if (distance2 < 0) {
+      clearInterval(x);
+      document.getElementById("demo").innerHTML = "Game over man!";
+    }
+
+}, 1000)
+
+
 
 
 
@@ -378,6 +419,7 @@ UI.prototype = {
       div_countdown.appendChild(divHour);
       div_countdown.appendChild(divMinute);
       div_countdown.appendChild(divSecond);
+
       div_details.appendChild(monthDate);
       div_details.appendChild(spanArena);
 
@@ -386,6 +428,9 @@ UI.prototype = {
 
       div_container_main_details.appendChild(div_container_top_two);
       div_container_main_details.appendChild(div_weather);
+
+      div_container_main_details.appendChild(divNewCountdown);
+
 
       div_full_wrap.appendChild(div_stadium);
       div_full_wrap.appendChild(div_container_main_details);
@@ -551,7 +596,7 @@ UI.prototype = {
   populateWeather: function(location, weatherSpan){
     // var span = document.getElementById('weather-text' + labelIndex);
 
-    console.log(weatherSpan)
+    // console.log(weatherSpan)
     var p2 = document.createElement('span')
     p2.innerText = " with a chance of " + location.weather[0].main;
     p2.setAttribute("id", "weather-text-top");
