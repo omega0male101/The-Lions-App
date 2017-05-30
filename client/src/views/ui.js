@@ -47,8 +47,7 @@ UI.prototype = {
         div_element.setAttribute("id", "fixtures-element");
       var div_info = document.createElement('div');
         div_info.setAttribute("id", "info-div");
-      var div_seperator = document.createElement('div');
-        div_seperator.setAttribute("id", "seperator-div");
+      
       var div_stadium = document.createElement('div');
         div_stadium.setAttribute("id", "stadium-div");
       var div_details = document.createElement('div');
@@ -232,9 +231,7 @@ UI.prototype = {
       var buttonFav = document.createElement('button');
         buttonFav.setAttribute("id", "favourite-button");
 
-        // Horizontal Line
-      var line = document.createElement('hr');
-        div_seperator.appendChild(line);
+     
 
         //Expandble List
       // var label = document.createElement('label');
@@ -287,14 +284,15 @@ UI.prototype = {
       div_buttons.appendChild(buttonTicket);
       div_buttons.appendChild(buttonFav);
 
-      div_info.appendChild(div_seperator);
+
       div_info.appendChild(div_full_wrap);
-      div_info.appendChild(div_buttons);
+      
 
       div_element.appendChild(teamWrapper);
       // div_element.appendChild(label);
       // div_element.appendChild(input);
       div_element.appendChild(div_info);
+      div_element.appendChild(div_buttons);
 
       container.appendChild(div_element);
 
