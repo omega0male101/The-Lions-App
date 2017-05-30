@@ -172,7 +172,7 @@ UI.prototype = {
           var hours = Math.floor((distance % _day) / _hour);
           var minutes = Math.floor((distance % _hour) / _minute);
           var seconds = Math.floor((distance % _minute) / _second);
-<<<<<<< HEAD
+
           // console.log(days + 'days ' + hours + 'hrs ' + minutes + 'mins ' + seconds + 'secs');
           
           var timeToKickOff = {}
@@ -203,16 +203,9 @@ UI.prototype = {
             divMinute.textContent = getTimeToKickOff().minutes + " MINUTES"
         var divSecond = document.createElement('div');
             divSecond.setAttribute("class", "counter")
-            divSecond.textContent = getTimeToKickOff().seconds + " s"
-=======
-          timeToKickOff = days + 'days ' + hours + 'hrs ' + minutes + 'mins ' + seconds + 'secs'
+            divSecond.textContent = getTimeToKickOff().seconds + " s";
+        
 
-
-        }
-
-        timer = setInterval(showRemaining, 10000);
-
->>>>>>> develop
 
 
         // Buttons
@@ -449,17 +442,11 @@ UI.prototype = {
 
   populateWeather: function(location, weatherSpan){
     // var span = document.getElementById('weather-text' + labelIndex);
-<<<<<<< HEAD
+
     console.log(weatherSpan)
     var p2 = document.createElement('span')
     p2.innerText = " with a chance of " + location.weather[0].main;
     p2.setAttribute("id", "weather-text-top");
-=======
-    var p = document.createElement('span')
-    p.innerText = "Weather type: " + location.weather[0].main;
-    p.setAttribute("id", "weather-text-top");
->>>>>>> develop
-
 
     var p = document.createElement('span')
     var tempCelsius = Math.round((location.main.temp - 273.15))
