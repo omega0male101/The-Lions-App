@@ -151,29 +151,18 @@ UI.prototype = {
       // Declaring elements
       var div_info = document.createElement('div');
         div_info.setAttribute("id", "info-div" + index);
-
       var div_buttons = document.createElement('div');
         div_buttons.setAttribute("id", "buttons-div" + index);
-
-      
-
-
-
-
       var div_game = document.createElement('div');
         div_game.setAttribute("id", "fixture-game");
       var div_element = document.createElement('div');
         div_element.setAttribute("id", "fixtures-element");
-    
-      
       var div_stadium = document.createElement('div');
         div_stadium.setAttribute("id", "stadium-div");
-
       var div_details = document.createElement('div');
         div_details.setAttribute("id", "details-div");
       var div_weather = document.createElement('div');
         div_weather.setAttribute("id", "weather-div");
-
       var div_countdown = document.createElement('div');
         div_countdown.setAttribute("id", "countdown-div");
       var div_container_main_details = document.createElement('div');
@@ -241,6 +230,7 @@ UI.prototype = {
       var weather = document.createElement('span');
         weather.setAttribute("id", "weather-text" + index);
 
+
         // Details (Date, Arena, Timezone)
       var monthDate = document.createElement('p');
         monthDate.setAttribute("id", "date");
@@ -262,7 +252,7 @@ UI.prototype = {
             }
         } 
 
-        monthDate.textContent = "Game commences on the " + newDate.getDate() + nth(newDate.getDate()) + " of " + monthNames[newDate.getMonth()] + " at " + fixture.date.slice(11,16) + " (BST)";
+        monthDate.textContent = "" + newDate.getDate() + nth(newDate.getDate()) + " of " + monthNames[newDate.getMonth()] + " - " + fixture.date.slice(11,16) + " (BST)";
 
         spanArena.textContent = "Playing at " + fixture.stadium.name + ", in " + fixture.stadium.location + ".";
         // spanTime.textContent = "Kick off: " + fixture.date.slice(11,16) + " (BST)";
@@ -279,7 +269,6 @@ UI.prototype = {
       var divSecond = document.createElement('div');
           divSecond.setAttribute("class", "counter")
 
-
       var newCountDownTimer = setInterval(function(){
 
         var kickOffMs2 = Date.parse(fixture.date)
@@ -291,14 +280,10 @@ UI.prototype = {
         var minutes = Math.floor((distance2 % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance2 % (1000 * 60)) / 1000);
 
-
          divDay.innerText = days + " DAYS"
          divHour.innerText = hours + " HOURS"
          divMinute.innerText = minutes + " MINUTES"
          divSecond.innerText = seconds + " s";
-
-
-
 
         if (distance2 < 0) {
             clearInterval(newCountDownTimer);
@@ -333,10 +318,10 @@ UI.prototype = {
           buttonTeam.addEventListener("click", function(){
             this.renderTeam(0);
           }.bind(this))
-      var buttonTicket = document.createElement('button');
+      var buttonTicket = document.createElement('a');
         buttonTicket.setAttribute("id", "ticket-button");
-      var buttonFav = document.createElement('button');
-        buttonFav.setAttribute("id", "favourite-button");
+        buttonTicket.setAttribute("href", "https://www.viagogo.co.uk/Sports-Tickets/Rugby-Union/British-and-Irish-Lions-Tour-Tickets?AffiliateID=49&adposition=1t1&PCID=PSGBGOOSPOBRITIBBD9BF6920-000000&AdID=190438821763&MetroRegionID=&psc=&psc=&ps=&ps=&ps_p=0&ps_c=800200696&ps_ag=44193728529&ps_tg=kwd-12628952&ps_ad=190438821763&ps_adp=1t1&ps_fi=&ps_fi=&ps_li=&ps_li=&ps_lp=9046888&ps_n=g&ps_d=c&gclid=CjwKEAjwsLTJBRCvibaW9bGLtUESJAC4wKw1nuVPhR727H3_ezuQFFH0tWwPXyiiESBT4sLVpudCNRoCAYvw_wcB");
+        buttonTicket.innerText = "Find Tickets";
 
 
       //Create Button to expand and contract
@@ -348,12 +333,12 @@ UI.prototype = {
         contractorMain.setAttribute("class", "contractor-main"+ index);
         contractorMain.setAttribute("id", "contractor-main"+ index);
 
-        expanderMain.setAttribute("height", "10px")
-        expanderMain.setAttribute("width", "10px")
+        expanderMain.setAttribute("height", "14px")
+        expanderMain.setAttribute("width", "14px")
         expanderMain.setAttribute("align-content", "right")
         expanderMain.setAttribute("src", "https://image.flaticon.com/icons/png/512/60/60781.png")
-        contractorMain.setAttribute("height", "10px")
-        contractorMain.setAttribute("width", "10px")
+        contractorMain.setAttribute("height", "14px")
+        contractorMain.setAttribute("width", "14px")
         contractorMain.setAttribute("src", "https://image.flaticon.com/icons/svg/60/60799.svg")
         contractorMain.style.display = 'none';
 
@@ -388,22 +373,11 @@ UI.prototype = {
           infoDiv.style.display = "none";
           buttonsDiv = document.getElementById("buttons-div"+ index);
           buttonsDiv.style.display = "none";
-
-
             })
-           
           })
 
-
-      //   parent = event.srcElement.parentElement;
-      //   parent.childNodes.forEach(function(child){
-      //     child.style.display = 'none';
-      //   })
-      //   parent.childNodes[0].style.display = "block"
-      //   parent.childNodes[1].style.display = "block"
-      //   parent.childNodes[7].childNodes[0].style.display = 'none';
-      //   parent.childNodes[8].style.display = "";
-      // })
+  
+          
           
     // Append all elements to body of the list item
       div_game.appendChild(spanHomeTeam);
@@ -446,15 +420,11 @@ UI.prototype = {
       div_buttons.appendChild(buttonHomeTeam);
       div_buttons.appendChild(buttonTeam);
       div_buttons.appendChild(buttonTicket);
-      div_buttons.appendChild(buttonFav);
-
 
       div_info.appendChild(div_full_wrap);
       
 
       div_element.appendChild(teamWrapper);
-      // div_element.appendChild(label);
-      // div_element.appendChild(input);
       div_element.appendChild(div_info);
       div_element.appendChild(div_buttons);
 
@@ -602,18 +572,25 @@ UI.prototype = {
     })
   },
 
-  populateWeather: function(location, weatherSpan){
-    // var span = document.getElementById('weather-text' + labelIndex);
 
-    // console.log(weatherSpan)
+
+  populateWeather: function(location, weatherSpan){
     var p2 = document.createElement('span')
     p2.innerText = " with a chance of " + location.weather[0].main;
     p2.setAttribute("id", "weather-text-top");
 
     var p = document.createElement('span')
     var tempCelsius = Math.round((location.main.temp - 273.15))
-    p.innerText = tempCelsius + "° "
+    p.innerText = tempCelsius + "°C "
     p.setAttribute("id", "weather-text-bottom");
+
+    //Weather Picture
+    var weatherImage = document.createElement('img');
+        weatherImage.setAttribute("id", "weather-image");
+        weatherImage.src = "/icons/" + location.weather[0].main + ".png";
+        weatherImage.style.height = "60px";
+        // weatherImage.style.height = "30px";
+    weatherSpan.appendChild(weatherImage);
 
 
     weatherSpan.appendChild(p)
