@@ -518,7 +518,7 @@ UI.prototype = {
   },
 
   addMapInfoWindow: function(index, fixture){
-    this.mainMap.addInfoWindow(index, fixture.stadium.location + "<br >" + fixture.homeTeamName + " vs. " + fixture.awayTeamName + "<br >" + fixture.date.slice(0,10))
+    this.mainMap.addInfoWindow(index, fixture.stadium.location + "<br >" + fixture.homeTeamName + " vs. " + fixture.awayTeamName + "<br >" + fixture.date.slice(0,10) + "<br>" + "<img src=logos/" + fixture.homeTeamName + ".svg>")
   }
 }
 
