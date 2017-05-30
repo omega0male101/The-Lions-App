@@ -149,22 +149,30 @@ UI.prototype = {
       
 
       // Declaring elements
+      var div_info = document.createElement('div');
+        div_info.setAttribute("id", "info-div" + index);
+
+      var div_buttons = document.createElement('div');
+        div_buttons.setAttribute("id", "buttons-div" + index);
+
+      
+
+
+
+
       var div_game = document.createElement('div');
         div_game.setAttribute("id", "fixture-game");
       var div_element = document.createElement('div');
         div_element.setAttribute("id", "fixtures-element");
-      var div_info = document.createElement('div');
-        div_info.setAttribute("id", "info-div");
-      var div_seperator = document.createElement('div');
-        div_seperator.setAttribute("id", "seperator-div");
+    
+      
       var div_stadium = document.createElement('div');
         div_stadium.setAttribute("id", "stadium-div");
+
       var div_details = document.createElement('div');
         div_details.setAttribute("id", "details-div");
       var div_weather = document.createElement('div');
         div_weather.setAttribute("id", "weather-div");
-      var div_buttons = document.createElement('div');
-        div_buttons.setAttribute("id", "buttons-div");
 
       var div_countdown = document.createElement('div');
         div_countdown.setAttribute("id", "countdown-div");
@@ -260,44 +268,47 @@ UI.prototype = {
         // spanTime.textContent = "Kick off: " + fixture.date.slice(11,16) + " (BST)";
         
 
-// NEW COUNTDOWN TIMER
+      // NEW COUNTDOWN TIMER
 
-var divDay = document.createElement('div');
-    divDay.setAttribute("class", "counter")
-var divHour = document.createElement('div');
-    divHour.setAttribute("class", "counter")
-var divMinute = document.createElement('div');
-    divMinute.setAttribute("class", "counter")
-var divSecond = document.createElement('div');
-    divSecond.setAttribute("class", "counter")
-
-
-var newCountDownTimer = setInterval(function(){
-
-  var kickOffMs2 = Date.parse(fixture.date)
-
-  var distance2 = (kickOffMs2 - Date.now())
-
-  var days = Math.floor(distance2 / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance2 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance2 % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance2 % (1000 * 60)) / 1000);
+      var divDay = document.createElement('div');
+          divDay.setAttribute("class", "counter")
+      var divHour = document.createElement('div');
+          divHour.setAttribute("class", "counter")
+      var divMinute = document.createElement('div');
+          divMinute.setAttribute("class", "counter")
+      var divSecond = document.createElement('div');
+          divSecond.setAttribute("class", "counter")
 
 
-   divDay.innerText = days + " DAYS"
-   divHour.innerText = hours + " HOURS"
-   divMinute.innerText = minutes + " MINUTES"
-   divSecond.innerText = seconds + " s";
+      var newCountDownTimer = setInterval(function(){
+
+        var kickOffMs2 = Date.parse(fixture.date)
+
+        var distance2 = (kickOffMs2 - Date.now())
+
+        var days = Math.floor(distance2 / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance2 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance2 % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance2 % (1000 * 60)) / 1000);
+
+
+         divDay.innerText = days + " DAYS"
+         divHour.innerText = hours + " HOURS"
+         divMinute.innerText = minutes + " MINUTES"
+         divSecond.innerText = seconds + " s";
 
 
 
 
-  if (distance2 < 0) {
-      clearInterval(x);
-      document.getElementById("demo").innerHTML = "Game over man!";
-    }
+        if (distance2 < 0) {
+            clearInterval(newCountDownTimer);
+            divDay.innerText = "GAME"
+            divHour.innerText = "OVER"
+            divMinute.innerText = "MAN"
+            divSecond.innerText = "!!!";
+          }
 
-}, 1000)
+      }, 1000)
 
 
 
@@ -327,21 +338,73 @@ var newCountDownTimer = setInterval(function(){
       var buttonFav = document.createElement('button');
         buttonFav.setAttribute("id", "favourite-button");
 
-        // Horizontal Line
-      var line = document.createElement('hr');
-        div_seperator.appendChild(line);
 
-        //Expandble List
-      // var label = document.createElement('label');
-      //   label.setAttribute("class", "collapse");
-      //   label.innerText = "click for more details.."
-      //   label.htmlFor = "_1";
+      //Create Button to expand and contract
 
-      // var input = document.createElement('input');
-      //   input.setAttribute("id", "_1");
-      //   input.type = "checkbox";
-      
-        
+      var expanderMain = document.createElement("img");
+        expanderMain.setAttribute("class", "expander-main"+ index);
+        expanderMain.setAttribute("id", "expander-main"+ index);
+      var contractorMain = document.createElement("img");
+        contractorMain.setAttribute("class", "contractor-main"+ index);
+        contractorMain.setAttribute("id", "contractor-main"+ index);
+
+        expanderMain.setAttribute("height", "10px")
+        expanderMain.setAttribute("width", "10px")
+        expanderMain.setAttribute("align-content", "right")
+        expanderMain.setAttribute("src", "https://image.flaticon.com/icons/png/512/60/60781.png")
+        contractorMain.setAttribute("height", "10px")
+        contractorMain.setAttribute("width", "10px")
+        contractorMain.setAttribute("src", "https://image.flaticon.com/icons/svg/60/60799.svg")
+        contractorMain.style.display = 'none';
+
+
+      expanderMain.addEventListener("click", function(event){
+        parent = event.srcElement.parentElement;
+        parent.childNodes.forEach(function(child){
+          infoDiv = document.getElementById("info-div" + index);
+            expanderOpen = document.getElementById("expander-main" + index);
+            expanderOpen.style.display = "none";
+          infoDiv.style.display = "flex";
+          buttonsDiv = document.getElementById("buttons-div" + index);
+            contractorClose = document.getElementById("contractor-main" + index);
+            contractorClose.style.display = "block";
+          buttonsDiv.style.display = "flex";
+          
+        })
+       
+      })
+
+      contractorMain.addEventListener("click", function(event){
+
+        parent = event.srcElement.parentElement;
+        parent.childNodes.forEach(function(child){
+
+          expanderOpen = document.getElementById("expander-main"+ index);
+          expanderOpen.style.display = "block";
+          contractorClose = document.getElementById("contractor-main"+ index);
+          contractorClose.style.display = "none";
+
+          infoDiv = document.getElementById("info-div"+ index);
+          infoDiv.style.display = "none";
+          buttonsDiv = document.getElementById("buttons-div"+ index);
+          buttonsDiv.style.display = "none";
+
+
+            })
+           
+          })
+
+
+      //   parent = event.srcElement.parentElement;
+      //   parent.childNodes.forEach(function(child){
+      //     child.style.display = 'none';
+      //   })
+      //   parent.childNodes[0].style.display = "block"
+      //   parent.childNodes[1].style.display = "block"
+      //   parent.childNodes[7].childNodes[0].style.display = 'none';
+      //   parent.childNodes[8].style.display = "";
+      // })
+          
     // Append all elements to body of the list item
       div_game.appendChild(spanHomeTeam);
       div_game.appendChild(spanVS);
@@ -355,12 +418,12 @@ var newCountDownTimer = setInterval(function(){
 
       teamWrapper.appendChild(div_game);
       teamWrapper.appendChild(scoreWrapper);
+      teamWrapper.appendChild(expanderMain);
+      teamWrapper.appendChild(contractorMain);
 
       div_stadium.appendChild(stadiumPic)
       div_weather.appendChild(weather);
 
-
-      // div_countdown.appendChild(countdown);
       div_countdown.appendChild(divDay);
       div_countdown.appendChild(divHour);
       div_countdown.appendChild(divMinute);
@@ -385,14 +448,15 @@ var newCountDownTimer = setInterval(function(){
       div_buttons.appendChild(buttonTicket);
       div_buttons.appendChild(buttonFav);
 
-      div_info.appendChild(div_seperator);
+
       div_info.appendChild(div_full_wrap);
-      div_info.appendChild(div_buttons);
+      
 
       div_element.appendChild(teamWrapper);
       // div_element.appendChild(label);
       // div_element.appendChild(input);
       div_element.appendChild(div_info);
+      div_element.appendChild(div_buttons);
 
       container.appendChild(div_element);
 
@@ -635,166 +699,170 @@ var MapWrapper = function(coords, zoom, container){
     zoom: zoom, 
     center: coords,
     styles:
-    // adding styles..
+    //adding style
     [
-      {
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#f5f5f5"
-          }
-        ]
-      },
-      {
-        "elementType": "labels.icon",
-        "stylers": [
-          {
-            "visibility": "off"
-          }
-        ]
-      },
-      {
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#616161"
-          }
-        ]
-      },
-      {
-        "elementType": "labels.text.stroke",
-        "stylers": [
-          {
-            "color": "#f5f5f5"
-          }
-        ]
-      },
-      {
-        "featureType": "administrative.land_parcel",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#bdbdbd"
-          }
-        ]
-      },
-      {
-        "featureType": "poi",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#eeeeee"
-          }
-        ]
-      },
-      {
-        "featureType": "poi",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#757575"
-          }
-        ]
-      },
-      {
-        "featureType": "poi.park",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#e5e5e5"
-          }
-        ]
-      },
-      {
-        "featureType": "poi.park",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#9e9e9e"
-          }
-        ]
-      },
-      {
-        "featureType": "road",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#ffffff"
-          }
-        ]
-      },
-      {
-        "featureType": "road.arterial",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#757575"
-          }
-        ]
-      },
-      {
-        "featureType": "road.highway",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#dadada"
-          }
-        ]
-      },
-      {
-        "featureType": "road.highway",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#616161"
-          }
-        ]
-      },
-      {
-        "featureType": "road.local",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#9e9e9e"
-          }
-        ]
-      },
-      {
-        "featureType": "transit.line",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#e5e5e5"
-          }
-        ]
-      },
-      {
-        "featureType": "transit.station",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#eeeeee"
-          }
-        ]
-      },
-      {
-        "featureType": "water",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#c9c9c9"
-          }
-        ]
-      },
-      {
-        "featureType": "water",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#9e9e9e"
-          }
-        ]
-      }
+        {
+            "featureType": "all",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "color": "#c2c2c2"
+                }
+            ]
+        },
+        {
+            "featureType": "all",
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                    "gamma": 0.01
+                },
+                {
+                    "lightness": 20
+                }
+            ]
+        },
+        {
+            "featureType": "all",
+            "elementType": "labels.text.stroke",
+            "stylers": [
+                {
+                    "saturation": -31
+                },
+                {
+                    "lightness": -33
+                },
+                {
+                    "weight": 2
+                },
+                {
+                    "gamma": 0.8
+                }
+            ]
+        },
+        {
+            "featureType": "all",
+            "elementType": "labels.icon",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "administrative.country",
+            "elementType": "geometry.fill",
+            "stylers": [
+                {
+                    "saturation": "13"
+                }
+            ]
+        },
+        {
+            "featureType": "landscape",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "lightness": 30
+                },
+                {
+                    "saturation": 30
+                }
+            ]
+        },
+        {
+            "featureType": "landscape.man_made",
+            "elementType": "geometry.fill",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "landscape.natural.landcover",
+            "elementType": "geometry.fill",
+            "stylers": [
+                {
+                    "visibility": "on"
+                },
+                {
+                    "color": "#d4828b"
+                }
+            ]
+        },
+        {
+            "featureType": "poi",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "saturation": 20
+                }
+            ]
+        },
+        {
+            "featureType": "poi.park",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "lightness": 20
+                },
+                {
+                    "saturation": -20
+                }
+            ]
+        },
+        {
+            "featureType": "road",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "lightness": 10
+                },
+                {
+                    "saturation": -30
+                }
+            ]
+        },
+        {
+            "featureType": "road",
+            "elementType": "geometry.fill",
+            "stylers": [
+                {
+                    "visibility": "on"
+                },
+                {
+                    "color": "#ff0000"
+                },
+                {
+                    "lightness": "-21"
+                },
+                {
+                    "saturation": "0"
+                }
+            ]
+        },
+        {
+            "featureType": "road",
+            "elementType": "geometry.stroke",
+            "stylers": [
+                {
+                    "saturation": 25
+                },
+                {
+                    "lightness": 25
+                }
+            ]
+        },
+        {
+            "featureType": "water",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "lightness": -20
+                }
+            ]
+        }
     ]
     // end of style..
   });

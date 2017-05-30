@@ -1,26 +1,26 @@
 /*/*DROP LIST DOWN*/
-.collapse{
-  cursor: pointer;
-  display: block;
-  transition-timing-function: ease-in;
-  text-align: center;
-}
-.collapse + input{
-  display: none;  hide the checkboxes 
-}
-.collapse + input + #info-div{
-  display:none;
-}
-.collapse + input:checked + #info-div{
-  display:block;
-  transition-timing-function: ease-in;
-}*/
+
 /*end of dropdown..*/
 
 
 
 body {
-  /*background-color: red;*/
+  background-color: #960A0D;
+}
+
+#main-map{
+  margin:auto;
+  position:relative;
+  color: #253c93;
+  text-decoration: none;
+  border-bottom: 1px solid;
+  border: 3px solid rgba(193, 179, 158, 0.6);
+}
+
+
+h1 {
+  text-align: center;
+  font-family: 'Fjalla One', sans-serif;
 }
 
 
@@ -29,7 +29,8 @@ body {
 #fixtures-container {
   width: 70%;
   padding: 5px;
-  margin: 3px;
+  margin:auto;
+  position:relative;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 21px;
 }
@@ -37,14 +38,13 @@ body {
 #fixtures-element {
   border-style: solid;
   border-width: 1px;
-  margin: 3px;
-  background-color: #5d6066;
+  border-color: #5C5B57;
+  margin: 6px;
+  background-color: #7A7A77;
+  align-content: center;
 }
 
-#fixtures-element:hover {
-/*  background-color: skyblue;*/
-  /*display: block;*/
-}
+
 
 #team-wrapper{
   display: flex;
@@ -101,7 +101,7 @@ body {
      padding-top: 0.2em;
      font-family: 'Cantarell', sans-serif;
      text-align: center;
-
+     /*background-color: green;*/
     }
   
     #VS {
@@ -124,12 +124,15 @@ body {
       text-align: center;
     }
 
-#info-div{
+#info-div0, #info-div1, #info-div2, #info-div3, #info-div4, #info-div5, #info-div6, #info-div7, #info-div8, #info-div9{
   margin-top: 0.6em;
   font-family: 'Raleway', sans-serif;
   font-size:20px;
-  background-color: #898a8c;
-  display: flex;
+  background-color: #96968E;
+
+
+  /*display: flex;*/
+  display: none;
 }
   #seperator-div{
     height: 20px;
@@ -140,6 +143,9 @@ body {
     /*background-color: pink;*/
     display: flex;
     width: 100%;
+    border-top: solid;
+    border-top-width: 1px;
+    border-color: #5C5B57;
   }
 
   #container-info{  
@@ -171,7 +177,7 @@ body {
 
   #details-div{
     /*background-color: red;*/
-    width: 48%;
+    width: 50%;
     font-family: 'Roboto Condensed', sans-serif;
     color: white;
     font-size: 0.6em;
@@ -222,7 +228,10 @@ body {
       padding: 0px;
     }*/
 
-  #buttons-div{
+  #buttons-div0, #buttons-div1, #buttons-div2, #buttons-div3, #buttons-div4, #buttons-div5, #buttons-div6, #buttons-div7, #buttons-div8, #buttons-div9{
+    background-color: #96968E;
+
+    display: none;
     /*background-color: yellow;*/
     /*text-align: center;*/
   }
