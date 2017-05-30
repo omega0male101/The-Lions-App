@@ -1450,3 +1450,6 @@ db.teams.insert([
     ]}
   ])
 
+db.favourites.insert([
+  ])
+

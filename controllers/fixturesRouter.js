@@ -14,8 +14,15 @@ fixtureRouter.get('/', function(req, res){
   });
 });
 
+fixtureRouter.get('/:id', function(req, res){
+  query.all(function(fixtures){
+    res.json(fixtures[req.params.id]);
+  });
+});
+
 //add new fixture
 fixtureRouter.post('/', function(req, res){
+  console.log("getting to post stage")
   var fixture = new Fixture({
     date: req.body.date,
     matchNumber: req.body.matchNumber,
