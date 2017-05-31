@@ -451,67 +451,55 @@ UI.prototype = {
 
     team.players.forEach(function(player, index){
       var playerDiv = document.createElement("div");
-        playerDiv.setAttribute("class", "playerDiv");
-        playerDiv.setAttribute("id", "playerDiv" + index);
-      var playerCountryImage = document.createElement("img");
-        playerCountryImage.setAttribute("class", "playerCountryImage");
-        playerCountryImage.setAttribute("id", "playerCountryImage" + index);
-        playerCountryImage.src = "/flags/" + player.nationality + ".svg";
-        playerCountryImage.style.width = "70px";
-      var teamDetailsDiv = document.createElement("div");
-        teamDetailsDiv.setAttribute("class", "teamDetailsDiv");
-        teamDetailsDiv.setAttribute("id", "teamDetailsDiv" + index);
-
-
-      var playerName = document.createElement("span");
-        playerName.setAttribute("class", "playerName");
-        playerName.setAttribute("id", "playerName" + index);
-      var playerPosition = document.createElement("span");
-        playerPosition.setAttribute("class", "playerPosition");
-        playerPosition.setAttribute("id", "playerPosition" + index);
+      playerDiv.setAttribute("class", "playerDiv");
+      playerDiv.setAttribute("id", "playerDiv" + index);
+      var playerName = document.createElement("p");
+      playerName.setAttribute("class", "playerName");
+      playerName.setAttribute("id", "playerName" + index);
+      var playerPosition = document.createElement("p");
+      playerPosition.setAttribute("class", "playerPosition");
+      playerPosition.setAttribute("id", "playerPosition" + index);
       var playerDOB = document.createElement("p");
-        playerDOB.setAttribute("class", "playerDOB");
-        playerDOB.setAttribute("id", "playerDOB" + index);
+      playerDOB.setAttribute("class", "playerDOB");
+      playerDOB.setAttribute("id", "playerDOB" + index);
       var playerHeight = document.createElement("p");
-        playerHeight.setAttribute("class", "playerHeight");
-        playerHeight.setAttribute("id", "playerHeight" + index);
+      playerHeight.setAttribute("class", "playerHeight");
+      playerHeight.setAttribute("id", "playerHeight" + index);
       var playerWeight = document.createElement("p");
-        playerWeight.setAttribute("class", "playerWeight");
-        playerWeight.setAttribute("id", "playerWeight" + index);
+      playerWeight.setAttribute("class", "playerWeight");
+      playerWeight.setAttribute("id", "playerWeight" + index);
       var playerClub = document.createElement("p");
-        playerClub.setAttribute("class", "playerClub");
-        playerClub.setAttribute("id", "playerClub" + index);
+      playerClub.setAttribute("class", "playerClub");
+      playerClub.setAttribute("id", "playerClub" + index);
       var playerCaps = document.createElement("p");
-        playerCaps.setAttribute("class", "playerCaps");
-        playerCaps.setAttribute("id", "playerCaps" + index);
+      playerCaps.setAttribute("class", "playerCaps");
+      playerCaps.setAttribute("id", "playerCaps" + index);
       var playerImageContainer = document.createElement("div");
-        playerImageContainer.setAttribute("class", "playerImageContainer");
-        playerImageContainer.setAttribute("id", "playerImageContainer" + index);
+      playerImageContainer.setAttribute("class", "playerImageContainer");
+      playerImageContainer.setAttribute("id", "playerImageContainer" + index);
       var playerImage = document.createElement("img");
-        playerImage.setAttribute("class", "playerImage");
-        playerImage.setAttribute("id", "playerImage" + index);
+      playerImage.setAttribute("class", "playerImage");
+      playerImage.setAttribute("id", "playerImage" + index);
       var expander = document.createElement("img");
-        expander.setAttribute("class", "expander");
-        expander.setAttribute("id", "expander" + index);
+      expander.setAttribute("class", "expander");
+      expander.setAttribute("id", "expander" + index);
       var contractor = document.createElement("img");
-        contractor.setAttribute("class", "contractor");
-          contractor.setAttribute("id", "contractor" + index);
-        playerName.innerText = player.name;
-          playerPosition.innerText = "- Position: " + player.position;
-        playerDOB.innerText = "Date of Birth " + player.dob;
-          playerDOB.style.display = 'none';
-        playerHeight.innerText = "Height: " + player.height;
-          playerHeight.style.display = 'none';
-        playerWeight.innerText = "Weight: " + player.weight;
-          playerWeight.style.display = 'none';
-        playerClub.innerText = "Club: " + player.club;
-          playerClub.style.display = 'none';
-        playerCaps.innerText = "Caps: " + player.caps;
-          playerCaps.style.display = 'none';
-        playerImage.setAttribute("src" , player.image);
-          playerImage.style.display = 'none';
-          playerImage.style.width = '200px';
-
+      contractor.setAttribute("class", "contractor");
+      contractor.setAttribute("id", "contractor" + index);
+      playerName.innerText = "Name: " + player.name;
+      playerPosition.innerText = "Position: " + player.position;
+      playerDOB.innerText = "Date of Birth " + player.dob;
+      playerDOB.style.display = 'none'
+      playerHeight.innerText = "Height: " + player.height;
+      playerHeight.style.display = 'none'
+      playerWeight.innerText = "Weight: " + player.weight;
+      playerWeight.style.display = 'none'
+      playerClub.innerText = "Club: " + player.club;
+      playerClub.style.display = 'none'
+      playerCaps.innerText = "Caps: " + player.caps;
+      playerCaps.style.display = 'none'
+      playerImage.setAttribute("src" , player.image);
+      playerImage.style.display = 'none'
       expander.setAttribute("height", "10px")
       expander.setAttribute("width", "10px")
       expander.setAttribute("src", "https://image.flaticon.com/icons/png/512/60/60781.png")
@@ -519,33 +507,26 @@ UI.prototype = {
       contractor.setAttribute("width", "10px")
       contractor.setAttribute("src", "https://image.flaticon.com/icons/svg/60/60799.svg")
       contractor.style.display = 'none';
-
-      //Appending Teams Pages
-        playerDiv.appendChild(playerCountryImage);
-        playerDiv.appendChild(playerName);
-        playerDiv.appendChild(playerPosition);
-
-        teamDetailsDiv.appendChild(playerDOB);
-        teamDetailsDiv.appendChild(playerHeight);
-        teamDetailsDiv.appendChild(playerWeight);
-        teamDetailsDiv.appendChild(playerCaps);
-        teamDetailsDiv.appendChild(playerClub);
-
-        playerImageContainer.appendChild(playerImage);
-        playerDiv.appendChild(playerImageContainer);
-        playerDiv.appendChild(expander);
-        playerDiv.appendChild(contractor);
-
-        playerDiv.appendChild(teamDetailsDiv);
-        playersDiv.appendChild(playerDiv);
+      playerDiv.appendChild(playerName);
+      playerDiv.appendChild(playerPosition);
+      playerDiv.appendChild(playerDOB);
+      playerDiv.appendChild(playerHeight);
+      playerDiv.appendChild(playerWeight);
+      playerDiv.appendChild(playerCaps);
+      playerDiv.appendChild(playerClub);
+      playerImageContainer.appendChild(playerImage);
+      playerDiv.appendChild(playerImageContainer);
+      playerDiv.appendChild(expander);
+      playerDiv.appendChild(contractor);
+      playersDiv.appendChild(playerDiv);
 
       expander.addEventListener("click", function(event){
         parent = event.srcElement.parentElement;
         parent.childNodes.forEach(function(child){
-          child.style.display = "inline-block";
+          child.style.display = "";
         })
-        parent.childNodes[9].childNodes[0].style.display = "inline-block";
-        parent.childNodes[10].style.display = 'none';
+        parent.childNodes[7].childNodes[0].style.display = "";
+        parent.childNodes[8].style.display = 'none';
       })
 
       contractor.addEventListener("click", function(event){
@@ -553,15 +534,17 @@ UI.prototype = {
         parent.childNodes.forEach(function(child){
           child.style.display = 'none';
         })
-        parent.childNodes[0].style.display = "inline-block"
-        parent.childNodes[1].style.display = "inline-block"
-        parent.childNodes[2].style.display = "inline-block"
-        parent.childNodes[3].style.display = "inline-block"
-        parent.childNodes[9].childNodes[0].style.display = 'none';
-        parent.childNodes[10].style.display = "";
+        parent.childNodes[0].style.display = "block"
+        parent.childNodes[1].style.display = "block"
+        parent.childNodes[7].childNodes[0].style.display = 'none';
+        parent.childNodes[8].style.display = "";
       })
+
     })
   },
+
+
+
 
   populateWeather: function(location, weatherSpan){
     var p2 = document.createElement('span')
@@ -578,7 +561,10 @@ UI.prototype = {
         weatherImage.setAttribute("id", "weather-image");
         weatherImage.src = "/icons/" + location.weather[0].main + ".png";
         weatherImage.style.height = "60px";
+        // weatherImage.style.height = "30px";
     weatherSpan.appendChild(weatherImage);
+
+
     weatherSpan.appendChild(p)
     weatherSpan.appendChild(p2)
   },
