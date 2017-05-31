@@ -426,20 +426,46 @@ UI.prototype = {
     var stats = document.createElement("div");
     stats.setAttribute("id", "statsDiv");
     body.appendChild(stats);
-    this.renderNationalityChart();
 
     var teams = new Teams();
     teams.all(function(results){
+      this.renderNationalityChart((results[index]));
       this.populateTeam((results[index]))
     }.bind(this))
+
+
 
     body.appendChild(teamDiv);
     teamDiv.appendChild(backButton);
 
   },
 
-  renderNationalityChart: function(){
+  renderNationalityChart: function(team){
     var container = document.getElementById("statsDiv");
+
+    var englandCount = 0;
+    var scotlandCount = 0;
+    var irelandCount = 0;
+    var walesCount = 0;
+
+    team.players.forEach(function(player, index){
+      if(player.nationality === "England"){
+        englandCount += 1;
+      }
+      else if(player.nationality === "Scotland"){
+        scotlandCount += 1;
+      }
+      else if(player.nationality === "Ireland"){
+        irelandCount += 1;
+      }
+      else if(player.nationality === "Wales"){
+        walesCount += 1;
+      }
+      else {
+        return
+      }
+
+    })
 
       var chart = new Highcharts.Chart({
           chart: {
@@ -455,7 +481,7 @@ UI.prototype = {
             [
               {
                 name: "England",
-                y: 2,
+                y: englandCount,
                 color: "#FFF888"
               },
               {
