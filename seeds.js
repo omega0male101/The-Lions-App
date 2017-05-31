@@ -400,7 +400,7 @@ db.teams.insert([
         image: "https://d2cx26qpfwuhvu.cloudfront.net/lions/wp-content/uploads/2017/04/24151825/MaroItoje.jpg"
       },
       {
-        name: "Jonthan Joseph",
+        name: "Jonathan Joseph",
         dob: new Date("1991-05-21"),
         height: 183,
         weight: 95,

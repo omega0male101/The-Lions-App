@@ -556,14 +556,144 @@ UI.prototype = {
     //   window.location.href = "http://localhost:3000/";
     // });
 
+    var nationalityStats = document.createElement("div");
+    nationalityStats.setAttribute("id", "nationalityStatsDiv");
+    teamDiv.appendChild(nationalityStats);
+
+    var capsStats = document.createElement("div");
+    capsStats.setAttribute('id', "capsStatsDiv");
+    teamDiv.appendChild(capsStats);
+
     var teams = new Teams();
     teams.all(function(results){
+      if(index === 0){
+        this.renderNationalityChart((results[index]));
+      }
+      this.renderCapsChart((results[index]));
       this.populateTeam((results[index]))
     }.bind(this))
+
+
 
     body.appendChild(teamDiv);
     // teamDiv.appendChild(backButton);
 
+  },
+
+  renderCapsChart: function(team){
+    var container = document.getElementById("capsStatsDiv");
+
+
+    var capsCount = []
+    var playerNames = []
+
+    team.players.forEach(function(player, index){
+      capsCount.push(player.caps)
+      playerNames.push(player.name)
+    });
+
+    var chart = new Highcharts.Chart({
+        chart: {
+          type: 'column',
+          renderTo: container
+        },
+        title: {
+          text: team.shortName + " by Caps"
+        },
+        series: [{
+          name: "Caps",
+          data: capsCount,
+          color: "#af001d"
+        }],
+        xAxis: {
+          categories: playerNames
+        },
+        yAxis: {
+          tickInterval: 25,
+        }
+      })
+  },
+
+  renderNationalityChart: function(team){
+    var container = document.getElementById("nationalityStatsDiv");
+    console.log(container)
+
+    var englandCount = 0;
+    var scotlandCount = 0;
+    var irelandCount = 0;
+    var walesCount = 0;
+    var nzCount = 0;
+    var fijiCount = 0;
+    var tongaCount = 0;
+
+    team.players.forEach(function(player, index){
+      if(player.nationality === "England"){
+        englandCount += 1;
+      }
+      else if(player.nationality === "Scotland"){
+        scotlandCount += 1;
+      }
+      else if(player.nationality === "Ireland"){
+        irelandCount += 1;
+      }
+      else if(player.nationality === "Wales"){
+        walesCount += 1;
+      }
+      else if(player.nationality === "New Zealand"){
+        nzCount += 1;
+      }
+      else if(player.nationality === "Fiji"){
+        fijiCount += 1;
+      }
+      else if(player.nationality === "Tonga"){
+        tongaCount += 1;
+      }
+      else {
+        return
+      }
+
+    })
+
+      var chart = new Highcharts.Chart({
+          chart: {
+            type: 'pie',
+            renderTo: container
+          },
+          plotOptions: {
+            pie: {
+              borderColor: '#D3D3D3'
+            }
+          },
+          title: {
+            text: "Lions nationality"
+          },
+          series: [{
+            name: "Players",
+            data:
+            [
+              {
+                name: "England",
+                y: englandCount,
+                color: "#FFFFFF"
+              },
+              {
+                name: "Wales",
+                y: walesCount,
+                color: "#ff0000"
+              },
+              {
+                name: "Scotland",
+                y: scotlandCount,
+                color: "#2548b4"
+              },
+              {
+                name: "Ireland",
+                y: irelandCount,
+                color: "#009A49"
+              }
+            ]
+        }]
+      });
   },
 
   populateTeam: function(team){
@@ -581,7 +711,14 @@ UI.prototype = {
     playersDiv.appendChild(squadHeading);
     teamDiv.appendChild(teamHeading);
     teamDiv.appendChild(teamHistory);
+
+    var nationalityStats = document.getElementById("nationalityStatsDiv")
+    var capsStats = document.getElementById("capsStatsDiv")
+    teamDiv.appendChild(nationalityStats);
+    teamDiv.appendChild(capsStats);
+
     teamDiv.appendChild(playersDiv);
+
 
 // Populate players..
     team.players.forEach(function(player, index){
