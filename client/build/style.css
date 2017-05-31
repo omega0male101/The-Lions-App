@@ -251,11 +251,17 @@ h1 {
   }
 
   #lions-button, .favourite-button, .home-team-button{
-    top: -18px;
+    top: -11px;
     position: relative;
     padding: 0.6em;
     margin:6px;
-    margin-right: 2em;
-    margin-left: 2em;
-    /*background-color: transparent;*/
+    margin-right: 1em;
+    margin-left: 1em;
+    background-color: #afadac;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-decoration: none;
+    font-size: 15px;
+    cursor: pointer
   }
