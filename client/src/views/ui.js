@@ -427,6 +427,10 @@ UI.prototype = {
     nationalityStats.setAttribute("id", "nationalityStatsDiv");
     body.appendChild(nationalityStats);
 
+    var capsStats = document.createElement("div");
+    capsStats.setAttribute('id', "capsStatsDiv");
+    body.appendChild(capsStats);
+
     var teams = new Teams();
     teams.all(function(results){
       this.renderNationalityChart((results[index]));
@@ -442,9 +446,33 @@ UI.prototype = {
   },
 
   renderCapsChart: function(team){
-    var container = document.getElementById("statsDiv");
+    var container = document.getElementById("capsStatsDiv");
 
-  }
+    var capsCount = []
+    var playerNames = []
+
+    team.players.forEach(function(player, index){
+      capsCount.push(player.caps)
+      playerNames.push(player.name)
+    });
+
+    var chart = new Highcharts.Chart({
+        chart: {
+          type: 'column',
+          renderTo: container
+        },
+        title: {
+          text: "Lions by Caps"
+        },
+        series: [{
+          name: "Caps",
+          data: capsCount
+        }],
+        xAxis: {
+          categories: playerNames
+        },
+      })
+  },
 
   renderNationalityChart: function(team){
     var container = document.getElementById("nationalityStatsDiv");
