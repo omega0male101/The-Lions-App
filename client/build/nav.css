@@ -1,0 +1,15 @@
+
+
+#navDiv {
+  width: 50%;
+  margin: auto;
+  position: relative;
+  text-align: center;
+}
+
+#nav-home, #nav-lions, #nav-nz, #nav-matches {
+  padding: 5px;
+  font-family: 'Fjalla One', sans-serif;
+  text-decoration: none;
+  color: inherit;
+} 
