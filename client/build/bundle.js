@@ -378,13 +378,6 @@ UI.prototype = {
             this.fixtures.addMatches(result, this.renderFavourites.bind(this))
           }.bind(this));
         }.bind(this)
-        
-        var buttonTicket = document.createElement("a")
-        buttonTicket.setAttribute("id", "ticket-button")
-        buttonTicket.setAttribute("href", "https://www.viagogo.co.uk/Sports-Tickets/Rugby-Union/British-and-Irish-Lions-Tour-Tickets?AffiliateID=49&adposition=1t1&PCID=PSGBGOOSPOBRITIBBD9BF6920-000000&AdID=190438821763&MetroRegionID=&psc=&psc=&ps=&ps=&ps_p=0&ps_c=800200696&ps_ag=44193728529&ps_tg=kwd-12628952&ps_ad=190438821763&ps_adp=1t1&ps_fi=&ps_fi=&ps_li=&ps_li=&ps_lp=9046888&ps_n=g&ps_d=c&gclid=CjwKEAjwsLTJBRCvibaW9bGLtUESJAC4wKw1nuVPhR727H3_ezuQFFH0tWwPXyiiESBT4sLVpudCNRoCAYvw_wcB");
-        buttonTicket.setAttribute("target", "_blank")
-        buttonTicket.innerText = "Find Tickets";
-
 
       //Create Button to expand and contract
 
@@ -475,17 +468,15 @@ UI.prototype = {
       div_container_main_details.appendChild(div_container_top_two);
       div_container_main_details.appendChild(div_weather);
 
-
-
       div_full_wrap.appendChild(div_stadium);
       div_full_wrap.appendChild(div_container_main_details);
 
         div_buttons.appendChild(buttonHomeTeam);
-        div_buttons.appendChild(buttonTeam);
         div_buttons.appendChild(buttonFav);
-        div_buttons.appendChild(buttonTicket);
-      div_info.appendChild(div_full_wrap);
+        div_buttons.appendChild(buttonTeam);
+
       
+      div_info.appendChild(div_full_wrap);
 
       div_element.appendChild(teamWrapper);
       div_element.appendChild(div_info);
@@ -505,12 +496,7 @@ UI.prototype = {
     body.innerHTML = "";
     var fixtures = new Fixtures();
     fixtures.myMatches(function(results){
-      // var backButton = document.createElement("button");
-      // backButton.setAttribute("id", "back-button");
-      // backButton.innerText = "Back to Homepage"
-      // backButton.addEventListener("click", function(){
-      //   window.location.href = "http://localhost:3000/";
-      // });
+     
       var heading = document.createElement("h1");
       heading.innerText = "My Matches"
       var container = document.createElement("div");
@@ -549,12 +535,6 @@ UI.prototype = {
     this.renderNavBar();
     var teamDiv = document.createElement("div");
     teamDiv.setAttribute("id", "teamDiv")
-    // var backButton = document.createElement("button");
-    // backButton.setAttribute("id", "back-button");
-    // backButton.innerText = "Back to Homepage"
-    // backButton.addEventListener("click", function(){
-    //   window.location.href = "http://localhost:3000/";
-    // });
 
     var nationalityStats = document.createElement("div");
     nationalityStats.setAttribute("id", "nationalityStatsDiv");
@@ -899,9 +879,20 @@ UI.prototype = {
 
 
   populateWeather: function(location, weatherSpan){
-    var p2 = document.createElement('span')
-  
+    // var p2 = document.createElement('span')
+    // p2.setAttribute("id", "weather-text-top");
+
+    var p2 = document.createElement("a")
     p2.setAttribute("id", "weather-text-top");
+    p2.setAttribute("href", "https://www.viagogo.co.uk/Sports-Tickets/Rugby-Union/British-and-Irish-Lions-Tour-Tickets?AffiliateID=49&adposition=1t1&PCID=PSGBGOOSPOBRITIBBD9BF6920-000000&AdID=190438821763&MetroRegionID=&psc=&psc=&ps=&ps=&ps_p=0&ps_c=800200696&ps_ag=44193728529&ps_tg=kwd-12628952&ps_ad=190438821763&ps_adp=1t1&ps_fi=&ps_fi=&ps_li=&ps_li=&ps_lp=9046888&ps_n=g&ps_d=c&gclid=CjwKEAjwsLTJBRCvibaW9bGLtUESJAC4wKw1nuVPhR727H3_ezuQFFH0tWwPXyiiESBT4sLVpudCNRoCAYvw_wcB");
+    p2.setAttribute("target", "_blank")
+    p2.innerText = "Find Tickets";
+
+
+
+
+
+
 
     var p = document.createElement('span')
     var tempCelsius = Math.round((location.main.temp - 273.15))
@@ -913,10 +904,11 @@ UI.prototype = {
         weatherImage.setAttribute("id", "weather-image");
         weatherImage.src = "/icons/" + location.weather[0].main + ".png";
         weatherImage.style.height = "60px";
+    
+    weatherSpan.appendChild(p2)
     weatherSpan.appendChild(p)
     weatherSpan.appendChild(weatherImage);
     
-    weatherSpan.appendChild(p2)
   },
 
   addMapMarker: function(fixture, labelIndex){

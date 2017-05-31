@@ -73,7 +73,6 @@ h1 {
     #home-team-name{
      width: 45%;
      text-align: center;
-     /*margin-right: 3em;*/
      font-size: 0.7em;
      padding-top: 0.2em;
      font-family: 'Cantarell', sans-serif;
@@ -88,12 +87,10 @@ h1 {
     }
     #away-team-name{
      width: 45%;
-     /*margin-left: 3em;*/
      font-size: 0.7em;
      padding-top: 0.2em;
      font-family: 'Cantarell', sans-serif;
      text-align: center;
-     /*background-color: green;*/
     }
   
     #VS {
@@ -121,9 +118,6 @@ h1 {
   font-family: 'Raleway', sans-serif;
   font-size:20px;
   background-color: #96968E;
-
-
-  /*display: flex;*/
   display: none;
 }
   #seperator-div{
@@ -132,7 +126,6 @@ h1 {
   }
 
   #div-full-wrap{
-    /*background-color: pink;*/
     display: flex;
     width: 100%;
     border-top: solid;
@@ -141,24 +134,16 @@ h1 {
   }
 
   #container-info{  
-    /*background-color: skyblue;*/
     width:68%;
-
   }
 
     #container-of2-info{
-      /*background-color: brown;*/
       display: flex;
       width: 100%;
     }
 
   #stadium-div{
-    /*background-color: green;*/
-    /*display: flex;*/
     width: 32%;
-    /*display: inline-block;
-    vertical-align: top;*/
-    /*float: left;*/
   }
     #stadium-pic{
       width: 100%;
@@ -168,17 +153,11 @@ h1 {
     }
 
   #details-div{
-    /*background-color: red;*/
     width: 50%;
     font-family: 'Roboto Condensed', sans-serif;
     color: white;
     font-size: 0.6em;
     padding-left: 0.3em;
-   /* display: inline-block;
-    margin:2px;
-    padding-left:9px;
-    vertical-align: top;*/
-   /* text-align: left;*/
   }
     #date{
       font-size: 1.7em;
@@ -191,7 +170,7 @@ h1 {
     }
 
   #countdown-div{
-    /*background-color: darkgreen;*/
+
     width: 50%;
     font-family: 'Roboto Condensed', sans-serif;
     display: flex;
@@ -200,27 +179,23 @@ h1 {
   }
 
   #weather-div{
-    /*background-color: blue;*/
+
     color: white;
-    margin-left:1.5em;
+
     height: 3.4em;
+    width: 100%;
+    align-content: right;
+    flex-direction: right;
     display: flex;
-    /*display: inline-block;
-    margin: 5px;
-    float: right;
-    vertical-align: top;
-    text-align: right;
-    width: auto;
-    font-size:16px;*/
   }
   .weather-image{
-    padding-left:30em;
+    /*padding-left:60em;*/
   }
 
     #weather-text0, #weather-text1, #weather-text2, #weather-text3, #weather-text4, #weather-text5, #weather-text6, #weather-text7, #weather-text8, #weather-text9{
-      padding-left:3.3em;
+      padding-left:1em;
       position: relative;
-      top: -25px;
+      top:-40px;
     }
 
     #weather-text-top{
@@ -230,10 +205,11 @@ h1 {
   #weather-text-bottom{
     vertical-align: middle;
     position: relative;
-    font-size: 1.7em;
-    top: -25px;
-    padding-left:11px;
+    font-size: 2em;
+    top: -18px;
+    padding-left:300px;
     align-items: right;
+
   }
 
   #buttons-div0, #buttons-div1, #buttons-div2, #buttons-div3, #buttons-div4, #buttons-div5, #buttons-div6, #buttons-div7, #buttons-div8, #buttons-div9{
@@ -247,7 +223,6 @@ h1 {
   /*Counter Boxes*/
 
   .counter{
-    background-color: red;
     color: white;
     width: auto;
     padding-top: 0.5em;
@@ -257,6 +232,7 @@ h1 {
     margin: 0.3em;
     margin-top: 2em;
     text-align: center;
+    background-color: red;
   }
 
   #nationalityStatsDiv{
@@ -274,5 +250,12 @@ h1 {
     position: relative;
   }
 
-  /*End of counter boxes*/
-/* End of fixture container and contents 
+  #lions-button, .favourite-button, .home-team-button{
+    top: -18px;
+    position: relative;
+    padding: 0.6em;
+    margin:6px;
+    margin-right: 2em;
+    margin-left: 2em;
+    /*background-color: transparent;*/
+  }

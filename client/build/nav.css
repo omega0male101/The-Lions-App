@@ -13,3 +13,20 @@
   text-decoration: none;
   color: inherit;
 } 
+
+#nav-home:hover{
+  top: -2px;
+}
+
+#nav-lions:hover{
+  top: -2px;
+}
+
+#nav-nz:hover{
+  top: -2px;
+}
+
+#nav-matches:hover{
+  top: -2px;
+}
+

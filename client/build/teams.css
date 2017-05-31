@@ -3,11 +3,14 @@
   justify-content: full;
   margin:auto;
   position:relative;
+  font-family: 'Play', sans-serif;
+  text-align: justify;
+  padding-bottom: 1.2em;
 }
 
 .playerDiv{
   width: 70%;
-  background-color: grey;
+  background-color: #96968E;
   margin:auto;
   position:relative;
   margin-bottom: 0.5em;
@@ -20,6 +23,9 @@ h3 {
   position:relative;
   text-align: center;
   font-family: 'Fjalla One', sans-serif;
+  font-size: 2em;
+  padding-top:1.2em;
+  padding-bottom:0.6em;
 }
 
 .playerCountryImage{
