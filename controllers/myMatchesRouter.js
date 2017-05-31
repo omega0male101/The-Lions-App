@@ -16,7 +16,11 @@ myMatchesRouter.get('/', function(req, res){
 
 //delete fixture
 myMatchesRouter.delete('/:id', function(req, res){
-  query.delete(matchNumber);
+  // console.log(typeof(req.params.id))
+  query.delete(parseInt(req.params.id), function(fixtures){
+    res.json(fixtures)
+  })
+  
 })
 
 //add new fixture

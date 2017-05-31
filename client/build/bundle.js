@@ -359,6 +359,7 @@ UI.prototype = {
       var buttonFav = document.createElement('button');
         buttonFav.setAttribute("class", "favourite-button");
         buttonFav.setAttribute("id", index);
+        buttonFav.setAttribute("value", fixture.matchNumber);
         buttonFav.innerText = "Add to My Matches"
         buttonFav.onclick = function(){
           this.requestHelper.makeRequest("http://localhost:3000/api/fixtures/" + event.srcElement.id, function(result){
@@ -462,15 +463,17 @@ UI.prototype = {
       body.appendChild(backButton);
       body.appendChild(mapDiv);
       body.appendChild(container);
+      console.log(this)
       this.renderMap();
       this.render(results);
       favouriteButtons = document.getElementsByClassName("favourite-button");
       Array.prototype.forEach.call(favouriteButtons, function(button){
         button.innerText = "Delete from Favourites"
         button.onclick = function(){
-          console.log("hello")
-        }
-      });
+          console.log(this)
+          this.requestHelper.makeDeleteRequest("http://localhost:3000/api/myMatches/" + button.value, this.renderFavourites.bind(this));
+        }.bind(this)
+      }.bind(this));
 
 
 
