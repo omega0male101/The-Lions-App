@@ -569,7 +569,9 @@ UI.prototype = {
       if(index === 0){
         this.renderNationalityChart((results[index]));
       }
-      this.renderCapsChart((results[index]));
+      if(index === 0 || index === 2){
+        this.renderCapsChart((results[index]));
+      }
       this.populateTeam((results[index]))
     }.bind(this))
 
