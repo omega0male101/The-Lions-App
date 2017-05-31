@@ -97,7 +97,18 @@ RequestHelper.prototype = {
       callback(resultsObject);
     })
     request.send(payload);
-  }
+  },
+  makeDeleteRequest: function(url, callback){
+    var request = new XMLHttpRequest();
+    request.open("DELETE", url);
+    request.addEventListener('load', function(){
+      if(request.status !== 200) return;
+      var jsonString = request.responseText;
+      var resultsObject = JSON.parse(jsonString);
+      callback(resultsObject);
+    })
+    request.send();
+  },
 };
 
 module.exports = RequestHelper;
@@ -106,21 +117,17 @@ module.exports = RequestHelper;
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Fixtures = __webpack_require__(4);
-var Teams = __webpack_require__(7);
+var Fixtures = __webpack_require__(5);
+var Teams = __webpack_require__(6);
 var RequestHelper = __webpack_require__(0);
-var MapWrapper = __webpack_require__(5);
+var MapWrapper = __webpack_require__(7);
 
 var UI = function(){
-  var fixtures = new Fixtures();
-  fixtures.all(function(results){
+  this.fixtures = new Fixtures();
+  this.fixtures.all(function(results){
     this.render(results);
   }.bind(this));
-  var mapDiv = document.getElementById("main-map");
-  mapDiv.style.height = "500px";
-  mapDiv.style.width = "900px";
-  var center = {lat: -42.570323, lng: 172.146130}
-  this.mainMap = new MapWrapper(center, 5, mapDiv)
+  this.renderMap();
   this.requestHelper = new RequestHelper();
 }
 
@@ -136,8 +143,21 @@ UI.prototype = {
     element.appendChild(pTag);
   },
 
+  renderMap: function(){
+   var mapDiv = document.getElementById("main-map");
+   mapDiv.style.height = "500px";
+   mapDiv.style.width = "900px";
+   var center = {lat: -42.570323, lng: 172.146130}
+   this.mainMap = new MapWrapper(center, 5, mapDiv) 
+  },
+
   render: function(fixtures){
     var container = document.getElementById("fixtures-container");
+    if(container === null){
+      "still hitting this"
+      // var container = document.createElement("div");
+      // container.setAttribute("fixtures-container");
+    }
     container.innerHTML = "";
     // var labelIndex = 1;
     // for (var fixture of fixtures) {
@@ -319,8 +339,33 @@ UI.prototype = {
           buttonTeam.addEventListener("click", function(){
             this.renderTeam(0);
           }.bind(this))
-      var buttonTicket = document.createElement('a');
-        buttonTicket.setAttribute("id", "ticket-button");
+      var buttonFav = document.createElement('button');
+        buttonFav.setAttribute("class", "favourite-button");
+        buttonFav.setAttribute("id", index);
+        buttonFav.setAttribute("value", fixture.matchNumber);
+        buttonFav.innerText = "Add to My Matches"
+        buttonFav.onclick = function(){
+          this.requestHelper.makeRequest("http://localhost:3000/api/fixtures/" + event.srcElement.id, function(result){
+            this.fixtures.addMatches(result, this.renderFavourites.bind(this))
+          }.bind(this));
+        }.bind(this)
+
+     
+        
+
+        //Expandble List
+      // var label = document.createElement('label');
+      //   label.setAttribute("class", "collapse");
+      //   label.innerText = "click for more details.."
+      //   label.htmlFor = "_1";
+
+      // var input = document.createElement('input');
+      //   input.setAttribute("id", "_1");
+      //   input.type = "checkbox";
+      
+        
+        var buttonTicket = document.createElement("a")
+        buttonTicket.setAttribute("id", "ticket-button")
         buttonTicket.setAttribute("href", "https://www.viagogo.co.uk/Sports-Tickets/Rugby-Union/British-and-Irish-Lions-Tour-Tickets?AffiliateID=49&adposition=1t1&PCID=PSGBGOOSPOBRITIBBD9BF6920-000000&AdID=190438821763&MetroRegionID=&psc=&psc=&ps=&ps=&ps_p=0&ps_c=800200696&ps_ag=44193728529&ps_tg=kwd-12628952&ps_ad=190438821763&ps_adp=1t1&ps_fi=&ps_fi=&ps_li=&ps_li=&ps_lp=9046888&ps_n=g&ps_d=c&gclid=CjwKEAjwsLTJBRCvibaW9bGLtUESJAC4wKw1nuVPhR727H3_ezuQFFH0tWwPXyiiESBT4sLVpudCNRoCAYvw_wcB");
         buttonTicket.setAttribute("target", "_blank")
         buttonTicket.innerText = "Find Tickets";
@@ -422,6 +467,7 @@ UI.prototype = {
 
         div_buttons.appendChild(buttonHomeTeam);
         div_buttons.appendChild(buttonTeam);
+        div_buttons.appendChild(buttonFav);
         div_buttons.appendChild(buttonTicket);
       div_info.appendChild(div_full_wrap);
       
@@ -437,6 +483,49 @@ UI.prototype = {
       }.bind(this) )
 
     }.bind(this))
+  },
+
+  renderFavourites: function(){
+    var body = document.getElementsByTagName("BODY")[0];
+    body.innerHTML = "";
+    var fixtures = new Fixtures();
+    fixtures.myMatches(function(results){
+      var backButton = document.createElement("button");
+      backButton.setAttribute("id", "back-button");
+      backButton.innerText = "Back to Homepage"
+      backButton.addEventListener("click", function(){
+        window.location.href = "http://localhost:3000/";
+      });
+      var heading = document.createElement("h1");
+      heading.innerText = "My Matches"
+      var container = document.createElement("div");
+      container.setAttribute("id", "fixtures-container");
+      var mapDiv = document.createElement("div");
+      mapDiv.setAttribute("id", "main-map");
+
+      body.appendChild(heading);
+      body.appendChild(backButton);
+      body.appendChild(mapDiv);
+      body.appendChild(container);
+      console.log(this)
+      this.renderMap();
+      this.render(results);
+      favouriteButtons = document.getElementsByClassName("favourite-button");
+      Array.prototype.forEach.call(favouriteButtons, function(button){
+        button.innerText = "Delete from Favourites"
+        button.onclick = function(){
+          console.log(this)
+          this.requestHelper.makeDeleteRequest("http://localhost:3000/api/myMatches/" + button.value, this.renderFavourites.bind(this));
+        }.bind(this)
+      }.bind(this));
+
+
+
+      
+
+      
+    }.bind(this));
+
   },
 
   renderTeam: function(index){
@@ -462,7 +551,6 @@ UI.prototype = {
   },
 
   populateTeam: function(team){
-    console.log(team)
     var teamDiv = document.getElementById("teamDiv");
     var teamHeading = document.createElement("h1");
     teamHeading.setAttribute("id", "teamHeading")
@@ -576,6 +664,7 @@ UI.prototype = {
 
 
 
+
   populateWeather: function(location, weatherSpan){
     var p2 = document.createElement('span')
     p2.innerText = " with a chance of " + location.weather[0].main;
@@ -640,6 +729,19 @@ module.exports = Fixture;
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports) {
+
+var Team = function(options) {
+  this.name = options.name;
+  this.shortName = options.shortName;
+  this.history = options.history;
+  this.players = options.players;
+  }
+
+module.exports = Team;
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Fixture = __webpack_require__ (3);
@@ -656,22 +758,63 @@ Fixtures.prototype = {
       callback(fixtures);
     }.bind(this));
   },
+  myMatches: function(callback){
+    this.requestHelper.makeRequest("http://localhost:3000/api/myMatches", function(results){
+      var fixtures = this.populateFixtures(results);
+      callback(fixtures);
+    }.bind(this));
+  },
   populateFixtures: function(results){
     var fixtures = results.map(function(resultObject){
       return new Fixture(resultObject);
     })
     return fixtures;
   },
-  add: function(newFixture, callback){
+  addMatches: function(newFixture, callback){
     var fixtureData = JSON.stringify(newFixture);
-    this.requestHelper.makePostRequest("http://localhost:3000/api/fixtures", callback, fixtureData);
+    this.requestHelper.makePostRequest("http://localhost:3000/api/myMatches", callback, fixtureData);
+  },
+  deleteMatch: function(toDelete, callback){
+    this.requestHelper.makeDeleteRequest("http://localhost:3000/api/myMatches", callback);
   }
 };
 
 module.exports = Fixtures;
 
 /***/ }),
-/* 5 */
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Team = __webpack_require__ (4);
+var RequestHelper = __webpack_require__(0)
+
+var Teams = function() {
+  this.requestHelper = new RequestHelper();
+}
+
+Teams.prototype = {
+  all: function(callback){
+    this.requestHelper.makeRequest("http://localhost:3000/api/teams", function(results){
+      var teams = this.populateTeams(results);
+      callback(teams);
+    }.bind(this));
+  },
+  populateTeams: function(results){
+    var teams = results.map(function(resultObject){
+      return new Team(resultObject);
+    })
+    return teams;
+  },
+  add: function(newTeam, callback){
+    var teamData = JSON.stringify(newTeam);
+    this.requestHelper.makePostRequest("http://localhost:3000/api/teams", callback, teamData);
+  }
+};
+
+module.exports = Teams;
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports) {
 
 var MapWrapper = function(coords, zoom, container){
@@ -881,51 +1024,6 @@ MapWrapper.prototype = {
 }
 
 module.exports = MapWrapper;
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-var Team = function(options) {
-  this.name = options.name;
-  this.shortName = options.shortName;
-  this.history = options.history;
-  this.players = options.players;
-  }
-
-module.exports = Team;
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Team = __webpack_require__ (6);
-var RequestHelper = __webpack_require__(0)
-
-var Teams = function() {
-  this.requestHelper = new RequestHelper();
-}
-
-Teams.prototype = {
-  all: function(callback){
-    this.requestHelper.makeRequest("http://localhost:3000/api/teams", function(results){
-      var teams = this.populateTeams(results);
-      callback(teams);
-    }.bind(this));
-  },
-  populateTeams: function(results){
-    var teams = results.map(function(resultObject){
-      return new Team(resultObject);
-    })
-    return teams;
-  },
-  add: function(newTeam, callback){
-    var teamData = JSON.stringify(newTeam);
-    this.requestHelper.makePostRequest("http://localhost:3000/api/teams", callback, teamData);
-  }
-};
-
-module.exports = Teams;
 
 /***/ })
 /******/ ]);

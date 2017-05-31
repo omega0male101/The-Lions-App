@@ -12,15 +12,24 @@ Fixtures.prototype = {
       callback(fixtures);
     }.bind(this));
   },
+  myMatches: function(callback){
+    this.requestHelper.makeRequest("http://localhost:3000/api/myMatches", function(results){
+      var fixtures = this.populateFixtures(results);
+      callback(fixtures);
+    }.bind(this));
+  },
   populateFixtures: function(results){
     var fixtures = results.map(function(resultObject){
       return new Fixture(resultObject);
     })
     return fixtures;
   },
-  add: function(newFixture, callback){
+  addMatches: function(newFixture, callback){
     var fixtureData = JSON.stringify(newFixture);
-    this.requestHelper.makePostRequest("http://localhost:3000/api/fixtures", callback, fixtureData);
+    this.requestHelper.makePostRequest("http://localhost:3000/api/myMatches", callback, fixtureData);
+  },
+  deleteMatch: function(toDelete, callback){
+    this.requestHelper.makeDeleteRequest("http://localhost:3000/api/myMatches", callback);
   }
 };
 

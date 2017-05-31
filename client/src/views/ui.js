@@ -4,15 +4,11 @@ var RequestHelper = require('../helpers/request.js');
 var MapWrapper = require('./mapWrapper.js');
 
 var UI = function(){
-  var fixtures = new Fixtures();
-  fixtures.all(function(results){
+  this.fixtures = new Fixtures();
+  this.fixtures.all(function(results){
     this.render(results);
   }.bind(this));
-  var mapDiv = document.getElementById("main-map");
-  mapDiv.style.height = "500px";
-  mapDiv.style.width = "900px";
-  var center = {lat: -42.570323, lng: 172.146130}
-  this.mainMap = new MapWrapper(center, 5, mapDiv)
+  this.renderMap();
   this.requestHelper = new RequestHelper();
 }
 
@@ -28,8 +24,21 @@ UI.prototype = {
     element.appendChild(pTag);
   },
 
+  renderMap: function(){
+   var mapDiv = document.getElementById("main-map");
+   mapDiv.style.height = "500px";
+   mapDiv.style.width = "900px";
+   var center = {lat: -42.570323, lng: 172.146130}
+   this.mainMap = new MapWrapper(center, 5, mapDiv) 
+  },
+
   render: function(fixtures){
     var container = document.getElementById("fixtures-container");
+    if(container === null){
+      "still hitting this"
+      // var container = document.createElement("div");
+      // container.setAttribute("fixtures-container");
+    }
     container.innerHTML = "";
     // var labelIndex = 1;
     // for (var fixture of fixtures) {
@@ -211,8 +220,33 @@ UI.prototype = {
           buttonTeam.addEventListener("click", function(){
             this.renderTeam(0);
           }.bind(this))
-      var buttonTicket = document.createElement('a');
-        buttonTicket.setAttribute("id", "ticket-button");
+      var buttonFav = document.createElement('button');
+        buttonFav.setAttribute("class", "favourite-button");
+        buttonFav.setAttribute("id", index);
+        buttonFav.setAttribute("value", fixture.matchNumber);
+        buttonFav.innerText = "Add to My Matches"
+        buttonFav.onclick = function(){
+          this.requestHelper.makeRequest("http://localhost:3000/api/fixtures/" + event.srcElement.id, function(result){
+            this.fixtures.addMatches(result, this.renderFavourites.bind(this))
+          }.bind(this));
+        }.bind(this)
+
+     
+        
+
+        //Expandble List
+      // var label = document.createElement('label');
+      //   label.setAttribute("class", "collapse");
+      //   label.innerText = "click for more details.."
+      //   label.htmlFor = "_1";
+
+      // var input = document.createElement('input');
+      //   input.setAttribute("id", "_1");
+      //   input.type = "checkbox";
+      
+        
+        var buttonTicket = document.createElement("a")
+        buttonTicket.setAttribute("id", "ticket-button")
         buttonTicket.setAttribute("href", "https://www.viagogo.co.uk/Sports-Tickets/Rugby-Union/British-and-Irish-Lions-Tour-Tickets?AffiliateID=49&adposition=1t1&PCID=PSGBGOOSPOBRITIBBD9BF6920-000000&AdID=190438821763&MetroRegionID=&psc=&psc=&ps=&ps=&ps_p=0&ps_c=800200696&ps_ag=44193728529&ps_tg=kwd-12628952&ps_ad=190438821763&ps_adp=1t1&ps_fi=&ps_fi=&ps_li=&ps_li=&ps_lp=9046888&ps_n=g&ps_d=c&gclid=CjwKEAjwsLTJBRCvibaW9bGLtUESJAC4wKw1nuVPhR727H3_ezuQFFH0tWwPXyiiESBT4sLVpudCNRoCAYvw_wcB");
         buttonTicket.setAttribute("target", "_blank")
         buttonTicket.innerText = "Find Tickets";
@@ -314,6 +348,7 @@ UI.prototype = {
 
         div_buttons.appendChild(buttonHomeTeam);
         div_buttons.appendChild(buttonTeam);
+        div_buttons.appendChild(buttonFav);
         div_buttons.appendChild(buttonTicket);
       div_info.appendChild(div_full_wrap);
       
@@ -329,6 +364,49 @@ UI.prototype = {
       }.bind(this) )
 
     }.bind(this))
+  },
+
+  renderFavourites: function(){
+    var body = document.getElementsByTagName("BODY")[0];
+    body.innerHTML = "";
+    var fixtures = new Fixtures();
+    fixtures.myMatches(function(results){
+      var backButton = document.createElement("button");
+      backButton.setAttribute("id", "back-button");
+      backButton.innerText = "Back to Homepage"
+      backButton.addEventListener("click", function(){
+        window.location.href = "http://localhost:3000/";
+      });
+      var heading = document.createElement("h1");
+      heading.innerText = "My Matches"
+      var container = document.createElement("div");
+      container.setAttribute("id", "fixtures-container");
+      var mapDiv = document.createElement("div");
+      mapDiv.setAttribute("id", "main-map");
+
+      body.appendChild(heading);
+      body.appendChild(backButton);
+      body.appendChild(mapDiv);
+      body.appendChild(container);
+      console.log(this)
+      this.renderMap();
+      this.render(results);
+      favouriteButtons = document.getElementsByClassName("favourite-button");
+      Array.prototype.forEach.call(favouriteButtons, function(button){
+        button.innerText = "Delete from Favourites"
+        button.onclick = function(){
+          console.log(this)
+          this.requestHelper.makeDeleteRequest("http://localhost:3000/api/myMatches/" + button.value, this.renderFavourites.bind(this));
+        }.bind(this)
+      }.bind(this));
+
+
+
+      
+
+      
+    }.bind(this));
+
   },
 
   renderTeam: function(index){
@@ -354,7 +432,6 @@ UI.prototype = {
   },
 
   populateTeam: function(team){
-    console.log(team)
     var teamDiv = document.getElementById("teamDiv");
     var teamHeading = document.createElement("h1");
     teamHeading.setAttribute("id", "teamHeading")
@@ -465,6 +542,7 @@ UI.prototype = {
 
     })
   },
+
 
 
 
