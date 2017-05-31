@@ -1,5 +1,3 @@
-
-
 #teamHistory{
   width: 75%;
   justify-content: full;
@@ -24,15 +22,50 @@ h3 {
   font-family: 'Fjalla One', sans-serif;
 }
 
-.playerName{
-  font-size: 1.8em;
-  margin-left: 0.7em;
+.playerCountryImage{
   vertical-align: middle;
 }
 
+.playerName{
+  font-size: 1.8em;
+  margin-left: 0.7em;
+  vertical-align: top;
+}
+
 .playerPosition{
-  /*font-family: 'Cantarell', sans-serif;*/
   font-size: 1.8em;
   margin-left: 0.3em;
-  vertical-align: middle;
+  vertical-align: top;
+}
+
+.playerImageContainer{
+  width: 35%;
+  /*background-color: red;*/
+}
+.teamDetailsDiv{
+  width: 65%;
+  /*background-color: green;*/
+}
+.playerImage{
+  width: 100%;
+}
+
+.div-two-container{
+  display: none;
+}
+
+.teamDetailsDiv{
+  padding-left: 30px;
+  padding-top: 20px;
+  font-size: 1.6em;
+}
+
+.expander-main-team0, .expander-main-team1, .expander-main-team2, .expander-main-team3, .expander-main-team4, .expander-main-team5, .expander-main-team6, .expander-main-team7, .expander-main-team8, .expander-main-team9, .expander-main-team10, .expander-main-team11, .expander-main-team12, .expander-main-team13, .expander-main-team14, .expander-main-team15, .expander-main-team16, .expander-main-team17, .expander-main-team18, .expander-main-team19, .expander-main-team20, .expander-main-team21, .expander-main-team22, .expander-main-team23{
+  float: right;
+  padding: 0.9em;
+}
+
+.contractor-main-team0, .contractor-main-team1, .contractor-main-team2, .contractor-main-team3, .contractor-main-team4, .contractor-main-team5, .contractor-main-team6, .contractor-main-team7, .contractor-main-team8, .contractor-main-team9, .contractor-main-team10, .contractor-main-team11, .contractor-main-team12, .contractor-main-team13, .contractor-main-team14, .contractor-main-team15, .contractor-main-team16, .contractor-main-team17, .contractor-main-team18, .contractor-main-team19, .contractor-main-team20, .contractor-main-team21, .contractor-main-team22, .contractor-main-team23{
+  float: right;
+  padding: 0.9em;
 }
