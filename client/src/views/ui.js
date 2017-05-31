@@ -32,6 +32,38 @@ UI.prototype = {
    this.mainMap = new MapWrapper(center, 5, mapDiv) 
   },
 
+  renderNavBar: function(){ 
+    var body = document.getElementsByTagName("BODY")[0];
+    var navDiv = document.createElement("div");
+    navDiv.setAttribute("id", "navDiv");
+    var homeLink = document.createElement("a");
+    homeLink.setAttribute("href", "/");
+    homeLink.setAttribute("id", "nav-home");
+    homeLink.innerText = "Home";
+    var matchesLink = document.createElement("a");
+    matchesLink.setAttribute("id", "nav-matches");
+    matchesLink.innerText = "My Matches";
+    matchesLink.addEventListener("click", this.renderFavourites.bind(this))
+    var lionsLink = document.createElement("a");
+    lionsLink.setAttribute("id", "nav-lions");
+    lionsLink.innerText = "Lions Squad";
+    lionsLink.addEventListener("click", function(){
+      this.renderTeam(0)
+    }.bind(this))
+    var nzLink = document.createElement("a");
+    nzLink.setAttribute("id", "nav-nz");
+    nzLink.innerText = "New Zealand Squad";
+    nzLink.addEventListener("click", function(){
+      this.renderTeam(2)
+    }.bind(this))
+    navDiv.appendChild(homeLink);
+    navDiv.appendChild(matchesLink);
+    navDiv.appendChild(lionsLink);
+    navDiv.appendChild(nzLink);
+    body.insertBefore(navDiv, body.firstChild);
+
+  },
+
   render: function(fixtures){
     var container = document.getElementById("fixtures-container");
     if(container === null){
@@ -40,6 +72,7 @@ UI.prototype = {
       // container.setAttribute("fixtures-container");
     }
     container.innerHTML = "";
+    this.renderNavBar();
     // var labelIndex = 1;
     // for (var fixture of fixtures) {
       fixtures.forEach(function (fixture, index) {
@@ -371,12 +404,12 @@ UI.prototype = {
     body.innerHTML = "";
     var fixtures = new Fixtures();
     fixtures.myMatches(function(results){
-      var backButton = document.createElement("button");
-      backButton.setAttribute("id", "back-button");
-      backButton.innerText = "Back to Homepage"
-      backButton.addEventListener("click", function(){
-        window.location.href = "http://localhost:3000/";
-      });
+      // var backButton = document.createElement("button");
+      // backButton.setAttribute("id", "back-button");
+      // backButton.innerText = "Back to Homepage"
+      // backButton.addEventListener("click", function(){
+      //   window.location.href = "http://localhost:3000/";
+      // });
       var heading = document.createElement("h1");
       heading.innerText = "My Matches"
       var container = document.createElement("div");
@@ -385,7 +418,7 @@ UI.prototype = {
       mapDiv.setAttribute("id", "main-map");
 
       body.appendChild(heading);
-      body.appendChild(backButton);
+      // body.appendChild(backButton);
       body.appendChild(mapDiv);
       body.appendChild(container);
       console.log(this)
@@ -412,14 +445,15 @@ UI.prototype = {
   renderTeam: function(index){
     var body = document.getElementsByTagName("BODY")[0];
     body.innerHTML = "";
+    this.renderNavBar();
     var teamDiv = document.createElement("div");
     teamDiv.setAttribute("id", "teamDiv")
-    var backButton = document.createElement("button");
-    backButton.setAttribute("id", "back-button");
-    backButton.innerText = "Back to Homepage"
-    backButton.addEventListener("click", function(){
-      window.location.href = "http://localhost:3000/";
-    });
+    // var backButton = document.createElement("button");
+    // backButton.setAttribute("id", "back-button");
+    // backButton.innerText = "Back to Homepage"
+    // backButton.addEventListener("click", function(){
+    //   window.location.href = "http://localhost:3000/";
+    // });
 
     var teams = new Teams();
     teams.all(function(results){
@@ -427,7 +461,7 @@ UI.prototype = {
     }.bind(this))
 
     body.appendChild(teamDiv);
-    teamDiv.appendChild(backButton);
+    // teamDiv.appendChild(backButton);
 
   },
 
