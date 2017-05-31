@@ -727,7 +727,7 @@ UI.prototype = {
 
   populateWeather: function(location, weatherSpan){
     var p2 = document.createElement('span')
-    p2.innerText = " with a chance of " + location.weather[0].main;
+  
     p2.setAttribute("id", "weather-text-top");
 
     var p = document.createElement('span')
@@ -740,8 +740,9 @@ UI.prototype = {
         weatherImage.setAttribute("id", "weather-image");
         weatherImage.src = "/icons/" + location.weather[0].main + ".png";
         weatherImage.style.height = "60px";
-    weatherSpan.appendChild(weatherImage);
     weatherSpan.appendChild(p)
+    weatherSpan.appendChild(weatherImage);
+    
     weatherSpan.appendChild(p2)
   },
 

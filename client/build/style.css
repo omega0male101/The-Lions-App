@@ -228,11 +228,12 @@ h1 {
     top: -29px;
   }
   #weather-text-bottom{
-
+    vertical-align: middle;
     position: relative;
     font-size: 1.7em;
     top: -25px;
     padding-left:11px;
+    align-items: right;
   }
 
   #buttons-div0, #buttons-div1, #buttons-div2, #buttons-div3, #buttons-div4, #buttons-div5, #buttons-div6, #buttons-div7, #buttons-div8, #buttons-div9{
