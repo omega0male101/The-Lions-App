@@ -358,7 +358,7 @@ db.teams.insert([
       {
         name: "Iain Henderson",
         dob: new Date("1992-02-21"),
-        height: 2.00,
+        height: 200,
         weight: 118,
         nationality: "Ireland",
         position: "Second Row",
