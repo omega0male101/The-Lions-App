@@ -552,7 +552,9 @@ UI.prototype = {
 
     var teams = new Teams();
     teams.all(function(results){
-      this.renderNationalityChart((results[index]));
+      if(index === 0){
+        this.renderNationalityChart((results[index]));
+      }
       this.renderCapsChart((results[index]));
       this.populateTeam((results[index]))
     }.bind(this))
@@ -581,15 +583,20 @@ UI.prototype = {
           renderTo: container
         },
         title: {
-          text: "Lions by Caps"
+          text: team.shortName + " by Caps"
         },
         series: [{
           name: "Caps",
-          data: capsCount
+          data: capsCount,
+          color: "#af001d"
         }],
         xAxis: {
           categories: playerNames
         },
+        yAxis: {
+          tickInterval: 25,
+          minorTickInterval: 25
+        }
       })
   },
 
