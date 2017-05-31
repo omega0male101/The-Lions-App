@@ -225,13 +225,13 @@ h1 {
 
     #weather-text-top{
     position:  relative;
-    top: -31px;
+    top: -29px;
   }
   #weather-text-bottom{
 
     position: relative;
     font-size: 1.7em;
-    top: -27px;
+    top: -25px;
     padding-left:11px;
   }
 
