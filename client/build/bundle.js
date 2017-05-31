@@ -544,11 +544,11 @@ UI.prototype = {
 
     var nationalityStats = document.createElement("div");
     nationalityStats.setAttribute("id", "nationalityStatsDiv");
-    body.appendChild(nationalityStats);
+    teamDiv.appendChild(nationalityStats);
 
     var capsStats = document.createElement("div");
     capsStats.setAttribute('id', "capsStatsDiv");
-    body.appendChild(capsStats);
+    teamDiv.appendChild(capsStats);
 
     var teams = new Teams();
     teams.all(function(results){
@@ -568,6 +568,7 @@ UI.prototype = {
 
   renderCapsChart: function(team){
     var container = document.getElementById("capsStatsDiv");
+
 
     var capsCount = []
     var playerNames = []
@@ -595,13 +596,13 @@ UI.prototype = {
         },
         yAxis: {
           tickInterval: 25,
-          minorTickInterval: 25
         }
       })
   },
 
   renderNationalityChart: function(team){
     var container = document.getElementById("nationalityStatsDiv");
+    console.log(container)
 
     var englandCount = 0;
     var scotlandCount = 0;
@@ -644,6 +645,11 @@ UI.prototype = {
             type: 'pie',
             renderTo: container
           },
+          plotOptions: {
+            pie: {
+              borderColor: '#D3D3D3'
+            }
+          },
           title: {
             text: "Lions nationality"
           },
@@ -654,7 +660,7 @@ UI.prototype = {
               {
                 name: "England",
                 y: englandCount,
-                color: "#FFF888"
+                color: "#FFFFFF"
               },
               {
                 name: "Wales",
@@ -691,7 +697,15 @@ UI.prototype = {
     playersDiv.appendChild(squadHeading);
     teamDiv.appendChild(teamHeading);
     teamDiv.appendChild(teamHistory);
+
+    var nationalityStats = document.getElementById("nationalityStatsDiv")
+    var capsStats = document.getElementById("capsStatsDiv")
+    teamDiv.appendChild(nationalityStats);
+    teamDiv.appendChild(capsStats);
+
     teamDiv.appendChild(playersDiv);
+
+
 
 
     team.players.forEach(function(player, index){
