@@ -230,10 +230,6 @@ UI.prototype = {
 
       }, 1000)
 
-
-
-
-
         // Buttons
       var buttonHomeTeam = document.createElement('button');
         buttonHomeTeam.setAttribute("id", fixture.homeTeamName);
@@ -263,20 +259,6 @@ UI.prototype = {
             this.fixtures.addMatches(result, this.renderFavourites.bind(this))
           }.bind(this));
         }.bind(this)
-
-     
-        
-
-        //Expandble List
-      // var label = document.createElement('label');
-      //   label.setAttribute("class", "collapse");
-      //   label.innerText = "click for more details.."
-      //   label.htmlFor = "_1";
-
-      // var input = document.createElement('input');
-      //   input.setAttribute("id", "_1");
-      //   input.type = "checkbox";
-      
         
         var buttonTicket = document.createElement("a")
         buttonTicket.setAttribute("id", "ticket-button")
@@ -313,7 +295,7 @@ UI.prototype = {
           infoDiv.style.display = "flex";
           buttonsDiv = document.getElementById("buttons-div" + index);
             contractorClose = document.getElementById("contractor-main" + index);
-            contractorClose.style.display = "block";
+            contractorClose.style.display = "inline-block";
           buttonsDiv.style.display = "flex";
           
         })
@@ -326,7 +308,7 @@ UI.prototype = {
         parent.childNodes.forEach(function(child){
 
           expanderOpen = document.getElementById("expander-main"+ index);
-          expanderOpen.style.display = "block";
+          expanderOpen.style.display = "inline-block";
           contractorClose = document.getElementById("contractor-main"+ index);
           contractorClose.style.display = "none";
 
@@ -482,49 +464,62 @@ UI.prototype = {
     teamDiv.appendChild(teamHistory);
     teamDiv.appendChild(playersDiv);
 
-
+// Populate players..
     team.players.forEach(function(player, index){
       var playerDiv = document.createElement("div");
-      playerDiv.setAttribute("class", "playerDiv");
-      playerDiv.setAttribute("id", "playerDiv" + index);
-      var playerName = document.createElement("p");
-      playerName.setAttribute("class", "playerName");
-      playerName.setAttribute("id", "playerName" + index);
-      var playerPosition = document.createElement("p");
-      playerPosition.setAttribute("class", "playerPosition");
-      playerPosition.setAttribute("id", "playerPosition" + index);
+        playerDiv.setAttribute("class", "playerDiv");
+        playerDiv.setAttribute("id", "playerDiv" + index);
+
+        var playerDivTwo = document.createElement("div");
+          playerDivTwo.setAttribute("class", "div-two-container");
+          playerDivTwo.setAttribute("id", "div-two-container" + index);
+
+
+      var playerCountryImage = document.createElement("img");
+        playerCountryImage.setAttribute("class", "playerCountryImage");
+        playerCountryImage.setAttribute("id", "playerCountryImage" + index);
+        playerCountryImage.src = "/flags/" + player.nationality + ".svg";
+        playerCountryImage.style.width = "70px";
+      var teamDetailsDiv = document.createElement("div");
+        teamDetailsDiv.setAttribute("class", "teamDetailsDiv");
+        teamDetailsDiv.setAttribute("id", "teamDetailsDiv" + index);
+
+
+      var playerName = document.createElement("span");
+        playerName.setAttribute("class", "playerName");
+        playerName.setAttribute("id", "playerName" + index);
+      var playerPosition = document.createElement("span");
+        playerPosition.setAttribute("class", "playerPosition");
+        playerPosition.setAttribute("id", "playerPosition" + index);
       var playerDOB = document.createElement("p");
-      playerDOB.setAttribute("class", "playerDOB");
-      playerDOB.setAttribute("id", "playerDOB" + index);
+        playerDOB.setAttribute("class", "playerDOB");
+        playerDOB.setAttribute("id", "playerDOB" + index);
       var playerHeight = document.createElement("p");
-      playerHeight.setAttribute("class", "playerHeight");
-      playerHeight.setAttribute("id", "playerHeight" + index);
+        playerHeight.setAttribute("class", "playerHeight");
+        playerHeight.setAttribute("id", "playerHeight" + index);
       var playerWeight = document.createElement("p");
-      playerWeight.setAttribute("class", "playerWeight");
-      playerWeight.setAttribute("id", "playerWeight" + index);
+        playerWeight.setAttribute("class", "playerWeight");
+        playerWeight.setAttribute("id", "playerWeight" + index);
       var playerClub = document.createElement("p");
-      playerClub.setAttribute("class", "playerClub");
-      playerClub.setAttribute("id", "playerClub" + index);
+        playerClub.setAttribute("class", "playerClub");
+        playerClub.setAttribute("id", "playerClub" + index);
       var playerCaps = document.createElement("p");
       playerCaps.setAttribute("class", "playerCaps");
       playerCaps.setAttribute("id", "playerCaps" + index);
       var playerNat = document.createElement("p");
       playerNat.setAttribute("class", "playerNat");
       playerNat.setAttribute("id", "playerNat" + index);
+
       var playerImageContainer = document.createElement("div");
-      playerImageContainer.setAttribute("class", "playerImageContainer");
-      playerImageContainer.setAttribute("id", "playerImageContainer" + index);
+        playerImageContainer.setAttribute("class", "playerImageContainer");
+        playerImageContainer.setAttribute("id", "playerImageContainer" + index);
       var playerImage = document.createElement("img");
-      playerImage.setAttribute("class", "playerImage");
-      playerImage.setAttribute("id", "playerImage" + index);
-      var expander = document.createElement("img");
-      expander.setAttribute("class", "expander");
-      expander.setAttribute("id", "expander" + index);
-      var contractor = document.createElement("img");
-      contractor.setAttribute("class", "contractor");
-      contractor.setAttribute("id", "contractor" + index);
-      playerName.innerText = "Name: " + player.name;
-      playerPosition.innerText = "Position: " + player.position;
+        playerImage.setAttribute("class", "playerImage");
+        playerImage.setAttribute("id", "playerImage" + index);
+
+
+      playerName.innerText = "" + player.name;
+      playerPosition.innerText = "- Position: " + player.position;
       playerDOB.innerText = "Date of Birth: " + player.dob.slice(8,10) + "/" + player.dob.slice(5,7) + "/" + player.dob.slice(0,4) + " (Age: " + this.calculateAge(player.dob) + ")";
       playerDOB.style.display = 'none'
       playerHeight.innerText = "Height: " + player.height + " cm";
@@ -539,48 +534,102 @@ UI.prototype = {
       playerNat.style.display = 'none'
       playerImage.setAttribute("src" , player.image);
       playerImage.style.display = 'none'
-      expander.setAttribute("height", "10px")
-      expander.setAttribute("width", "10px")
-      expander.setAttribute("src", "https://image.flaticon.com/icons/png/512/60/60781.png")
-      contractor.setAttribute("height", "10px")
-      contractor.setAttribute("width", "10px")
-      contractor.setAttribute("src", "https://image.flaticon.com/icons/svg/60/60799.svg")
-      contractor.style.display = 'none';
+
+
+      //Expandle buttons
+      var expanderMainTeam = document.createElement("img");
+        expanderMainTeam.setAttribute("class", "expander-main-team"+ index);
+        expanderMainTeam.setAttribute("id", "expander-main-team"+ index);
+      var contractorMainTeam = document.createElement("img");
+        contractorMainTeam.setAttribute("class", "contractor-main-team"+ index);
+        contractorMainTeam.setAttribute("id", "contractor-main-team"+ index);
+
+        expanderMainTeam.setAttribute("height", "14px")
+        expanderMainTeam.setAttribute("width", "14px")
+        expanderMainTeam.setAttribute("align-content", "right")
+        expanderMainTeam.setAttribute("src", "https://image.flaticon.com/icons/png/512/60/60781.png")
+        contractorMainTeam.setAttribute("height", "14px")
+        contractorMainTeam.setAttribute("width", "14px")
+        contractorMainTeam.setAttribute("src", "https://image.flaticon.com/icons/svg/60/60799.svg")
+        contractorMainTeam.style.display = 'none';
+
+
+      expanderMainTeam.addEventListener("click", function(event){
+        console.log("up!")
+        parent = event.srcElement.parentElement;
+        parent.childNodes.forEach(function(child){
+          teamDetailsDiv = document.getElementById("teamDetailsDiv" + index);
+            expanderOpenTeam = document.getElementById("expander-main-team" + index);
+            expanderOpenTeam.style.display = "none";
+          teamDetailsDiv.style.display = "block";
+          playerDOB.style.display = "block";
+          playerHeight.style.display = "block";
+          playerWeight.style.display = "block";
+          playerCaps.style.display = "block";
+          playerClub.style.display = "block";
+          playerNat.style.display = "block";
+          playerImage.style.display = "block";
+          playerDivTwo.style.display = "flex";
+
+          playerImageContainer = document.getElementById("playerImageContainer" + index);
+            contractorCloseTeam = document.getElementById("contractor-main-team" + index);
+            contractorCloseTeam.style.display = "inline-block";
+          playerImageContainer.style.display = "block";
+          
+        })
+       
+      })
+
+      contractorMainTeam.addEventListener("click", function(event){
+        console.log("down!")
+        parent = event.srcElement.parentElement;
+        parent.childNodes.forEach(function(child){
+
+          expanderOpenTeam = document.getElementById("expander-main-team"+ index);
+          expanderOpenTeam.style.display = "inline-block";
+          contractorCloseTeam = document.getElementById("contractor-main-team"+ index);
+          contractorCloseTeam.style.display = "none";
+
+          
+          playerDOB.style.display = "none";
+          playerHeight.style.display = "none";
+          playerWeight.style.display = "none";
+          playerCaps.style.display = "none";
+          playerClub.style.display = "none";
+          playerNat.style.display = "none";
+          playerImage.style.display = "none";
+          playerDivTwo.style.display = "none";
+
+          teamDetailsDiv = document.getElementById("teamDetailsDiv"+ index);
+          teamDetailsDiv.style.display = "none";
+          playerImageContainer = document.getElementById("playerImageContainer"+ index);
+          playerImageContainer.style.display = "none";
+          })
+        })
+
+      //Append all elementes
+      playerDiv.appendChild(playerCountryImage);
       playerDiv.appendChild(playerName);
       playerDiv.appendChild(playerPosition);
-      playerDiv.appendChild(playerDOB);
-      playerDiv.appendChild(playerHeight);
-      playerDiv.appendChild(playerWeight);
-      playerDiv.appendChild(playerCaps);
-      playerDiv.appendChild(playerClub);
-      playerDiv.appendChild(playerNat);
+      playerDiv.appendChild(expanderMainTeam);
+      playerDiv.appendChild(contractorMainTeam);
+
+      teamDetailsDiv.appendChild(playerDOB);
+      teamDetailsDiv.appendChild(playerHeight);
+      teamDetailsDiv.appendChild(playerWeight);
+      teamDetailsDiv.appendChild(playerCaps);
+      teamDetailsDiv.appendChild(playerClub);
+      teamDetailsDiv.appendChild(playerNat);
       playerImageContainer.appendChild(playerImage);
-      playerDiv.appendChild(playerImageContainer);
-      playerDiv.appendChild(expander);
-      playerDiv.appendChild(contractor);
+
+      playerDivTwo.appendChild(teamDetailsDiv);
+      playerDivTwo.appendChild(playerImageContainer);
+      
+      playerDiv.appendChild(playerDivTwo);
       playersDiv.appendChild(playerDiv);
 
-      expander.addEventListener("click", function(event){
-        parent = event.srcElement.parentElement;
-        parent.childNodes.forEach(function(child){
-          child.style.display = "";
-        })
-        parent.childNodes[8].childNodes[0].style.display = "";
-        parent.childNodes[9].style.display = 'none';
-      })
-
-      contractor.addEventListener("click", function(event){
-        parent = event.srcElement.parentElement;
-        parent.childNodes.forEach(function(child){
-          child.style.display = 'none';
-        })
-        parent.childNodes[0].style.display = "block"
-        parent.childNodes[1].style.display = "block"
-        parent.childNodes[8].childNodes[0].style.display = 'none';
-        parent.childNodes[9].style.display = "";
-      })
-
     }.bind(this))
+
   },
 
   calculateAge: function(birthday) { // birthday is a date
@@ -590,9 +639,10 @@ UI.prototype = {
       return Math.abs(ageDate.getUTCFullYear() - 1970);
   },
 
+
   populateWeather: function(location, weatherSpan){
     var p2 = document.createElement('span')
-    p2.innerText = " with a chance of " + location.weather[0].main;
+  
     p2.setAttribute("id", "weather-text-top");
 
     var p = document.createElement('span')
@@ -605,11 +655,9 @@ UI.prototype = {
         weatherImage.setAttribute("id", "weather-image");
         weatherImage.src = "/icons/" + location.weather[0].main + ".png";
         weatherImage.style.height = "60px";
-        // weatherImage.style.height = "30px";
-    weatherSpan.appendChild(weatherImage);
-
-
     weatherSpan.appendChild(p)
+    weatherSpan.appendChild(weatherImage);
+    
     weatherSpan.appendChild(p2)
   },
 
