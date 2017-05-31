@@ -166,26 +166,24 @@ UI.prototype = {
       
 
       this.addMapMarker(fixture, String(index + 1));
-      
+
+      this.addMapInfoWindow(index, fixture);
 
       // Declaring elements
+      var div_info = document.createElement('div');
+        div_info.setAttribute("id", "info-div" + index);
+      var div_buttons = document.createElement('div');
+        div_buttons.setAttribute("id", "buttons-div" + index);
       var div_game = document.createElement('div');
         div_game.setAttribute("id", "fixture-game");
       var div_element = document.createElement('div');
         div_element.setAttribute("id", "fixtures-element");
-      var div_info = document.createElement('div');
-        div_info.setAttribute("id", "info-div");
-      var div_seperator = document.createElement('div');
-        div_seperator.setAttribute("id", "seperator-div");
       var div_stadium = document.createElement('div');
         div_stadium.setAttribute("id", "stadium-div");
       var div_details = document.createElement('div');
         div_details.setAttribute("id", "details-div");
       var div_weather = document.createElement('div');
         div_weather.setAttribute("id", "weather-div");
-      var div_buttons = document.createElement('div');
-        div_buttons.setAttribute("id", "buttons-div");
-
       var div_countdown = document.createElement('div');
         div_countdown.setAttribute("id", "countdown-div");
       var div_container_main_details = document.createElement('div');
@@ -253,6 +251,7 @@ UI.prototype = {
       var weather = document.createElement('span');
         weather.setAttribute("id", "weather-text" + index);
 
+
         // Details (Date, Arena, Timezone)
       var monthDate = document.createElement('p');
         monthDate.setAttribute("id", "date");
@@ -274,64 +273,50 @@ UI.prototype = {
             }
         } 
 
-        monthDate.textContent = "Game commences on the " + newDate.getDate() + nth(newDate.getDate()) + " of " + monthNames[newDate.getMonth()] + " at " + fixture.date.slice(11,16) + " (BST)";
+        monthDate.textContent = "" + newDate.getDate() + nth(newDate.getDate()) + " of " + monthNames[newDate.getMonth()] + " - " + fixture.date.slice(11,16) + " (BST)";
 
         spanArena.textContent = "Playing at " + fixture.stadium.name + ", in " + fixture.stadium.location + ".";
         // spanTime.textContent = "Kick off: " + fixture.date.slice(11,16) + " (BST)";
-
-      
         
-        var _second = 1000;
-        var _minute = _second * 60;
-        var _hour = _minute * 60;
-        var _day = _hour * 24;
-        var timer;
 
-        function getTimeToKickOff() {
-          var kickOffMs = Date.parse(fixture.date)
-          var distance = (kickOffMs - Date.now())
+      // NEW COUNTDOWN TIMER
 
-          if (distance < 0) {
-            clearInterval(timer);
-            return;
+      var divDay = document.createElement('div');
+          divDay.setAttribute("class", "counter")
+      var divHour = document.createElement('div');
+          divHour.setAttribute("class", "counter")
+      var divMinute = document.createElement('div');
+          divMinute.setAttribute("class", "counter")
+      var divSecond = document.createElement('div');
+          divSecond.setAttribute("class", "counter")
+
+      var newCountDownTimer = setInterval(function(){
+
+        var kickOffMs2 = Date.parse(fixture.date)
+
+        var distance2 = (kickOffMs2 - Date.now())
+
+        var days = Math.floor(distance2 / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance2 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance2 % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance2 % (1000 * 60)) / 1000);
+
+         divDay.innerText = days + " DAYS"
+         divHour.innerText = hours + " HOURS"
+         divMinute.innerText = minutes + " MINUTES"
+         divSecond.innerText = seconds + " SECS";
+
+        if (distance2 < 0) {
+            clearInterval(newCountDownTimer);
+            divDay.innerText = "GAME"
+            divHour.innerText = "OVER"
+            divMinute.innerText = "MAN"
+            divSecond.innerText = "!!!";
           }
-          var days = Math.floor(distance / _day);
-          var hours = Math.floor((distance % _day) / _hour);
-          var minutes = Math.floor((distance % _hour) / _minute);
-          var seconds = Math.floor((distance % _minute) / _second);
 
-          // console.log(days + 'days ' + hours + 'hrs ' + minutes + 'mins ' + seconds + 'secs');
-          
-          var timeToKickOff = {}
-          timeToKickOff.days = days
-          timeToKickOff.hours = hours
-          timeToKickOff.minutes = minutes
-          timeToKickOff.seconds = seconds
+      }, 1000)
 
-          return timeToKickOff
-        }
 
-        timer = setInterval(getTimeToKickOff, 1000);
-        
-        // Countdown to game..
-      // var countdown = document.createElement('span')
-      //   countdown.setAttribute("id", "countdown-timer")
-      //   countdown.textContent = "Days: " + getTimeToKickOff().days
-
-          //Counter Boxes
-        var divDay = document.createElement('div');
-            divDay.setAttribute("class", "counter")
-            divDay.textContent = getTimeToKickOff().days + " DAYS"
-        var divHour = document.createElement('div');
-            divHour.setAttribute("class", "counter")
-            divHour.textContent = getTimeToKickOff().hours + " HOURS"
-        var divMinute = document.createElement('div');
-            divMinute.setAttribute("class", "counter")
-            divMinute.textContent = getTimeToKickOff().minutes + " MINUTES"
-        var divSecond = document.createElement('div');
-            divSecond.setAttribute("class", "counter")
-            divSecond.textContent = getTimeToKickOff().seconds + " s";
-        
 
 
 
@@ -354,8 +339,6 @@ UI.prototype = {
           buttonTeam.addEventListener("click", function(){
             this.renderTeam(0);
           }.bind(this))
-      var buttonTicket = document.createElement('button');
-        buttonTicket.setAttribute("id", "ticket-button");
       var buttonFav = document.createElement('button');
         buttonFav.setAttribute("class", "favourite-button");
         buttonFav.setAttribute("id", index);
@@ -367,9 +350,7 @@ UI.prototype = {
           }.bind(this));
         }.bind(this)
 
-        // Horizontal Line
-      var line = document.createElement('hr');
-        div_seperator.appendChild(line);
+     
         
 
         //Expandble List
@@ -383,6 +364,68 @@ UI.prototype = {
       //   input.type = "checkbox";
       
         
+        var buttonTicket = document.createElement("a")
+        buttonTicket.setAttribute("id", "ticket-button")
+        buttonTicket.setAttribute("href", "https://www.viagogo.co.uk/Sports-Tickets/Rugby-Union/British-and-Irish-Lions-Tour-Tickets?AffiliateID=49&adposition=1t1&PCID=PSGBGOOSPOBRITIBBD9BF6920-000000&AdID=190438821763&MetroRegionID=&psc=&psc=&ps=&ps=&ps_p=0&ps_c=800200696&ps_ag=44193728529&ps_tg=kwd-12628952&ps_ad=190438821763&ps_adp=1t1&ps_fi=&ps_fi=&ps_li=&ps_li=&ps_lp=9046888&ps_n=g&ps_d=c&gclid=CjwKEAjwsLTJBRCvibaW9bGLtUESJAC4wKw1nuVPhR727H3_ezuQFFH0tWwPXyiiESBT4sLVpudCNRoCAYvw_wcB");
+        buttonTicket.setAttribute("target", "_blank")
+        buttonTicket.innerText = "Find Tickets";
+
+
+      //Create Button to expand and contract
+
+      var expanderMain = document.createElement("img");
+        expanderMain.setAttribute("class", "expander-main"+ index);
+        expanderMain.setAttribute("id", "expander-main"+ index);
+      var contractorMain = document.createElement("img");
+        contractorMain.setAttribute("class", "contractor-main"+ index);
+        contractorMain.setAttribute("id", "contractor-main"+ index);
+
+        expanderMain.setAttribute("height", "14px")
+        expanderMain.setAttribute("width", "14px")
+        expanderMain.setAttribute("align-content", "right")
+        expanderMain.setAttribute("src", "https://image.flaticon.com/icons/png/512/60/60781.png")
+        contractorMain.setAttribute("height", "14px")
+        contractorMain.setAttribute("width", "14px")
+        contractorMain.setAttribute("src", "https://image.flaticon.com/icons/svg/60/60799.svg")
+        contractorMain.style.display = 'none';
+
+
+      expanderMain.addEventListener("click", function(event){
+        parent = event.srcElement.parentElement;
+        parent.childNodes.forEach(function(child){
+          infoDiv = document.getElementById("info-div" + index);
+            expanderOpen = document.getElementById("expander-main" + index);
+            expanderOpen.style.display = "none";
+          infoDiv.style.display = "flex";
+          buttonsDiv = document.getElementById("buttons-div" + index);
+            contractorClose = document.getElementById("contractor-main" + index);
+            contractorClose.style.display = "block";
+          buttonsDiv.style.display = "flex";
+          
+        })
+       
+      })
+
+      contractorMain.addEventListener("click", function(event){
+
+        parent = event.srcElement.parentElement;
+        parent.childNodes.forEach(function(child){
+
+          expanderOpen = document.getElementById("expander-main"+ index);
+          expanderOpen.style.display = "block";
+          contractorClose = document.getElementById("contractor-main"+ index);
+          contractorClose.style.display = "none";
+
+          infoDiv = document.getElementById("info-div"+ index);
+          infoDiv.style.display = "none";
+          buttonsDiv = document.getElementById("buttons-div"+ index);
+          buttonsDiv.style.display = "none";
+            })
+          })
+
+  
+          
+          
     // Append all elements to body of the list item
       div_game.appendChild(spanHomeTeam);
       div_game.appendChild(spanVS);
@@ -396,16 +439,18 @@ UI.prototype = {
 
       teamWrapper.appendChild(div_game);
       teamWrapper.appendChild(scoreWrapper);
+      teamWrapper.appendChild(expanderMain);
+      teamWrapper.appendChild(contractorMain);
 
       div_stadium.appendChild(stadiumPic)
       div_weather.appendChild(weather);
 
-
-      // div_countdown.appendChild(countdown);
       div_countdown.appendChild(divDay);
       div_countdown.appendChild(divHour);
       div_countdown.appendChild(divMinute);
       div_countdown.appendChild(divSecond);
+      
+
       div_details.appendChild(monthDate);
       div_details.appendChild(spanArena);
 
@@ -415,22 +460,21 @@ UI.prototype = {
       div_container_main_details.appendChild(div_container_top_two);
       div_container_main_details.appendChild(div_weather);
 
+
+
       div_full_wrap.appendChild(div_stadium);
       div_full_wrap.appendChild(div_container_main_details);
 
-      div_buttons.appendChild(buttonHomeTeam);
-      div_buttons.appendChild(buttonTeam);
-      div_buttons.appendChild(buttonTicket);
-      div_buttons.appendChild(buttonFav);
-
-      div_info.appendChild(div_seperator);
+        div_buttons.appendChild(buttonHomeTeam);
+        div_buttons.appendChild(buttonTeam);
+        div_buttons.appendChild(buttonFav);
+        div_buttons.appendChild(buttonTicket);
       div_info.appendChild(div_full_wrap);
-      div_info.appendChild(div_buttons);
+      
 
       div_element.appendChild(teamWrapper);
-      // div_element.appendChild(label);
-      // div_element.appendChild(input);
       div_element.appendChild(div_info);
+      div_element.appendChild(div_buttons);
 
       container.appendChild(div_element);
 
@@ -618,17 +662,26 @@ UI.prototype = {
     })
   },
 
-  populateWeather: function(location, weatherSpan){
-    // var span = document.getElementById('weather-text' + labelIndex);
 
+
+
+  populateWeather: function(location, weatherSpan){
     var p2 = document.createElement('span')
     p2.innerText = " with a chance of " + location.weather[0].main;
     p2.setAttribute("id", "weather-text-top");
 
     var p = document.createElement('span')
     var tempCelsius = Math.round((location.main.temp - 273.15))
-    p.innerText = tempCelsius + "° "
+    p.innerText = tempCelsius + "°C "
     p.setAttribute("id", "weather-text-bottom");
+
+    //Weather Picture
+    var weatherImage = document.createElement('img');
+        weatherImage.setAttribute("id", "weather-image");
+        weatherImage.src = "/icons/" + location.weather[0].main + ".png";
+        weatherImage.style.height = "60px";
+        // weatherImage.style.height = "30px";
+    weatherSpan.appendChild(weatherImage);
 
 
     weatherSpan.appendChild(p)
@@ -637,11 +690,14 @@ UI.prototype = {
 
   addMapMarker: function(fixture, labelIndex){
     this.mainMap.addMarker(fixture.stadium.latLng, labelIndex);
+  },
+
+  addMapInfoWindow: function(index, fixture){
+    this.mainMap.addInfoWindow(index, fixture.stadium.location + "<br >" + fixture.homeTeamName + " vs. " + fixture.awayTeamName + "<br >" + fixture.date.slice(0,10))
   }
 }
 
 module.exports = UI;
-
 
 /***/ }),
 /* 2 */
@@ -768,166 +824,170 @@ var MapWrapper = function(coords, zoom, container){
     zoom: zoom, 
     center: coords,
     styles:
-    // adding styles..
+    //adding style
     [
-      {
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#f5f5f5"
-          }
-        ]
-      },
-      {
-        "elementType": "labels.icon",
-        "stylers": [
-          {
-            "visibility": "off"
-          }
-        ]
-      },
-      {
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#616161"
-          }
-        ]
-      },
-      {
-        "elementType": "labels.text.stroke",
-        "stylers": [
-          {
-            "color": "#f5f5f5"
-          }
-        ]
-      },
-      {
-        "featureType": "administrative.land_parcel",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#bdbdbd"
-          }
-        ]
-      },
-      {
-        "featureType": "poi",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#eeeeee"
-          }
-        ]
-      },
-      {
-        "featureType": "poi",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#757575"
-          }
-        ]
-      },
-      {
-        "featureType": "poi.park",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#e5e5e5"
-          }
-        ]
-      },
-      {
-        "featureType": "poi.park",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#9e9e9e"
-          }
-        ]
-      },
-      {
-        "featureType": "road",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#ffffff"
-          }
-        ]
-      },
-      {
-        "featureType": "road.arterial",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#757575"
-          }
-        ]
-      },
-      {
-        "featureType": "road.highway",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#dadada"
-          }
-        ]
-      },
-      {
-        "featureType": "road.highway",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#616161"
-          }
-        ]
-      },
-      {
-        "featureType": "road.local",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#9e9e9e"
-          }
-        ]
-      },
-      {
-        "featureType": "transit.line",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#e5e5e5"
-          }
-        ]
-      },
-      {
-        "featureType": "transit.station",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#eeeeee"
-          }
-        ]
-      },
-      {
-        "featureType": "water",
-        "elementType": "geometry",
-        "stylers": [
-          {
-            "color": "#c9c9c9"
-          }
-        ]
-      },
-      {
-        "featureType": "water",
-        "elementType": "labels.text.fill",
-        "stylers": [
-          {
-            "color": "#9e9e9e"
-          }
-        ]
-      }
+        {
+            "featureType": "all",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "color": "#c2c2c2"
+                }
+            ]
+        },
+        {
+            "featureType": "all",
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                    "gamma": 0.01
+                },
+                {
+                    "lightness": 20
+                }
+            ]
+        },
+        {
+            "featureType": "all",
+            "elementType": "labels.text.stroke",
+            "stylers": [
+                {
+                    "saturation": -31
+                },
+                {
+                    "lightness": -33
+                },
+                {
+                    "weight": 2
+                },
+                {
+                    "gamma": 0.8
+                }
+            ]
+        },
+        {
+            "featureType": "all",
+            "elementType": "labels.icon",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "administrative.country",
+            "elementType": "geometry.fill",
+            "stylers": [
+                {
+                    "saturation": "13"
+                }
+            ]
+        },
+        {
+            "featureType": "landscape",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "lightness": 30
+                },
+                {
+                    "saturation": 30
+                }
+            ]
+        },
+        {
+            "featureType": "landscape.man_made",
+            "elementType": "geometry.fill",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "landscape.natural.landcover",
+            "elementType": "geometry.fill",
+            "stylers": [
+                {
+                    "visibility": "on"
+                },
+                {
+                    "color": "#d4828b"
+                }
+            ]
+        },
+        {
+            "featureType": "poi",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "saturation": 20
+                }
+            ]
+        },
+        {
+            "featureType": "poi.park",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "lightness": 20
+                },
+                {
+                    "saturation": -20
+                }
+            ]
+        },
+        {
+            "featureType": "road",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "lightness": 10
+                },
+                {
+                    "saturation": -30
+                }
+            ]
+        },
+        {
+            "featureType": "road",
+            "elementType": "geometry.fill",
+            "stylers": [
+                {
+                    "visibility": "on"
+                },
+                {
+                    "color": "#ff0000"
+                },
+                {
+                    "lightness": "-21"
+                },
+                {
+                    "saturation": "0"
+                }
+            ]
+        },
+        {
+            "featureType": "road",
+            "elementType": "geometry.stroke",
+            "stylers": [
+                {
+                    "saturation": 25
+                },
+                {
+                    "lightness": 25
+                }
+            ]
+        },
+        {
+            "featureType": "water",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "lightness": -20
+                }
+            ]
+        }
     ]
     // end of style..
   });
@@ -942,16 +1002,16 @@ MapWrapper.prototype = {
       label: index
     });
     this.markers.push(marker);
+  },
+  addInfoWindow: function(index, info){
+    var marker = this.markers[index]
+    var infowindow = new google.maps.InfoWindow({
+        content: info
+      });
+    marker.addListener("click", function(){
+      infowindow.open(this.googleMap, marker)
+    }.bind(this))
   }
-  // addInfoToWindow: function(index, info){
-  //   var marker = this.markers[index]
-  //   var infowindow = new google.maps.InfoWindow({
-  //       content: info
-  //     });
-  //   marker.addListener("click", function(){
-  //     infowindow.open(this.googleMap, marker)
-  //   }.bind(this))
-  // },
   // addClickEvent: function(){
   //   google.maps.event.addListener(this.googleMap, "click", function(event){
   //     var position = {
