@@ -423,13 +423,14 @@ UI.prototype = {
       window.location.href = "http://localhost:3000/";
     });
 
-    var stats = document.createElement("div");
-    stats.setAttribute("id", "statsDiv");
-    body.appendChild(stats);
+    var nationalityStats = document.createElement("div");
+    nationalityStats.setAttribute("id", "nationalityStatsDiv");
+    body.appendChild(nationalityStats);
 
     var teams = new Teams();
     teams.all(function(results){
       this.renderNationalityChart((results[index]));
+      this.renderCapsChart((results[index]));
       this.populateTeam((results[index]))
     }.bind(this))
 
@@ -440,13 +441,21 @@ UI.prototype = {
 
   },
 
-  renderNationalityChart: function(team){
+  renderCapsChart: function(team){
     var container = document.getElementById("statsDiv");
+
+  }
+
+  renderNationalityChart: function(team){
+    var container = document.getElementById("nationalityStatsDiv");
 
     var englandCount = 0;
     var scotlandCount = 0;
     var irelandCount = 0;
     var walesCount = 0;
+    var nzCount = 0;
+    var fijiCount = 0;
+    var tongaCount = 0;
 
     team.players.forEach(function(player, index){
       if(player.nationality === "England"){
@@ -460,6 +469,15 @@ UI.prototype = {
       }
       else if(player.nationality === "Wales"){
         walesCount += 1;
+      }
+      else if(player.nationality === "New Zealand"){
+        nzCount += 1;
+      }
+      else if(player.nationality === "Fiji"){
+        fijiCount += 1;
+      }
+      else if(player.nationality === "Tonga"){
+        tongaCount += 1;
       }
       else {
         return
@@ -476,7 +494,7 @@ UI.prototype = {
             text: "Lions nationality"
           },
           series: [{
-            name: "Type",
+            name: "Players",
             data:
             [
               {
@@ -486,8 +504,18 @@ UI.prototype = {
               },
               {
                 name: "Wales",
-                y: 2,
+                y: walesCount,
                 color: "#ff0000"
+              },
+              {
+                name: "Scotland",
+                y: scotlandCount,
+                color: "#2548b4"
+              },
+              {
+                name: "Ireland",
+                y: irelandCount,
+                color: "#009A49"
               }
             ]
         }]
