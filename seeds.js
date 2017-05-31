@@ -218,9 +218,9 @@ db.fixtures.insert([
 
 db.teams.insert([
   {
-    name: "British and Irish Lions",
+    name: "British and Ireland Lions",
     shortName: "Lions",
-    history: "The British and Irish Lions is a rugby union team selected from players eligible for any of the Home Nations – the national sides of England, Ireland, Scotland and Wales. The side tours every four years, with these rotating among Australia, New Zealand, and South Africa. From 1888 onwards combined rugby sides from the United Kingdom of Great Britain and Ireland toured the Southern Hemisphere.",
+    history: "The British and Ireland Lions is a rugby union team selected from players eligible for any of the Home Nations – the national sides of England, Ireland, Scotland and Wales. The side tours every four years, with these rotating among Australia, New Zealand, and South Africa. From 1888 onwards combined rugby sides from the United Kingdom of Great Britain and Ireland toured the Southern Hemisphere.",
     players: 
     [
       {
@@ -689,7 +689,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Hooker",
         club: "Otago",
-        caps: null,
+        caps: 0,
         image: "http://sportsgroundproduction.blob.core.windows.net/cms/8013/58332/245779/96905642-ce8c-450f-a11c-97baa6cee444_wo.jpg?v=undefined"
       },
       {
@@ -700,7 +700,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Back Row",
         club: "Taranaki / Chiefs",
-        caps: null,
+        caps: 0,
         image: "http://www.chiefs.co.nz/media/xt-adaptive-images/900/media/bearleague/bl14865196411993.jpg"
       },
       {
@@ -711,7 +711,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Back Row",
         club: "Canterbury / Crusaders",
-        caps: null,
+        caps: 0,
         image: "https://crusaders.co.nz/media/com_mtree/images/listings/m/442.jpg"
       },
       // NO LONGER IN SQUAD
@@ -723,7 +723,7 @@ db.teams.insert([
       //   nationality: "New Zealand",
       //   position: "Flanker",
       //   club: "Manawatu / Crusaders",
-      //   caps: null,
+      //   caps: 0,
       //   image: "http://cdn.c.photoshelter.com/img-get2/I0000uusXdP1ft2A/fit=1000x750/Heiden-Bedwell-Curtis.jpg"
       // },
       // {
@@ -734,7 +734,7 @@ db.teams.insert([
       //   nationality: "New Zealand",
       //   position: "Flanker",
       //   club: "Taranaki / Chiefs",
-      //   caps: null,
+      //   caps: 0,
       //   image: "http://www.chiefs.co.nz/media/xt-adaptive-images/900/media/bearleague/bl1486519795597.jpg"
       // },
       // {
@@ -745,7 +745,7 @@ db.teams.insert([
       //   nationality: "New Zealand",
       //   position: "Centre",
       //   club: "Taranaki / Chiefs",
-      //   caps: null,
+      //   caps: 0,
       //   image: "http://www.chiefs.co.nz/media/xt-adaptive-images/900/media/bearleague/bl14865196061738.jpg"
       // },
       {
@@ -756,7 +756,7 @@ db.teams.insert([
         nationality: "Tonga",
         position: "Prop",
         club: "Wellington",
-        caps: null,
+        caps: 0,
         image: "http://cdn.c.photoshelter.com/img-get/I0000fYVHRF1Q9ag/s/800/800/DLwr130812-007.jpg"
       },
       {
@@ -767,7 +767,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Centre",
         club: "Canterbury",
-        caps: null,
+        caps: 0,
         image: "http://media.allblacks.com/dnaImages/PlayersSecondary/p2385.jpg"
       },
       // {
@@ -778,7 +778,7 @@ db.teams.insert([
       //   nationality: "New Zealand",
       //   position: "Hooker",
       //   club: "Waikato / Blues",
-      //   caps: null,
+      //   caps: 0,
       //   image: "https://www.mooloo.co.nz/assets/Uploads/_resampled/detailimage-Faiva-Hame-2016.jpg"
       // },
       {
@@ -789,7 +789,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Fly Half",
         club: "North Harbour / Blues",
-        caps: null,
+        caps: 0,
         image: "http://www.harbourrugby.co.nz/media/players/players57a8ee7abfdd9.gif"
       },
       {
@@ -800,7 +800,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Second Row",
         club: "Northland / Blues",
-        caps: null,
+        caps: 0,
         image: "http://sportsgroundproduction.blob.core.windows.net/cms/8180/59000/234981/49382b4a-3020-4017-9773-bbc96a0f1637_wo.jpg?v=undefined"
       },
       {
@@ -811,7 +811,7 @@ db.teams.insert([
         nationality: "England",
         position: "Prop",
         club: "Canterbury / Crusaders",
-        caps: null,
+        caps: 0,
         image: "http://cdn.c.photoshelter.com/img-get2/I0000zr3v5uexIsI/fit=1000x750/Oliver-Jager.jpg"
       },
       {
@@ -822,7 +822,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Scum Half",
         club: "Bay of Plenty",
-        caps: null,
+        caps: 0,
         image: "https://www.ultimaterugby.com/images/entities/145638-d8d587976a-3/RichardJuddrugbyplayer.jpg"
       },
       {
@@ -833,7 +833,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Full Back",
         club: "Counties Manukau",
-        caps: null,
+        caps: 0,
         image: "http://media.gettyimages.com/photos/luteru-laulala-poses-during-a-chiefs-super-rugby-headshots-session-on-picture-id633244008?s=612x612"
       },
       {
@@ -844,7 +844,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Wing",
         club: "Hawke's Bay",
-        caps: null,
+        caps: 0,
         image: "http://sportsgroundproduction.blob.core.windows.net/cms/2143/6648/151876/6827679f-1ad6-4976-b9b8-bcb3048b518a_wo.jpg?v=undefined"
       },
       {
@@ -855,7 +855,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Hooker",
         club: "Tasman / Crusaders",
-        caps: null,
+        caps: 0,
         image: "http://www.makos.co.nz/_makos/Library/Product/Item/f_99_Makalio.jpg"
       },
       {
@@ -866,7 +866,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Flanker",
         club: "Northland",
-        caps: null,
+        caps: 0,
         image: "http://sportsgroundproduction.blob.core.windows.net/cms/8180/59000/234981/502b1121-2f5b-4446-9108-466fb473120d_wo.jpg?v=undefined"
       },
       {
@@ -877,7 +877,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Second Row",
         club: "Bay of Plenty",
-        caps: null,
+        caps: 0,
         image: "http://www.boprugby.co.nz/images/Keepa.png?width=200&height=auto&shrink="
       },
       {
@@ -888,7 +888,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Full Back",
         club: "Southland",
-        caps: null,
+        caps: 0,
         image: "http://www.rugbysouthland.co.nz/uploads/1/1/3/8/11384993/junior-ngaluafe.jpg?180"
       },
       {
@@ -899,7 +899,7 @@ db.teams.insert([
         nationality: "Figi",
         position: "Wing",
         club: "Waikato",
-        caps: null,
+        caps: 0,
         image: "http://www.ultimaterugby.com/images/entities/146316-02641e9c1b-11/SevuReecerugbyplayer.jpg"
       },
       {
@@ -910,7 +910,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Prop",
         club: "Auckland",
-        caps: null,
+        caps: 0,
         image: "http://sportsgroundproduction.blob.core.windows.net/cms/14254/137310/144782/083af70e-58a8-47d5-a372-5b38edd0b215_wo.jpg?v=undefined"
       },
       {
@@ -921,7 +921,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Prop",
         club: "Bay of Plenty/ Chiefs",
-        caps: null,
+        caps: 0,
         image: "http://www.chiefs.co.nz/media/xt-adaptive-images/900/media/bearleague/bl1487549540196.jpg"
       },
       {
@@ -932,7 +932,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Back Row",
         club: "Whanganui",
-        caps: null,
+        caps: 0,
         image: "http://www.ultimaterugby.com/images/entities/182731-cdc843d5cd-3/PeterRowerugbyplayer.jpg"
       },
       {
@@ -943,7 +943,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Scrum Half",
         club: "Canterbury",
-        caps: null,
+        caps: 0,
         image: "http://www.ultimaterugby.com/images/entities/146051-f8b79362fe-3/JackStrattonrugbyplayer.jpg"
       },
       {
@@ -954,7 +954,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Centre",
         club: "Munakata",
-        caps: null,
+        caps: 0,
         image: "http://media.gettyimages.com/photos/dwayne-sweeney-of-the-barbarians-poses-for-a-portrait-during-the-at-picture-id485184598"
       },
       {
@@ -965,7 +965,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Second Row",
         club: "Waikato / Chiefs",
-        caps: null,
+        caps: 0,
         image: "http://media.gettyimages.com/photos/james-tucker-poses-during-a-chiefs-super-rugby-headshots-session-on-picture-id633244162?s=612x612"
       },
       {
@@ -976,7 +976,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Wing",
         club: "Counties Manukau",
-        caps: null,
+        caps: 0,
         image: "http://www4.pictures.zimbio.com/gi/Chiefs+Headshots+Session+LVwLvVUiS26x.jpg"
       }
       ]
