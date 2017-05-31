@@ -117,10 +117,10 @@ module.exports = RequestHelper;
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Fixtures = __webpack_require__(5);
-var Teams = __webpack_require__(6);
+var Fixtures = __webpack_require__(4);
+var Teams = __webpack_require__(7);
 var RequestHelper = __webpack_require__(0);
-var MapWrapper = __webpack_require__(7);
+var MapWrapper = __webpack_require__(5);
 
 var UI = function(){
   this.fixtures = new Fixtures();
@@ -150,6 +150,8 @@ UI.prototype = {
    var center = {lat: -42.570323, lng: 172.146130}
    this.mainMap = new MapWrapper(center, 5, mapDiv) 
   },
+
+  
 
   render: function(fixtures){
     var container = document.getElementById("fixtures-container");
@@ -540,6 +542,11 @@ UI.prototype = {
       window.location.href = "http://localhost:3000/";
     });
 
+    var stats = document.createElement("div");
+    stats.setAttribute("id", "statsDiv");
+    body.appendChild(stats);
+    this.renderNationalityChart();
+
     var teams = new Teams();
     teams.all(function(results){
       this.populateTeam((results[index]))
@@ -548,6 +555,36 @@ UI.prototype = {
     body.appendChild(teamDiv);
     teamDiv.appendChild(backButton);
 
+  },
+
+  renderNationalityChart: function(){
+    var container = document.getElementById("statsDiv");
+
+      var chart = new Highcharts.Chart({
+          chart: {
+            type: 'pie',
+            renderTo: container
+          },
+          title: {
+            text: "Lions nationality"
+          },
+          series: [{
+            name: "Type",
+            data:
+            [
+              {
+                name: "England",
+                y: 2,
+                color: "#FFF888"
+              },
+              {
+                name: "Wales",
+                y: 2,
+                color: "#ff0000"
+              }
+            ]
+        }]
+      });
   },
 
   populateTeam: function(team){
@@ -729,19 +766,6 @@ module.exports = Fixture;
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports) {
-
-var Team = function(options) {
-  this.name = options.name;
-  this.shortName = options.shortName;
-  this.history = options.history;
-  this.players = options.players;
-  }
-
-module.exports = Team;
-
-/***/ }),
-/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Fixture = __webpack_require__ (3);
@@ -782,39 +806,7 @@ Fixtures.prototype = {
 module.exports = Fixtures;
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Team = __webpack_require__ (4);
-var RequestHelper = __webpack_require__(0)
-
-var Teams = function() {
-  this.requestHelper = new RequestHelper();
-}
-
-Teams.prototype = {
-  all: function(callback){
-    this.requestHelper.makeRequest("http://localhost:3000/api/teams", function(results){
-      var teams = this.populateTeams(results);
-      callback(teams);
-    }.bind(this));
-  },
-  populateTeams: function(results){
-    var teams = results.map(function(resultObject){
-      return new Team(resultObject);
-    })
-    return teams;
-  },
-  add: function(newTeam, callback){
-    var teamData = JSON.stringify(newTeam);
-    this.requestHelper.makePostRequest("http://localhost:3000/api/teams", callback, teamData);
-  }
-};
-
-module.exports = Teams;
-
-/***/ }),
-/* 7 */
+/* 5 */
 /***/ (function(module, exports) {
 
 var MapWrapper = function(coords, zoom, container){
@@ -1024,6 +1016,51 @@ MapWrapper.prototype = {
 }
 
 module.exports = MapWrapper;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+var Team = function(options) {
+  this.name = options.name;
+  this.shortName = options.shortName;
+  this.history = options.history;
+  this.players = options.players;
+  }
+
+module.exports = Team;
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Team = __webpack_require__ (6);
+var RequestHelper = __webpack_require__(0)
+
+var Teams = function() {
+  this.requestHelper = new RequestHelper();
+}
+
+Teams.prototype = {
+  all: function(callback){
+    this.requestHelper.makeRequest("http://localhost:3000/api/teams", function(results){
+      var teams = this.populateTeams(results);
+      callback(teams);
+    }.bind(this));
+  },
+  populateTeams: function(results){
+    var teams = results.map(function(resultObject){
+      return new Team(resultObject);
+    })
+    return teams;
+  },
+  add: function(newTeam, callback){
+    var teamData = JSON.stringify(newTeam);
+    this.requestHelper.makePostRequest("http://localhost:3000/api/teams", callback, teamData);
+  }
+};
+
+module.exports = Teams;
 
 /***/ })
 /******/ ]);

@@ -32,6 +32,8 @@ UI.prototype = {
    this.mainMap = new MapWrapper(center, 5, mapDiv) 
   },
 
+  
+
   render: function(fixtures){
     var container = document.getElementById("fixtures-container");
     if(container === null){
@@ -421,6 +423,11 @@ UI.prototype = {
       window.location.href = "http://localhost:3000/";
     });
 
+    var stats = document.createElement("div");
+    stats.setAttribute("id", "statsDiv");
+    body.appendChild(stats);
+    this.renderNationalityChart();
+
     var teams = new Teams();
     teams.all(function(results){
       this.populateTeam((results[index]))
@@ -429,6 +436,36 @@ UI.prototype = {
     body.appendChild(teamDiv);
     teamDiv.appendChild(backButton);
 
+  },
+
+  renderNationalityChart: function(){
+    var container = document.getElementById("statsDiv");
+
+      var chart = new Highcharts.Chart({
+          chart: {
+            type: 'pie',
+            renderTo: container
+          },
+          title: {
+            text: "Lions nationality"
+          },
+          series: [{
+            name: "Type",
+            data:
+            [
+              {
+                name: "England",
+                y: 2,
+                color: "#FFF888"
+              },
+              {
+                name: "Wales",
+                y: 2,
+                color: "#ff0000"
+              }
+            ]
+        }]
+      });
   },
 
   populateTeam: function(team){
