@@ -1,3 +1,22 @@
+
+
+#teamHistory{
+  width: 75%;
+  justify-content: full;
+  margin:auto;
+  position:relative;
+}
+
 .playerDiv{
-  width: 70;
+  width: 70%;
+  background-color: grey;
+  margin:auto;
+  position:relative;
+}
+
+h3 {
+  margin:auto;
+  position:relative;
+  text-align: center;
+  font-family: 'Fjalla One', sans-serif;
 }
