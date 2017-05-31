@@ -218,9 +218,9 @@ db.fixtures.insert([
 
 db.teams.insert([
   {
-    name: "British and Irish Lions",
+    name: "British and Ireland Lions",
     shortName: "Lions",
-    history: "The British and Irish Lions is a rugby union team selected from players eligible for any of the Home Nations – the national sides of England, Ireland, Scotland and Wales. The side tours every four years, with these rotating among Australia, New Zealand, and South Africa. From 1888 onwards combined rugby sides from the United Kingdom of Great Britain and Ireland toured the Southern Hemisphere.",
+    history: "The British and Ireland Lions is a rugby union team selected from players eligible for any of the Home Nations – the national sides of England, Ireland, Scotland and Wales. The side tours every four years, with these rotating among Australia, New Zealand, and South Africa. From 1888 onwards combined rugby sides from the United Kingdom of Great Britain and Ireland toured the Southern Hemisphere.",
     players: 
     [
       {
@@ -228,7 +228,7 @@ db.teams.insert([
         dob: new Date("1988-10-05"),
         height: 190,
         weight: 103,
-        nationality: "Welsh",
+        nationality: "Wales",
         position: "Back Row",
         club: "Cardiff Blues",
         caps: 76,
@@ -239,7 +239,7 @@ db.teams.insert([
         dob: new Date("1982-08-15"),
         height: 180,
         weight: 106,
-        nationality: "Irish",
+        nationality: "Ireland",
         position: "Hooker",
         club: "Ulster Rugby",
         caps: 108,
@@ -250,7 +250,7 @@ db.teams.insert([
         dob: new Date("1989-10-16"),
         height: 185,
         weight: 93,
-        nationality: "Welsh",
+        nationality: "Wales",
         position: "Fly Half",
         club: "Ospreys",
         caps: 56,
@@ -283,7 +283,7 @@ db.teams.insert([
         dob: new Date("1988-04-05"),
         height: 186,
         weight: 103,
-        nationality: "Welsh",
+        nationality: "Wales",
         position: "Centre",
         club: "Scarlets",
         caps: 71,
@@ -294,7 +294,7 @@ db.teams.insert([
         dob: new Date("1990-11-12"),
         height: 192,
         weight: 109,
-        nationality: "Welsh",
+        nationality: "Wales",
         position: "Back Row",
         club: "Bath Rugby",
         caps: 73,
@@ -316,7 +316,7 @@ db.teams.insert([
         dob: new Date("1992-11-14"),
         height: 185,
         weight: 123,
-        nationality: "Irish",
+        nationality: "Ireland",
         position: "Prop",
         club: "Leinster Rugby",
         caps: 16,
@@ -338,7 +338,7 @@ db.teams.insert([
         dob: new Date("1988-12-22"),
         height: 178,
         weight: 87,
-        nationality: "Welsh",
+        nationality: "Wales",
         position: "Full Back",
         club: "RC Toulon",
         caps: 78,
@@ -360,7 +360,7 @@ db.teams.insert([
         dob: new Date("1992-02-21"),
         height: 2.00,
         weight: 118,
-        nationality: "Irish",
+        nationality: "Ireland",
         position: "Second Row",
         club: "Ulster Rugby",
         caps: 32,
@@ -371,7 +371,7 @@ db.teams.insert([
         dob: new Date("1993-06-12"),
         height: 190,
         weight: 102,
-        nationality: "Irish",
+        nationality: "Ireland",
         position: "Centre",
         club: "Leinster Rugby",
         caps: 29,
@@ -382,7 +382,7 @@ db.teams.insert([
         dob: new Date("1992-06-24"),
         height: 180,
         weight: 100,
-        nationality: "Scottish",
+        nationality: "Scotland",
         position: "Full Back",
         club: "Glasgow Warriors",
         caps: 58,
@@ -415,7 +415,7 @@ db.teams.insert([
         dob: new Date("1985-09-19"),
         height: 198,
         weight: 118,
-        nationality: "Welsh",
+        nationality: "Wales",
         position: "Second Row",
         club: "Ospreys",
         caps: 123,
@@ -437,7 +437,7 @@ db.teams.insert([
         dob: new Date("1985-10-12"),
         height: 175,
         weight: 80,
-        nationality: "Scottish",
+        nationality: "Scotland",
         position: "Scrum Half",
         club: "Gloucester Rugby",
         caps: 58,
@@ -470,7 +470,7 @@ db.teams.insert([
         dob: new Date("1989-10-11"),
         height: 182,
         weight: 120,
-        nationality: "Irish",
+        nationality: "Ireland",
         position: "Prop",
         club: "Leinster Rugby",
         caps: 41,
@@ -481,7 +481,7 @@ db.teams.insert([
         dob: new Date("1994-04-18"),
         height: 190,
         weight: 106,
-        nationality: "Welsh",
+        nationality: "Wales",
         position: "Back Row",
         club: "Gloucester Rugby",
         caps: 17,
@@ -492,7 +492,7 @@ db.teams.insert([
         dob: new Date("1989-04-20"),
         height: 188,
         weight: 94,
-        nationality: "Irish",
+        nationality: "Ireland",
         position: "Scrum Half",
         club: "Munster Rugby",
         caps: 64,
@@ -503,7 +503,7 @@ db.teams.insert([
         dob: new Date("1992-04-13"),
         height: 193,
         weight: 108,
-        nationality: "Welsh",
+        nationality: "Wales",
         position: "Wing",
         club: "Northampton Saints",
         caps: 78,
@@ -525,7 +525,7 @@ db.teams.insert([
         dob: new Date("1987-02-14"),
         height: 187,
         weight: 108,
-        nationality: "Irish",
+        nationality: "Ireland",
         position: "Back Row",
         club: "Leinster Rugby",
         caps: 55,
@@ -536,7 +536,7 @@ db.teams.insert([
         dob: new Date("1989-09-17"),
         height: 191,
         weight: 108,
-        nationality: "Irish",
+        nationality: "Ireland",
         position: "Back Row",
         club: "Munster Rugby",
         caps: 40,
@@ -547,7 +547,7 @@ db.teams.insert([
         dob: new Date("1987-01-03"),
         height: 184,
         weight: 108,
-        nationality: "Welsh",
+        nationality: "Wales",
         position: "Hooker",
         club: "Scarlets",
         caps: 50,
@@ -558,7 +558,7 @@ db.teams.insert([
         dob: new Date("1985-10-13"),
         height: 183,
         weight: 98,
-        nationality: "Irish",
+        nationality: "Ireland",
         position: "Centre",
         club: "Ulster Rugby",
         caps: 20,
@@ -569,7 +569,7 @@ db.teams.insert([
         dob: new Date("1985-07-11"),
         height: 188,
         weight: 93,
-        nationality: "Irish",
+        nationality: "Ireland",
         position: "Fly Half",
         club: "Leinster Rugby",
         caps: 73,
@@ -580,7 +580,7 @@ db.teams.insert([
         dob: new Date("1988-07-01"),
         height: 183,
         weight: 94,
-        nationality: "Scottish",
+        nationality: "Scotland",
         position: "Wing",
         club: "Glasgow Warriors",
         caps: 36,
@@ -602,7 +602,7 @@ db.teams.insert([
         dob: new Date("1990-04-05"),
         height: 189,
         weight: 115,
-        nationality: "Irish",
+        nationality: "Ireland",
         position: "Back Row",
         club: "Munster Rugby",
         caps: 15,
@@ -624,7 +624,7 @@ db.teams.insert([
         dob: new Date("1989-04-06"),
         height: 188,
         weight: 101,
-        nationality: "Welsh",
+        nationality: "Wales",
         position: "Back Row",
         club: "Ospreys",
         caps: 57,
@@ -657,7 +657,7 @@ db.teams.insert([
         dob: new Date("1988-12-09"),
         height: 183,
         weight: 92,
-        nationality: "Welsh",
+        nationality: "Wales",
         position: "Scrum Half",
         club: "Ospreys",
         caps: 28,
@@ -668,7 +668,7 @@ db.teams.insert([
         dob: new Date("1991-04-09"),
         height: 188,
         weight: 86,
-        nationality: "Welsh",
+        nationality: "Wales",
         position: "Wing",
         club: "Scarlets",
         caps: 43,
@@ -689,7 +689,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Hooker",
         club: "Otago",
-        caps: null,
+        caps: 0,
         image: "http://sportsgroundproduction.blob.core.windows.net/cms/8013/58332/245779/96905642-ce8c-450f-a11c-97baa6cee444_wo.jpg?v=undefined"
       },
       {
@@ -700,7 +700,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Back Row",
         club: "Taranaki / Chiefs",
-        caps: null,
+        caps: 0,
         image: "http://www.chiefs.co.nz/media/xt-adaptive-images/900/media/bearleague/bl14865196411993.jpg"
       },
       {
@@ -711,7 +711,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Back Row",
         club: "Canterbury / Crusaders",
-        caps: null,
+        caps: 0,
         image: "https://crusaders.co.nz/media/com_mtree/images/listings/m/442.jpg"
       },
       // NO LONGER IN SQUAD
@@ -723,7 +723,7 @@ db.teams.insert([
       //   nationality: "New Zealand",
       //   position: "Flanker",
       //   club: "Manawatu / Crusaders",
-      //   caps: null,
+      //   caps: 0,
       //   image: "http://cdn.c.photoshelter.com/img-get2/I0000uusXdP1ft2A/fit=1000x750/Heiden-Bedwell-Curtis.jpg"
       // },
       // {
@@ -734,7 +734,7 @@ db.teams.insert([
       //   nationality: "New Zealand",
       //   position: "Flanker",
       //   club: "Taranaki / Chiefs",
-      //   caps: null,
+      //   caps: 0,
       //   image: "http://www.chiefs.co.nz/media/xt-adaptive-images/900/media/bearleague/bl1486519795597.jpg"
       // },
       // {
@@ -745,7 +745,7 @@ db.teams.insert([
       //   nationality: "New Zealand",
       //   position: "Centre",
       //   club: "Taranaki / Chiefs",
-      //   caps: null,
+      //   caps: 0,
       //   image: "http://www.chiefs.co.nz/media/xt-adaptive-images/900/media/bearleague/bl14865196061738.jpg"
       // },
       {
@@ -756,7 +756,7 @@ db.teams.insert([
         nationality: "Tonga",
         position: "Prop",
         club: "Wellington",
-        caps: null,
+        caps: 0,
         image: "http://cdn.c.photoshelter.com/img-get/I0000fYVHRF1Q9ag/s/800/800/DLwr130812-007.jpg"
       },
       {
@@ -767,7 +767,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Centre",
         club: "Canterbury",
-        caps: null,
+        caps: 0,
         image: "http://media.allblacks.com/dnaImages/PlayersSecondary/p2385.jpg"
       },
       // {
@@ -778,7 +778,7 @@ db.teams.insert([
       //   nationality: "New Zealand",
       //   position: "Hooker",
       //   club: "Waikato / Blues",
-      //   caps: null,
+      //   caps: 0,
       //   image: "https://www.mooloo.co.nz/assets/Uploads/_resampled/detailimage-Faiva-Hame-2016.jpg"
       // },
       {
@@ -789,7 +789,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Fly Half",
         club: "North Harbour / Blues",
-        caps: null,
+        caps: 0,
         image: "http://www.harbourrugby.co.nz/media/players/players57a8ee7abfdd9.gif"
       },
       {
@@ -800,7 +800,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Second Row",
         club: "Northland / Blues",
-        caps: null,
+        caps: 0,
         image: "http://sportsgroundproduction.blob.core.windows.net/cms/8180/59000/234981/49382b4a-3020-4017-9773-bbc96a0f1637_wo.jpg?v=undefined"
       },
       {
@@ -811,7 +811,7 @@ db.teams.insert([
         nationality: "England",
         position: "Prop",
         club: "Canterbury / Crusaders",
-        caps: null,
+        caps: 0,
         image: "http://cdn.c.photoshelter.com/img-get2/I0000zr3v5uexIsI/fit=1000x750/Oliver-Jager.jpg"
       },
       {
@@ -822,7 +822,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Scum Half",
         club: "Bay of Plenty",
-        caps: null,
+        caps: 0,
         image: "https://www.ultimaterugby.com/images/entities/145638-d8d587976a-3/RichardJuddrugbyplayer.jpg"
       },
       {
@@ -833,7 +833,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Full Back",
         club: "Counties Manukau",
-        caps: null,
+        caps: 0,
         image: "http://media.gettyimages.com/photos/luteru-laulala-poses-during-a-chiefs-super-rugby-headshots-session-on-picture-id633244008?s=612x612"
       },
       {
@@ -844,7 +844,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Wing",
         club: "Hawke's Bay",
-        caps: null,
+        caps: 0,
         image: "http://sportsgroundproduction.blob.core.windows.net/cms/2143/6648/151876/6827679f-1ad6-4976-b9b8-bcb3048b518a_wo.jpg?v=undefined"
       },
       {
@@ -855,7 +855,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Hooker",
         club: "Tasman / Crusaders",
-        caps: null,
+        caps: 0,
         image: "http://www.makos.co.nz/_makos/Library/Product/Item/f_99_Makalio.jpg"
       },
       {
@@ -866,7 +866,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Flanker",
         club: "Northland",
-        caps: null,
+        caps: 0,
         image: "http://sportsgroundproduction.blob.core.windows.net/cms/8180/59000/234981/502b1121-2f5b-4446-9108-466fb473120d_wo.jpg?v=undefined"
       },
       {
@@ -877,7 +877,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Second Row",
         club: "Bay of Plenty",
-        caps: null,
+        caps: 0,
         image: "http://www.boprugby.co.nz/images/Keepa.png?width=200&height=auto&shrink="
       },
       {
@@ -888,7 +888,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Full Back",
         club: "Southland",
-        caps: null,
+        caps: 0,
         image: "http://www.rugbysouthland.co.nz/uploads/1/1/3/8/11384993/junior-ngaluafe.jpg?180"
       },
       {
@@ -899,7 +899,7 @@ db.teams.insert([
         nationality: "Figi",
         position: "Wing",
         club: "Waikato",
-        caps: null,
+        caps: 0,
         image: "http://www.ultimaterugby.com/images/entities/146316-02641e9c1b-11/SevuReecerugbyplayer.jpg"
       },
       {
@@ -910,7 +910,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Prop",
         club: "Auckland",
-        caps: null,
+        caps: 0,
         image: "http://sportsgroundproduction.blob.core.windows.net/cms/14254/137310/144782/083af70e-58a8-47d5-a372-5b38edd0b215_wo.jpg?v=undefined"
       },
       {
@@ -921,7 +921,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Prop",
         club: "Bay of Plenty/ Chiefs",
-        caps: null,
+        caps: 0,
         image: "http://www.chiefs.co.nz/media/xt-adaptive-images/900/media/bearleague/bl1487549540196.jpg"
       },
       {
@@ -932,7 +932,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Back Row",
         club: "Whanganui",
-        caps: null,
+        caps: 0,
         image: "http://www.ultimaterugby.com/images/entities/182731-cdc843d5cd-3/PeterRowerugbyplayer.jpg"
       },
       {
@@ -943,7 +943,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Scrum Half",
         club: "Canterbury",
-        caps: null,
+        caps: 0,
         image: "http://www.ultimaterugby.com/images/entities/146051-f8b79362fe-3/JackStrattonrugbyplayer.jpg"
       },
       {
@@ -954,7 +954,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Centre",
         club: "Munakata",
-        caps: null,
+        caps: 0,
         image: "http://media.gettyimages.com/photos/dwayne-sweeney-of-the-barbarians-poses-for-a-portrait-during-the-at-picture-id485184598"
       },
       {
@@ -965,7 +965,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Second Row",
         club: "Waikato / Chiefs",
-        caps: null,
+        caps: 0,
         image: "http://media.gettyimages.com/photos/james-tucker-poses-during-a-chiefs-super-rugby-headshots-session-on-picture-id633244162?s=612x612"
       },
       {
@@ -976,7 +976,7 @@ db.teams.insert([
         nationality: "New Zealand",
         position: "Wing",
         club: "Counties Manukau",
-        caps: null,
+        caps: 0,
         image: "http://www4.pictures.zimbio.com/gi/Chiefs+Headshots+Session+LVwLvVUiS26x.jpg"
       }
       ]
