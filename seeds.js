@@ -400,7 +400,7 @@ db.teams.insert([
         image: "https://d2cx26qpfwuhvu.cloudfront.net/lions/wp-content/uploads/2017/04/24151825/MaroItoje.jpg"
       },
       {
-        name: "Jonathan Joseph",
+        name: "Jonthan Joseph",
         dob: new Date("1991-05-21"),
         height: 183,
         weight: 95,
@@ -984,6 +984,7 @@ db.teams.insert([
     {
       name: "New Zealand",
       shortName: "All Blacks",
+      history: "The New Zealand national rugby union team, commonly called the All Blacks, represent New Zealand in mens rugby union, which is regarded as the country's national sport. The side has won the last two Rugby World Cups, in 2011 and 2015, as well as the inaugural tournament in 1987. They have a 77% winning record in test match rugby, and are the only international side with a winning record against every opponent.",
       players: [
         {
           name: "Ardie Savea",
