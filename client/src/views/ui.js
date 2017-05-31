@@ -493,9 +493,9 @@ UI.prototype = {
       playerPosition.innerText = "Position: " + player.position;
       playerDOB.innerText = "Date of Birth: " + player.dob.slice(8,10) + "/" + player.dob.slice(5,7) + "/" + player.dob.slice(0,4) + " (Age: " + this.calculateAge(player.dob) + ")";
       playerDOB.style.display = 'none'
-      playerHeight.innerText = "Height: " + player.height;
+      playerHeight.innerText = "Height: " + player.height + " cm";
       playerHeight.style.display = 'none'
-      playerWeight.innerText = "Weight: " + player.weight;
+      playerWeight.innerText = "Weight: " + player.weight + " kg" ;
       playerWeight.style.display = 'none'
       playerClub.innerText = "Club: " + player.club;
       playerClub.style.display = 'none'
@@ -551,7 +551,6 @@ UI.prototype = {
 
   calculateAge: function(birthday) { // birthday is a date
       dob = new Date(birthday);
-      console.log(dob + " is of type " + typeof(dob));
       var ageDifMs = Date.now() - dob.getTime();
       var ageDate = new Date(ageDifMs); // miliseconds from epoch
       return Math.abs(ageDate.getUTCFullYear() - 1970);
