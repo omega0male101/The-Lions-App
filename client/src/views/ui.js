@@ -474,6 +474,9 @@ UI.prototype = {
       var playerCaps = document.createElement("p");
       playerCaps.setAttribute("class", "playerCaps");
       playerCaps.setAttribute("id", "playerCaps" + index);
+      var playerNat = document.createElement("p");
+      playerNat.setAttribute("class", "playerNat");
+      playerNat.setAttribute("id", "playerNat" + index);
       var playerImageContainer = document.createElement("div");
       playerImageContainer.setAttribute("class", "playerImageContainer");
       playerImageContainer.setAttribute("id", "playerImageContainer" + index);
@@ -488,7 +491,7 @@ UI.prototype = {
       contractor.setAttribute("id", "contractor" + index);
       playerName.innerText = "Name: " + player.name;
       playerPosition.innerText = "Position: " + player.position;
-      playerDOB.innerText = "Date of Birth " + player.dob;
+      playerDOB.innerText = "Date of Birth: " + player.dob.slice(8,10) + "/" + player.dob.slice(5,7) + "/" + player.dob.slice(0,4) + " (Age: " + this.calculateAge(player.dob) + ")";
       playerDOB.style.display = 'none'
       playerHeight.innerText = "Height: " + player.height;
       playerHeight.style.display = 'none'
@@ -498,6 +501,8 @@ UI.prototype = {
       playerClub.style.display = 'none'
       playerCaps.innerText = "Caps: " + player.caps;
       playerCaps.style.display = 'none'
+      playerNat.innerText = "Nation: " + player.nationality;
+      playerNat.style.display = 'none'
       playerImage.setAttribute("src" , player.image);
       playerImage.style.display = 'none'
       expander.setAttribute("height", "10px")
@@ -514,6 +519,7 @@ UI.prototype = {
       playerDiv.appendChild(playerWeight);
       playerDiv.appendChild(playerCaps);
       playerDiv.appendChild(playerClub);
+      playerDiv.appendChild(playerNat);
       playerImageContainer.appendChild(playerImage);
       playerDiv.appendChild(playerImageContainer);
       playerDiv.appendChild(expander);
@@ -525,8 +531,8 @@ UI.prototype = {
         parent.childNodes.forEach(function(child){
           child.style.display = "";
         })
-        parent.childNodes[7].childNodes[0].style.display = "";
-        parent.childNodes[8].style.display = 'none';
+        parent.childNodes[8].childNodes[0].style.display = "";
+        parent.childNodes[9].style.display = 'none';
       })
 
       contractor.addEventListener("click", function(event){
@@ -536,15 +542,20 @@ UI.prototype = {
         })
         parent.childNodes[0].style.display = "block"
         parent.childNodes[1].style.display = "block"
-        parent.childNodes[7].childNodes[0].style.display = 'none';
-        parent.childNodes[8].style.display = "";
+        parent.childNodes[8].childNodes[0].style.display = 'none';
+        parent.childNodes[9].style.display = "";
       })
 
-    })
+    }.bind(this))
   },
 
-
-
+  calculateAge: function(birthday) { // birthday is a date
+      dob = new Date(birthday);
+      console.log(dob + " is of type " + typeof(dob));
+      var ageDifMs = Date.now() - dob.getTime();
+      var ageDate = new Date(ageDifMs); // miliseconds from epoch
+      return Math.abs(ageDate.getUTCFullYear() - 1970);
+  },
 
   populateWeather: function(location, weatherSpan){
     var p2 = document.createElement('span')

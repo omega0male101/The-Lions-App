@@ -117,10 +117,10 @@ module.exports = RequestHelper;
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Fixtures = __webpack_require__(4);
-var Teams = __webpack_require__(7);
+var Fixtures = __webpack_require__(5);
+var Teams = __webpack_require__(6);
 var RequestHelper = __webpack_require__(0);
-var MapWrapper = __webpack_require__(5);
+var MapWrapper = __webpack_require__(7);
 
 var UI = function(){
   this.fixtures = new Fixtures();
@@ -593,6 +593,9 @@ UI.prototype = {
       var playerCaps = document.createElement("p");
       playerCaps.setAttribute("class", "playerCaps");
       playerCaps.setAttribute("id", "playerCaps" + index);
+      var playerNat = document.createElement("p");
+      playerNat.setAttribute("class", "playerNat");
+      playerNat.setAttribute("id", "playerNat" + index);
       var playerImageContainer = document.createElement("div");
       playerImageContainer.setAttribute("class", "playerImageContainer");
       playerImageContainer.setAttribute("id", "playerImageContainer" + index);
@@ -607,7 +610,7 @@ UI.prototype = {
       contractor.setAttribute("id", "contractor" + index);
       playerName.innerText = "Name: " + player.name;
       playerPosition.innerText = "Position: " + player.position;
-      playerDOB.innerText = "Date of Birth " + player.dob;
+      playerDOB.innerText = "Date of Birth: " + player.dob.slice(8,10) + "/" + player.dob.slice(5,7) + "/" + player.dob.slice(0,4) + " (Age: " + this.calculateAge(player.dob) + ")";
       playerDOB.style.display = 'none'
       playerHeight.innerText = "Height: " + player.height;
       playerHeight.style.display = 'none'
@@ -617,6 +620,8 @@ UI.prototype = {
       playerClub.style.display = 'none'
       playerCaps.innerText = "Caps: " + player.caps;
       playerCaps.style.display = 'none'
+      playerNat.innerText = "Nation: " + player.nationality;
+      playerNat.style.display = 'none'
       playerImage.setAttribute("src" , player.image);
       playerImage.style.display = 'none'
       expander.setAttribute("height", "10px")
@@ -633,6 +638,7 @@ UI.prototype = {
       playerDiv.appendChild(playerWeight);
       playerDiv.appendChild(playerCaps);
       playerDiv.appendChild(playerClub);
+      playerDiv.appendChild(playerNat);
       playerImageContainer.appendChild(playerImage);
       playerDiv.appendChild(playerImageContainer);
       playerDiv.appendChild(expander);
@@ -644,8 +650,8 @@ UI.prototype = {
         parent.childNodes.forEach(function(child){
           child.style.display = "";
         })
-        parent.childNodes[7].childNodes[0].style.display = "";
-        parent.childNodes[8].style.display = 'none';
+        parent.childNodes[8].childNodes[0].style.display = "";
+        parent.childNodes[9].style.display = 'none';
       })
 
       contractor.addEventListener("click", function(event){
@@ -655,15 +661,20 @@ UI.prototype = {
         })
         parent.childNodes[0].style.display = "block"
         parent.childNodes[1].style.display = "block"
-        parent.childNodes[7].childNodes[0].style.display = 'none';
-        parent.childNodes[8].style.display = "";
+        parent.childNodes[8].childNodes[0].style.display = 'none';
+        parent.childNodes[9].style.display = "";
       })
 
-    })
+    }.bind(this))
   },
 
-
-
+  calculateAge: function(birthday) { // birthday is a date
+      dob = new Date(birthday);
+      console.log(dob + " is of type " + typeof(dob));
+      var ageDifMs = Date.now() - dob.getTime();
+      var ageDate = new Date(ageDifMs); // miliseconds from epoch
+      return Math.abs(ageDate.getUTCFullYear() - 1970);
+  },
 
   populateWeather: function(location, weatherSpan){
     var p2 = document.createElement('span')
@@ -729,6 +740,19 @@ module.exports = Fixture;
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports) {
+
+var Team = function(options) {
+  this.name = options.name;
+  this.shortName = options.shortName;
+  this.history = options.history;
+  this.players = options.players;
+  }
+
+module.exports = Team;
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Fixture = __webpack_require__ (3);
@@ -769,7 +793,39 @@ Fixtures.prototype = {
 module.exports = Fixtures;
 
 /***/ }),
-/* 5 */
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Team = __webpack_require__ (4);
+var RequestHelper = __webpack_require__(0)
+
+var Teams = function() {
+  this.requestHelper = new RequestHelper();
+}
+
+Teams.prototype = {
+  all: function(callback){
+    this.requestHelper.makeRequest("http://localhost:3000/api/teams", function(results){
+      var teams = this.populateTeams(results);
+      callback(teams);
+    }.bind(this));
+  },
+  populateTeams: function(results){
+    var teams = results.map(function(resultObject){
+      return new Team(resultObject);
+    })
+    return teams;
+  },
+  add: function(newTeam, callback){
+    var teamData = JSON.stringify(newTeam);
+    this.requestHelper.makePostRequest("http://localhost:3000/api/teams", callback, teamData);
+  }
+};
+
+module.exports = Teams;
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports) {
 
 var MapWrapper = function(coords, zoom, container){
@@ -979,51 +1035,6 @@ MapWrapper.prototype = {
 }
 
 module.exports = MapWrapper;
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-var Team = function(options) {
-  this.name = options.name;
-  this.shortName = options.shortName;
-  this.history = options.history;
-  this.players = options.players;
-  }
-
-module.exports = Team;
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Team = __webpack_require__ (6);
-var RequestHelper = __webpack_require__(0)
-
-var Teams = function() {
-  this.requestHelper = new RequestHelper();
-}
-
-Teams.prototype = {
-  all: function(callback){
-    this.requestHelper.makeRequest("http://localhost:3000/api/teams", function(results){
-      var teams = this.populateTeams(results);
-      callback(teams);
-    }.bind(this));
-  },
-  populateTeams: function(results){
-    var teams = results.map(function(resultObject){
-      return new Team(resultObject);
-    })
-    return teams;
-  },
-  add: function(newTeam, callback){
-    var teamData = JSON.stringify(newTeam);
-    this.requestHelper.makePostRequest("http://localhost:3000/api/teams", callback, teamData);
-  }
-};
-
-module.exports = Teams;
 
 /***/ })
 /******/ ]);
