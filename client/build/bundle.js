@@ -117,10 +117,10 @@ module.exports = RequestHelper;
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Fixtures = __webpack_require__(5);
-var Teams = __webpack_require__(6);
+var Fixtures = __webpack_require__(4);
+var Teams = __webpack_require__(7);
 var RequestHelper = __webpack_require__(0);
-var MapWrapper = __webpack_require__(7);
+var MapWrapper = __webpack_require__(5);
 
 var UI = function(){
   this.fixtures = new Fixtures();
@@ -965,19 +965,6 @@ module.exports = Fixture;
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports) {
-
-var Team = function(options) {
-  this.name = options.name;
-  this.shortName = options.shortName;
-  this.history = options.history;
-  this.players = options.players;
-  }
-
-module.exports = Team;
-
-/***/ }),
-/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Fixture = __webpack_require__ (3);
@@ -1018,39 +1005,7 @@ Fixtures.prototype = {
 module.exports = Fixtures;
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Team = __webpack_require__ (4);
-var RequestHelper = __webpack_require__(0)
-
-var Teams = function() {
-  this.requestHelper = new RequestHelper();
-}
-
-Teams.prototype = {
-  all: function(callback){
-    this.requestHelper.makeRequest("http://localhost:3000/api/teams", function(results){
-      var teams = this.populateTeams(results);
-      callback(teams);
-    }.bind(this));
-  },
-  populateTeams: function(results){
-    var teams = results.map(function(resultObject){
-      return new Team(resultObject);
-    })
-    return teams;
-  },
-  add: function(newTeam, callback){
-    var teamData = JSON.stringify(newTeam);
-    this.requestHelper.makePostRequest("http://localhost:3000/api/teams", callback, teamData);
-  }
-};
-
-module.exports = Teams;
-
-/***/ }),
-/* 7 */
+/* 5 */
 /***/ (function(module, exports) {
 
 var MapWrapper = function(coords, zoom, container){
@@ -1260,6 +1215,51 @@ MapWrapper.prototype = {
 }
 
 module.exports = MapWrapper;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+var Team = function(options) {
+  this.name = options.name;
+  this.shortName = options.shortName;
+  this.history = options.history;
+  this.players = options.players;
+  }
+
+module.exports = Team;
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Team = __webpack_require__ (6);
+var RequestHelper = __webpack_require__(0)
+
+var Teams = function() {
+  this.requestHelper = new RequestHelper();
+}
+
+Teams.prototype = {
+  all: function(callback){
+    this.requestHelper.makeRequest("http://localhost:3000/api/teams", function(results){
+      var teams = this.populateTeams(results);
+      callback(teams);
+    }.bind(this));
+  },
+  populateTeams: function(results){
+    var teams = results.map(function(resultObject){
+      return new Team(resultObject);
+    })
+    return teams;
+  },
+  add: function(newTeam, callback){
+    var teamData = JSON.stringify(newTeam);
+    this.requestHelper.makePostRequest("http://localhost:3000/api/teams", callback, teamData);
+  }
+};
+
+module.exports = Teams;
 
 /***/ })
 /******/ ]);

@@ -164,7 +164,7 @@ db.fixtures.insert([
       lng: 174.788576
     },
     capacity: "34,500",
-    image: "http://www.retaildimension.co.nz/ic/3984479418/Westpac%20Stadium%20Case%20Study.jpg"
+    image: "http://www.radionz.co.nz/assets/news/18006/eight_col_250978--.jpg?1402359821"
     },
   result: {
     homeTeamPoints: 0,
