@@ -453,9 +453,9 @@ UI.prototype = {
       div_game.appendChild(spanAwayTeam);
 
       scoreWrapper.appendChild(spanHomeTeamName);
-      scoreWrapper.appendChild(awayPoints);
-      scoreWrapper.appendChild(dash);
       scoreWrapper.appendChild(homePoints);
+      scoreWrapper.appendChild(dash);
+      scoreWrapper.appendChild(awayPoints);
       scoreWrapper.appendChild(spanAwayTeamName);
 
       teamWrapper.appendChild(div_game);
