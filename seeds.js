@@ -4,7 +4,7 @@ db.dropDatabase();
 
 db.fixtures.insert([ 
 {
-  date: new Date("2017-06-03T08:35:00-00:00"),
+  date: new Date("2017-06-03T07:35:00-01:00"),
   matchNumber: 1,
   kickOffTime: "8:35",
   homeTeamName: "New Zealand Provincial Barbarians", 

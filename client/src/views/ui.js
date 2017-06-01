@@ -221,7 +221,7 @@ UI.prototype = {
 
         var kickOffMs2 = Date.parse(fixture.date)
 
-        var distance2 = (kickOffMs2 - Date.now())
+        var distance2 = ((kickOffMs2 - Date.now()) - (1000*60*60))
 
         var days = Math.floor(distance2 / (1000 * 60 * 60 * 24));
         var hours = Math.floor((distance2 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
