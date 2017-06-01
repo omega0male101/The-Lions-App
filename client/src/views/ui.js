@@ -35,7 +35,16 @@ UI.prototype = {
   renderNavBar: function(){ 
     var body = document.getElementsByTagName("BODY")[0];
     var navDiv = document.createElement("div");
-    navDiv.setAttribute("id", "navDiv");
+      navDiv.setAttribute("id", "navDiv");
+      var navDiv1 = document.createElement("div");
+        navDiv1.setAttribute("id", "navDiv1");
+      var navDiv2 = document.createElement("div");
+        navDiv2.setAttribute("id", "navDiv2");
+      var navDiv3 = document.createElement("div");
+        navDiv3.setAttribute("id", "navDiv3");
+      var navDiv4 = document.createElement("div");
+        navDiv4.setAttribute("id", "navDiv4");
+
     var homeLink = document.createElement("a");
     homeLink.setAttribute("href", "/");
     homeLink.setAttribute("id", "nav-home");
@@ -56,10 +65,14 @@ UI.prototype = {
     nzLink.addEventListener("click", function(){
       this.renderTeam(2)
     }.bind(this))
-    navDiv.appendChild(homeLink);
-    navDiv.appendChild(matchesLink);
-    navDiv.appendChild(lionsLink);
-    navDiv.appendChild(nzLink);
+    navDiv1.appendChild(homeLink);
+    navDiv2.appendChild(matchesLink);
+    navDiv3.appendChild(lionsLink);
+    navDiv4.appendChild(nzLink);
+    navDiv.appendChild(navDiv1);
+    navDiv.appendChild(navDiv2);
+    navDiv.appendChild(navDiv3);
+    navDiv.appendChild(navDiv4);
     body.insertBefore(navDiv, body.firstChild);
 
   },
