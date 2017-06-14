@@ -5,7 +5,7 @@
   "scripts": {
     "start": "nodemon server.js",
     "test": "mocha client/src/models/specs",
-    "webpack": "cd client && webpack -w"
+    "webpack": "webpack -w"
   },
   "repository": {
     "type": "git",
